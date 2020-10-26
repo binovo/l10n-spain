@@ -297,7 +297,10 @@ class VatNumberXlsx(models.AbstractModel):
         if country_code != 'ES':
             sheet.write('H' + str(row), country_code)
         sheet.write('I' + str(row), vat_number)
-        sheet.write('J' + str(row), line.partner_id.name[:40])
+        if not line.partner_id:
+            sheet.write('J' + str(row), '')
+        else:
+            sheet.write('J' + str(row), line.partner_id.name[:40])
         # TODO: Substitute Invoice
         # sheet.write('K' + str(row),
         #             line.invoice_id.refund_invoice_id.number or '')
