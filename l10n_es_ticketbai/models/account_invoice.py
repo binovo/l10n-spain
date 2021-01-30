@@ -140,6 +140,14 @@ class AccountInvoice(models.Model):
         self.tbai_vat_regime_key2 = self.fiscal_position_id.tbai_vat_regime_key2.id
         self.tbai_vat_regime_key3 = self.fiscal_position_id.tbai_vat_regime_key3.id
 
+    @api.onchange('partner_id')
+    def _onchange_partner_id(self):
+        """ Fill the tbai_vat_regime_key when partner changes and other modules
+        like contract call this method when create an invoice. """
+        res = super(AccountInvoice, self)._onchange_partner_id()
+        self.onchange_fiscal_position_id_tbai_vat_regime_key()
+        return res
+
     @api.onchange('tbai_refund_type')
     def onchange_tbai_refund_type(self):
         if self.tbai_refund_type:
