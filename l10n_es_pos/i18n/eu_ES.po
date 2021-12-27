@@ -1,142 +1,145 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* l10n_es_pos
+# 	* l10n_es_pos
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: eu_ES\n"
+"POT-Creation-Date: 2018-04-12 14:13+0000\n"
+"PO-Revision-Date: 2020-02-07 22:13+0000\n"
+"Last-Translator: Carles Antoli <carlesantoli@hotmail.com>\n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: l10n_es_pos
 #: model_terms:ir.ui.view,arch_db:l10n_es_pos.pos_config_view_form
 msgid "Above this limit the simplified invoice won't be made"
-msgstr ""
+msgstr "Muga horretatik gora ez da faktura sinplifikaturik sortuko."
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:69
 #, python-format
 msgid "Address:"
-msgstr ""
+msgstr "Helbidea:"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,help:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_sequence_id
 msgid "Autogenerate for each POS created"
-msgstr ""
+msgstr "Sortutako saltoki bakoitzeko autogeneratua"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:67
 #, python-format
 msgid "Customer data"
-msgstr ""
+msgstr "Bezeroaren datuak"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:27
 #, python-format
 msgid "Customer:"
-msgstr ""
+msgstr "Bezeroa:"
 
 #. module: l10n_es_pos
 #: model_terms:ir.ui.view,arch_db:l10n_es_pos.view_pos_order_filter_simplified_invoice
 msgid "Invoices"
-msgstr ""
+msgstr "Fakturak"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:67
 #, python-format
 msgid "Name:"
-msgstr ""
+msgstr "Izena:"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,help:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_limit
 msgid "Over this amount is not legally posible to create a simplified invoice"
-msgstr ""
+msgstr "Kopuru horretatik gora ez da legezkoa faktura sinplifikatua sortzea"
 
 #. module: l10n_es_pos
 #: model:ir.model,name:l10n_es_pos.model_pos_config
 msgid "Point of Sale Configuration"
-msgstr ""
+msgstr "Saltokiko konfiguratzea"
 
 #. module: l10n_es_pos
 #: model:ir.model,name:l10n_es_pos.model_pos_order
 msgid "Point of Sale Orders"
-msgstr ""
+msgstr "Saltokiko eskaerak"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:40
 #, python-format
 msgid "Product"
-msgstr ""
+msgstr "Produktua"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:41
 #, python-format
 msgid "Qty"
-msgstr ""
+msgstr "Kopurua"
 
 #. module: l10n_es_pos
 #: model:ir.model,name:l10n_es_pos.model_ir_sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Sekuentzia"
 
 #. module: l10n_es_pos
 #: model_terms:ir.ui.view,arch_db:l10n_es_pos.pos_config_view_form
 msgid "Set simplified invoice sequence for this POS"
-msgstr ""
+msgstr "Faktura sinplifikatuaren sekuentzia ezarri saltokiko honetarako"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_limit
 msgid "Sim.Inv limit amount"
-msgstr ""
+msgstr "Faktura sinplifikatuaren muga"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_number
 msgid "Sim.Inv number"
-msgstr ""
+msgstr "Faktura sinplifikatuaren zenbakia"
 
 #. module: l10n_es_pos
 #: code:addons/l10n_es_pos/models/pos_config.py:64
 #: code:addons/l10n_es_pos/models/pos_config.py:109
 #, python-format
 msgid "Simplified Invoice %s"
-msgstr ""
+msgstr "%s faktura sinplifikatua"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_sequence_id
 msgid "Simplified Invoice IDs Sequence"
-msgstr ""
+msgstr "Faktura sinplifikatuaren sekuentzia"
 
 #. module: l10n_es_pos
 #: model_terms:ir.ui.view,arch_db:l10n_es_pos.pos_config_view_form
 msgid "Simplified Invoice Limit"
-msgstr ""
+msgstr "Faktura sinplifikatuaren muga"
 
 #. module: l10n_es_pos
 #: model_terms:ir.ui.view,arch_db:l10n_es_pos.pos_config_view_form
 msgid "Simplified Invoice Sequence"
-msgstr ""
+msgstr "Faktura sinplifikatuaren sekuentzia"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_padding
 msgid "Simplified Invoice padding"
-msgstr ""
+msgstr "Faktura sinplifikatuaren betegarria"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_config__l10n_es_simplified_invoice_prefix
 msgid "Simplified Invoice prefix"
-msgstr ""
+msgstr "Faktura sinplifikatuaren aurrezenbakia"
 
 #. module: l10n_es_pos
 #. openerp-web
@@ -144,49 +147,53 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_order__is_l10n_es_simplified_invoice
 #, python-format
 msgid "Simplified invoice"
-msgstr ""
+msgstr "Faktura sinplifikatua"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:7
 #, python-format
 msgid "Simplified invoice:"
-msgstr ""
+msgstr "Faktura sinplifikatua:"
 
 #. module: l10n_es_pos
 #: model_terms:ir.ui.view,arch_db:l10n_es_pos.view_pos_order_filter_simplified_invoice
 msgid "Simplified invoices"
-msgstr ""
+msgstr "Faktura sinplifikatuak"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:43
 #, python-format
 msgid "Subt"
-msgstr ""
+msgstr "Guz-par"
 
 #. module: l10n_es_pos
 #: code:addons/l10n_es_pos/models/ir_sequence.py:20
 #, python-format
-msgid "There is already a simplified invoice sequence with that prefix and it should be unique."
+msgid ""
+"There is already a simplified invoice sequence with that prefix and it "
+"should be unique."
 msgstr ""
+"Dagoeneko existitzen da aurrizki hori duen faktura sinplifikatuaren sekuentzia bat, "
+"eta bakarra izan beharko luke."
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_order__l10n_es_unique_id
 msgid "Unique Order ID"
-msgstr ""
+msgstr "Eskaeraren ID bakarra"
 
 #. module: l10n_es_pos
 #. openerp-web
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:42
 #, python-format
 msgid "Unit"
-msgstr ""
+msgstr "Unit"
 
 #. module: l10n_es_pos
 #: model:ir.model.fields,field_description:l10n_es_pos.field_pos_config__iface_l10n_es_simplified_invoice
 msgid "Use simplified invoices for this POS"
-msgstr ""
+msgstr "Erabili faktura sinplifikatuak saltoki honetan"
 
 #. module: l10n_es_pos
 #. openerp-web
@@ -195,7 +202,7 @@ msgstr ""
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:68
 #, python-format
 msgid "VAT:"
-msgstr ""
+msgstr "IFZ:"
 
 #. module: l10n_es_pos
 #. openerp-web
@@ -203,4 +210,17 @@ msgstr ""
 #: code:addons/l10n_es_pos/static/src/xml/pos.xml:73
 #, python-format
 msgid "on"
-msgstr ""
+msgstr "gain"
+
+#~ msgid ""
+#~ "The current order is already queued and thus it shouldn't be changed. "
+#~ "Click on 'Validate' in order to finalize it."
+#~ msgstr ""
+#~ "Eskaera hori ilaran dago, beraz, ez litzateke aldatu behar. "
+#~ "Sakatu 'Baliozkotu' amaitzeko."
+
+#~ msgid "The order is already queued"
+#~ msgstr "Eskaera ilaran dago"
+
+#~ msgid "pos.config"
+#~ msgstr "pos.config"
