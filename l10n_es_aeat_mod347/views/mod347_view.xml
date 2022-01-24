@@ -245,7 +245,7 @@
                     </group>
                         <group>
                             <field name="city"/>
-                            <field name="partner_state_code"/>
+                            <field name="state_code"/>
 
                         </group>
                         <group>
