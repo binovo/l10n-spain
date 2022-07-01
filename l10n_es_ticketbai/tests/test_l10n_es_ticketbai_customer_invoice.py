@@ -30,6 +30,22 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         res = XMLSchema.xml_is_valid(self.test_xml_invoice_schema_doc, root)
         self.assertTrue(res)
 
+    def test_invoice_with_total_amount_0(self):
+        self.main_company.g5016 = True
+        invoice = self.create_draft_invoice(
+            self.account_billing.id, self.fiscal_position_national)
+        invoice.invoice_line_ids[0].discount = 100.0
+        invoice.invoice_line_ids[1].price_unit = 0.0
+        invoice.onchange_fiscal_position_id_tbai_vat_regime_key()
+        invoice.compute_taxes()
+        invoice.action_invoice_open()
+        self.assertEqual(invoice.state, 'open')
+        self.assertEqual(1, len(invoice.tbai_invoice_ids))
+        root, signature_value = \
+            invoice.sudo().tbai_invoice_ids.get_tbai_xml_signed_and_signature_value()
+        res = XMLSchema.xml_is_valid(self.test_xml_invoice_schema_doc, root)
+        self.assertTrue(res)
+
     def test_invoice_out_of_term(self):
         invoice = self.create_draft_invoice(
             self.account_billing.id, self.fiscal_position_national)
