@@ -75,7 +75,7 @@ msgid "Cancel and recreate"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_invoice.py:289
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:300
 #, python-format
 msgid "Cancellation"
 msgstr ""
@@ -389,7 +389,7 @@ msgid "Origin Invoices Data"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_invoice.py:334
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:345
 #, python-format
 msgid "Please, specify data for the original invoices that are going to be refunded"
 msgstr ""
@@ -410,7 +410,7 @@ msgid "Refund"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_invoice.py:312
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:323
 #, python-format
 msgid "Refund invoices must be cancelled in order to cancel the original invoice."
 msgstr ""
@@ -457,15 +457,21 @@ msgid "Software"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_invoice.py:348
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:359
 #, python-format
 msgid "Some of the original invoices have related tbai cancelled invoices"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_invoice.py:343
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:354
 #, python-format
 msgid "Some of the original invoices have related tbai invoices in inconsistent state please fix them beforehand."
+msgstr ""
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,help:l10n_es_ticketbai.field_account_bank_statement_import_journal_creation__tbai_active_date
+#: model:ir.model.fields,help:l10n_es_ticketbai.field_account_journal__tbai_active_date
+msgid "Start date for sending invoices to the tax authorities"
 msgstr ""
 
 #. module: l10n_es_ticketbai
@@ -699,6 +705,12 @@ msgid "TicketBAI VAT Regime mapping keys"
 msgstr ""
 
 #. module: l10n_es_ticketbai
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_bank_statement_import_journal_creation__tbai_active_date
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_journal__tbai_active_date
+msgid "TicketBAI active date"
+msgstr ""
+
+#. module: l10n_es_ticketbai
 #: model:ir.model,name:l10n_es_ticketbai.model_tbai_info
 msgid "TicketBAI general information"
 msgstr ""
@@ -761,13 +773,13 @@ msgid "Wizard to Load AEAT Certificate"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_invoice.py:76
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:85
 #, python-format
 msgid "You cannot change to draft a TicketBAI invoice!"
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: code:addons/l10n_es_ticketbai/models/account_journal.py:34
+#: code:addons/l10n_es_ticketbai/models/account_journal.py:39
 #, python-format
 msgid "You cannot stop sending invoices from this journal, an invoice has already been sent."
 msgstr ""
