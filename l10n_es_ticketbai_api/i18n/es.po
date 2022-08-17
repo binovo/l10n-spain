@@ -177,12 +177,12 @@ msgstr "AnulaTicketBai"
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_res_company_tbai_pro_available
 msgid "Are Production URLs Available"
-msgstr ""
+msgstr "Están disponibles los URLs de producción"
 
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_res_company_tbai_test_available
 msgid "Are Tests URLs Available"
-msgstr ""
+msgstr "Están disponibles las URLs de pruebas"
 
 #. module: l10n_es_ticketbai_api
 #: selection:tbai.invoice,refund_code:0
@@ -345,8 +345,8 @@ msgid ""
 "Customer Invoicing Device Serial Number. As of TicketBAI v1.1, is not "
 "required."
 msgstr ""
-"Customer Invoicing Device Serial Number. As of TicketBAI v1.1, is not "
-"required."
+"Número de serie del dispositivo de facturación del cliente. A partir de "
+"TicketBAI v1.1, no es obligatorio."
 
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_tbai_invoice_datas
@@ -640,7 +640,7 @@ msgstr "Nombre"
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,help:l10n_es_ticketbai_api.field_tbai_invoice_customer_name
 msgid "Name and surname, or business name."
-msgstr "Nombre y apellidos o razón social"
+msgstr "Nombre y apellidos o razón social."
 
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_tbai_invoice_tax_not_exempted_type
@@ -877,12 +877,12 @@ msgstr "Servicios"
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_tbai_tax_agency_sign_file_hash
 msgid "Sign File HASH"
-msgstr ""
+msgstr "Firmar archivo HASH"
 
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_tbai_tax_agency_sign_file_url
 msgid "Sign File URL"
-msgstr ""
+msgstr "Firmar archivo URL"
 
 #. module: l10n_es_ticketbai_api
 #: model:ir.model.fields,field_description:l10n_es_ticketbai_api.field_tbai_invoice_signature_value

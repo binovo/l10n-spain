@@ -141,10 +141,11 @@ class PosOrder(models.Model):
     @api.multi
     def _prepare_done_order_for_pos(self):
         res = super()._prepare_done_order_for_pos()
-        if self.tbai_enabled:
+        if self.tbai_enabled and self.tbai_invoice_id:
             res.update({
                 'tbai_identifier': self.tbai_invoice_id.tbai_identifier,
-                'tbai_qr_src': 'data:image/png;base64,' + str(self.tbai_invoice_id.qr.decode('UTF-8')),
+                'tbai_qr_src': 'data:image/png;base64,' + str(
+                    self.tbai_invoice_id.qr.decode('UTF-8')),
                 'tbai_qr_url': self.tbai_invoice_id.qr_url
             })
         return res
