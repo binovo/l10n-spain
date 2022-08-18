@@ -10,6 +10,7 @@ from collections import OrderedDict
 from .ticketbai_invoice_tax import TicketBaiTaxType, VATRegimeKey
 from .ticketbai_response import TicketBaiResponseState, TicketBaiInvoiceResponseCode, \
     TicketBaiCancellationResponseCode
+from .res_partner import TicketBaiCustomerIdType
 from ..ticketbai.api import TicketBaiApi
 from ..ticketbai.xml_schema import XMLSchema, TicketBaiSchema, \
     XMLSchemaModeNotSupported
@@ -811,6 +812,17 @@ class TicketBAIInvoice(models.Model):
         customer = self.invoice_id.partner_id
         customer.check_recipient_data()
         customer_res = OrderedDict()
+        if customer.country_id \
+            and customer.country_id.code \
+            not in self.env.ref('base.europe').country_ids.mapped('code') \
+            and customer.tbai_partner_idtype not in \
+            [TicketBaiCustomerIdType.T03.value,
+             TicketBaiCustomerIdType.T04.value,
+             TicketBaiCustomerIdType.T05.value,
+             TicketBaiCustomerIdType.T06.value]:
+            raise exceptions.ValidationError(
+                _("TicketBAI Invoice %s: partner identification type "
+                  "is not valid for non-community.") % self.name)
         if customer.is_spanish_nif():
             customer_res["NIF"] = customer.get_identification_number()
         else:

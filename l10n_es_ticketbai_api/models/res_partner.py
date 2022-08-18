@@ -62,6 +62,8 @@ class ResPartner(models.Model):
                     return nif_value
                 elif not partner.vat.startswith(partner.country_id.code):
                     return partner.country_id.code + partner.vat
+                else:
+                    return partner.vat
             else:
                 return partner.vat
 
