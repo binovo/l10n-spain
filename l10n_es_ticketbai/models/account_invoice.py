@@ -584,11 +584,9 @@ class AccountInvoiceLine(models.Model):
                 sign = -1
             else:
                 sign = 1
-            res = \
-                "%.2f" \
-                % \
-                (sign * self.quantity * self.price_unit *
-                 self.discount / 100.0)
+            price_unit = self.price_unit / self.invoice_id.currency_id.with_context(
+                dict(self._context or {}, date=self.invoice_id.date_invoice)).rate
+            res = "%.2f" % (sign * self.quantity * price_unit * self.discount / 100.0)
         else:
             res = '0.00'
         return res
@@ -608,19 +606,22 @@ class AccountInvoiceLine(models.Model):
                 dto = float(self.tbai_get_value_descuento())
                 fixed_unit_price = (amount_with_vat / (1 + line_tax / 100) + dto) / qty
                 return "%.8f" % fixed_unit_price
-        return "%.8f" % self.price_unit
+        price_unit = self.price_unit / self.invoice_id.currency_id.with_context(
+            dict(self._context or {}, date=self.invoice_id.date_invoice)).rate
+        return "%.8f" % price_unit
 
     def tbai_get_value_importe_total(self):
         tbai_maps = self.env["tbai.tax.map"].search([('code', '=', "IRPF")])
         irpf_taxes = self.env['l10n.es.aeat.report'].get_taxes_from_templates(
             tbai_maps.mapped("tax_template_ids")
         )
-        currency = self.invoice_id and self.invoice_id.currency_id or None
-        price = self.price_unit * (1 - (self.discount or 0.0) / 100.0)
+        currency = self.company_id.currency_id or None
+        price = abs(self.price_subtotal_signed) / self.quantity
         taxes = (self.invoice_line_tax_ids - irpf_taxes).compute_all(
             price, currency, self.quantity, product=self.product_id,
             partner=self.invoice_id.partner_id)
-        price_total = taxes['total_included'] if taxes else self.price_subtotal
+        price_total = taxes['total_included'] if taxes else abs(
+            self.price_subtotal_signed)
         if RefundType.differences.value == self.invoice_id.tbai_refund_type:
             sign = -1
         else:
