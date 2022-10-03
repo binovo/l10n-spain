@@ -8,7 +8,7 @@ class AccountTax(models.Model):
 
     def tbai_is_subject_to_tax(self):
         s_iva_ns_tbai_maps = self.env["tbai.tax.map"].search(
-            [('code', 'in', ("SNS", "BNS"))]
+            [('code', 'in', ("SNS", "BNS", "SIE"))]
         )
         s_iva_ns_taxes = self.env["l10n.es.aeat.report"].get_taxes_from_templates(
             s_iva_ns_tbai_maps.mapped("tax_template_ids")

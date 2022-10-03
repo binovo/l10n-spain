@@ -8,7 +8,7 @@
             <field name="tbai_vat_regime_key" ref="tbai_vat_regime_01"/>
         </record>
         <record id="l10n_es.fp_intra" model="account.fiscal.position.template">
-            <field name="tbai_vat_regime_key" ref="tbai_vat_regime_02"/>
+            <field name="tbai_vat_regime_key" ref="tbai_vat_regime_01"/>
         </record>
         <record id="l10n_es.fp_extra" model="account.fiscal.position.template">
             <field name="tbai_vat_regime_key" ref="tbai_vat_regime_02"/>
@@ -87,22 +87,12 @@
             <field name="tax_id" ref="l10n_es.account_tax_template_s_iva0_ic"/>
             <field name="tbai_vat_exemption_key" ref="tbai_vat_exemption_E5"/>
         </record>
-        <record id="tbai_fp_intra_s_iva0_sp_i" model="account.fp.tbai.tax_template">
-            <field name="position_id" ref="l10n_es.fp_intra"/>
-            <field name="tax_id" ref="l10n_es.account_tax_template_s_iva0_sp_i"/>
-            <field name="tbai_vat_exemption_key" ref="tbai_vat_exemption_E5"/>
-        </record>
 
         <!-- Tax Templates: Extracommunity -->
         <record id="tbai_fp_extra_s_iva0_e" model="account.fp.tbai.tax_template">
             <field name="position_id" ref="l10n_es.fp_extra"/>
             <field name="tax_id" ref="l10n_es.account_tax_template_s_iva0_e"/>
             <field name="tbai_vat_exemption_key" ref="tbai_vat_exemption_E2"/>
-        </record>
-        <record id="tbai_fp_extra_s_iva_e" model="account.fp.tbai.tax_template">
-            <field name="position_id" ref="l10n_es.fp_extra"/>
-            <field name="tax_id" ref="l10n_es.account_tax_template_s_iva_e"/>
-            <field name="tbai_vat_exemption_key" ref="tbai_vat_exemption_E6"/>
         </record>
 
         <!-- Tax Templates: ISP -->

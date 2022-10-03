@@ -122,14 +122,16 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         invoice.partner_id = self.partner_extracommunity.id
         invoice.onchange_fiscal_position_id_tbai_vat_regime_key()
         invoice.compute_taxes()
+        self.assertEqual(invoice.tbai_vat_regime_key.id,
+                         self.env.ref('l10n_es_ticketbai.tbai_vat_regime_02').id)
         # Artículo 21.- Exenciones en las exportaciones de bienes
         self.assertEqual(invoice.tax_line_ids.filtered(
             lambda tax: tax.tax_id.id == self.tax_iva0_e.id
         ).tbai_vat_exemption_key, self.vat_exemption_E2)
-        # Otros
-        self.assertEqual(invoice.tax_line_ids.filtered(
+        # Servicios extracomunitarios, no tienen clave de exencion, son no sujetas
+        self.assertFalse(invoice.tax_line_ids.filtered(
             lambda tax: tax.tax_id.id == self.tax_iva0_sp_e.id
-        ).tbai_vat_exemption_key, self.vat_exemption_E6)
+        ).tbai_vat_exemption_key)
         invoice.action_invoice_open()
         self.assertEqual(invoice.state, 'open')
         self.assertEqual(1, len(invoice.tbai_invoice_ids))
@@ -144,11 +146,17 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         invoice.partner_id = self.partner_intracommunity.id
         invoice.onchange_fiscal_position_id_tbai_vat_regime_key()
         invoice.compute_taxes()
+        self.assertEqual(invoice.tbai_vat_regime_key.id,
+                         self.env.ref('l10n_es_ticketbai.tbai_vat_regime_01').id)
         # Artículo 25.- Exenciones en las entregas de bienes destinados a otro Estado
         # miembro
-        self.assertTrue(all(
-            tax.tbai_vat_exemption_key == self.vat_exemption_E5 for tax in
-            invoice.tax_line_ids))
+        self.assertEqual(invoice.tax_line_ids.filtered(
+            lambda tax: tax.tax_id.id == self.tax_iva0_ic.id
+        ).tbai_vat_exemption_key, self.vat_exemption_E5)
+        # Servicios intracomunitarios, no tienen clave de exencion, son no sujetas
+        self.assertFalse(invoice.tax_line_ids.filtered(
+            lambda tax: tax.tax_id.id == self.tax_iva0_sp_i.id
+        ).tbai_vat_exemption_key)
         invoice.action_invoice_open()
         self.assertEqual(invoice.state, 'open')
         self.assertEqual(1, len(invoice.tbai_invoice_ids))

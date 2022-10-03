@@ -235,10 +235,6 @@ class TestL10nEsTicketBAI(TestL10nEsTicketBAIAPI):
                     'tax_id': self.tax_iva0_ic.id,
                     'tbai_vat_exemption_key': self.vat_exemption_E5.id
                 }),
-                (0, 0, {
-                    'tax_id': self.tax_iva0_sp_i.id,
-                    'tbai_vat_exemption_key': self.vat_exemption_E5.id
-                })
             ],
             'tax_ids': [
                 (0, 0, {
@@ -260,10 +256,6 @@ class TestL10nEsTicketBAI(TestL10nEsTicketBAIAPI):
                     'tax_id': self.tax_iva0_e.id,
                     'tbai_vat_exemption_key': self.vat_exemption_E2.id
                 }),
-                (0, 0, {
-                    'tax_id': self.tax_iva0_sp_e.id,
-                    'tbai_vat_exemption_key': self.vat_exemption_E6.id
-                })
             ],
             'tax_ids': [
                 (0, 0, {
