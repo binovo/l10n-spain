@@ -740,6 +740,7 @@ class TicketBAIInvoice(models.Model):
             "03": self._check_compatible_codes(["01"]),
             "08": self._check_compatible_codes(["01"]),
             "01": self._check_compatible_codes(["02"]),
+            "19": self._check_compatible_codes(["01"]),
             "51": self._check_compatible_codes(["01"]),
             "52": self._check_compatible_codes(["01"]),
             "53": self._check_compatible_codes([]),
