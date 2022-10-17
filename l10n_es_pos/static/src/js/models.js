@@ -38,7 +38,7 @@ odoo.define('l10n_es_pos.models', function (require) {
             }
         },
         push_order: function(order, opts) {
-            if (order && this.pushed_simple_invoices.indexOf(order.simplified_invoice) === -1) {
+            if (order && order.simplified_invoice && this.pushed_simple_invoices.indexOf(order.simplified_invoice) === -1) {
                 this.pushed_simple_invoices.push(order.simplified_invoice);
                 ++this.config.l10n_es_simplified_invoice_number;
             }
