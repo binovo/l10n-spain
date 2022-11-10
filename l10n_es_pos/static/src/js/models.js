@@ -6,6 +6,7 @@
 odoo.define('l10n_es_pos.models', function (require) {
     "use strict";
 
+    var logger = require('point_of_sale.logger');
     var models = require('point_of_sale.models');
 
     var pos_super = models.PosModel.prototype;
@@ -32,17 +33,37 @@ odoo.define('l10n_es_pos.models', function (require) {
             return result;
         },
         push_simple_invoice: function (order) {
+            logger.warn('l10n_es_pos/push_simple_invoice > in');
+            if (order) {
+                logger.warn('l10n_es_pos/push_simple_invoice > ' + order.data.uid + ' > ' + order.data.simplified_invoice);
+            }
             if (this.pushed_simple_invoices.indexOf(order.data.simplified_invoice) === -1) {
+                logger.warn('l10n_es_pos/push_simple_invoice > push');
                 this.pushed_simple_invoices.push(order.data.simplified_invoice);
+                logger.warn('l10n_es_pos/push_simple_invoice > current number: ' + this.config.l10n_es_simplified_invoice_number);
                 ++this.config.l10n_es_simplified_invoice_number;
+                logger.warn('l10n_es_pos/push_simple_invoice > increment number: ' + this.config.l10n_es_simplified_invoice_number);
             }
         },
         push_order: function(order, opts) {
-            if (order && order.simplified_invoice && this.pushed_simple_invoices.indexOf(order.simplified_invoice) === -1) {
-                this.pushed_simple_invoices.push(order.simplified_invoice);
-                ++this.config.l10n_es_simplified_invoice_number;
+            logger.warn('l10n_es_pos/push_order > in');
+            if (order) {
+                logger.warn('l10n_es_pos/push_order > ' + order.uid + ' > ' + order.simplified_invoice);
             }
-            return pos_super.push_order.apply(this, arguments);
+            if (order && order.simplified_invoice && this.pushed_simple_invoices.indexOf(order.simplified_invoice) === -1) {
+                logger.warn('l10n_es_pos/push_order > push');
+                this.pushed_simple_invoices.push(order.simplified_invoice);
+                logger.warn('l10n_es_pos/push_order > current number: ' + this.config.l10n_es_simplified_invoice_number);
+                ++this.config.l10n_es_simplified_invoice_number;
+                logger.warn('l10n_es_pos/push_order > increment number: ' + this.config.l10n_es_simplified_invoice_number);
+            }
+            try {
+                return pos_super.push_order.apply(this, arguments);
+            } catch (err) {
+                logger.error(err.message);
+                logger.error(err.stack);
+                alert('Ha ocurrido un error al registrar el ticket.');
+            }
         },
         _flush_orders: function (orders, options) {
             var self = this;
@@ -67,7 +88,10 @@ odoo.define('l10n_es_pos.models', function (require) {
             return total;
         },
         set_simple_inv_number: function () {
+            logger.warn('l10n_es_pos/set_simple_inv_number > in');
+            logger.warn('l10n_es_pos/set_simple_inv_number > simplified_invoice: ' + this.simplified_invoice);
             this.simplified_invoice = this.pos.get_simple_inv_next_number();
+            logger.warn('l10n_es_pos/set_simple_inv_number > GET simplified_invoice: ' + this.simplified_invoice);
             this.name = this.simplified_invoice;
             this.is_simplified_invoice = true;
         },

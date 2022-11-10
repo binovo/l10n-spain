@@ -6,6 +6,7 @@
 odoo.define('l10n_es_pos.screens', function (require) {
     "use strict";
 
+    var logger = require('point_of_sale.logger');
     var screens = require('point_of_sale.screens');
 
 
@@ -14,10 +15,12 @@ odoo.define('l10n_es_pos.screens', function (require) {
         // will be the legal one on each case, it's mandatory to force the
         // invoice in any case.
         validate_order: function (force_validate) {
+            logger.warn('l10n_es_pos/validate_order > in');
             var below_limit = this.pos.get_order().get_total_with_tax() <=
                 this.pos.config.l10n_es_simplified_invoice_limit;
             if (this.pos.config.iface_l10n_es_simplified_invoice) {
                 var order = this.pos.get_order();
+                logger.warn('l10n_es_pos/validate_order > ' + order.uid + ' > ' + order.simplified_invoice);
                 if (below_limit && !order.to_invoice) {
                     order.set_simple_inv_number();
                 } else {
