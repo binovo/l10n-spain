@@ -616,12 +616,17 @@ class AccountInvoiceLine(models.Model):
             tbai_maps.mapped("tax_template_ids")
         )
         currency = self.company_id.currency_id or None
-        price = abs(self.price_subtotal_signed) / self.quantity
-        taxes = (self.invoice_line_tax_ids - irpf_taxes).compute_all(
-            price, currency, self.quantity, product=self.product_id,
-            partner=self.invoice_id.partner_id)
-        price_total = taxes['total_included'] if taxes else abs(
-            self.price_subtotal_signed)
+        price_total = self.price_total / self.invoice_id.currency_id.with_context(
+            dict(self._context or {}, date=self.invoice_id.date_invoice)).rate
+        # Recalculate price_total only if the line contains IRPF taxes
+        if any(item in self.invoice_line_tax_ids.ids for item in irpf_taxes.ids):
+            price_unit = self.price_unit / self.invoice_id.currency_id.with_context(
+                dict(self._context or {}, date=self.invoice_id.date_invoice)).rate
+            price_unit = price_unit * (1 - (self.discount or 0.0) / 100.0)
+            taxes = (self.invoice_line_tax_ids - irpf_taxes).compute_all(
+                price_unit, currency, self.quantity, product=self.product_id,
+                partner=self.invoice_id.partner_id)
+            price_total = taxes['total_included'] if taxes else price_total
         if RefundType.differences.value == self.invoice_id.tbai_refund_type:
             sign = -1
         else:
