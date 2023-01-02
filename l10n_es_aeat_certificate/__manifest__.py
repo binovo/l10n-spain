@@ -7,9 +7,9 @@
               'Consultoría Informática Studio 73 S.L.,'
               'Acysos S.L.,'
               'Odoo Community Association (OCA)',
-    'website': 'https://odoo-community.org/',
+    "website": "https://github.com/OCA/l10n-spain",
     'category': 'Accounting',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.0.1',
     'license': 'AGPL-3',
     'depends': [
         'base',

@@ -5,9 +5,9 @@
     "name": "TicketBAI - Point of Sale - "
             "declaración de todas las operaciones de venta realizadas por las personas "
             "y entidades que desarrollan actividades económicas",
-    "version": "11.0.0.6.1",
+    "version": "11.0.0.6.2",
     "category": "Accounting & Finance",
-    "website": "http://www.binovo.es",
+    "website": "https://github.com/OCA/l10n-spain",
     "author": "Binovo,"
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",

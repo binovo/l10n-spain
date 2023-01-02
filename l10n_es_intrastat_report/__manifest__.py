@@ -7,11 +7,12 @@
 
 {
     'name': 'Intrastat Product Declaration for Spain',
-    'version': '11.0.1.0.1',
+    'version': '11.0.1.0.2',
     'category': 'Intrastat',
     'license': 'AGPL-3',
     'summary': 'Spanish Intrastat Product Declaration',
     'author': 'FactorLibre,Noviat,Tecnativa,Odoo Community Association (OCA)',
+    "website": "https://github.com/OCA/l10n-spain",
     'depends': [
         'intrastat_product',
         'l10n_es_aeat',

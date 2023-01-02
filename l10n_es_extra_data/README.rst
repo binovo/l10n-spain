@@ -43,10 +43,15 @@ el módulo *account_chart_update*.
 Changelog
 =========
 
-11.0.1.0.0 (2022-07-26)
+12.0.1.0.0 (2022-07-20)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* [NEW] Module added to v11. Añadido nuevo impuesto del 5% de las eléctricas.
+* [NEW] Module added to v12. Añadido nuevo impuesto del 5% de las eléctricas.
+
+11.0.1.0.0 (2022-08-10)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* [NEW] Module backported to v11. Añadido nuevo impuesto del 5% de las eléctricas.
 
 Bug Tracker
 ===========
@@ -54,7 +59,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/l10n-spain/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/l10n-spain/issues/new?body=module:%20l10n_es_extra_data%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/l10n-spain/issues/new?body=module:%20l10n_es_extra_data%0Aversion:%2011.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 

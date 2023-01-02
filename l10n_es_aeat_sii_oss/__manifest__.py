@@ -3,9 +3,9 @@
 
 {
     "name": "Suministro Inmediato de Información en el IVA: OSS",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.0.1",
     "category": "Accounting & Finance",
-    "website": "https://odoospain.odoo.com",
+    "website": "https://github.com/OCA/l10n-spain",
     "author": "FactorLibre,"
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
