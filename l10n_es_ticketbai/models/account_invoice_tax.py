@@ -145,7 +145,7 @@ class AccountInvoiceTax(models.Model):
         re_invoice_tax = self.tbai_get_associated_re_tax()
         if re_invoice_tax:
             if (
-                self.env.ref("l10n_es_extra_data.tax_group_recargo_0_625").id
+                self.env.ref("l10n_es_extra_data.tax_group_recargo_0-625").id
                 == re_invoice_tax.tax_id.tax_group_id.id
             ):
                 res = "%.3f" % abs(re_invoice_tax.tax_id.amount)
