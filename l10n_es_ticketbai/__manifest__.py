@@ -5,7 +5,7 @@
     "name": "TicketBAI - "
             "declaración de todas las operaciones de venta realizadas por las personas "
             "y entidades que desarrollan actividades económicas",
-    "version": "12.0.2.7.2",
+    "version": "12.0.2.7.6",
     "category": "Accounting & Finance",
     "website": "https://github.com/OCA/l10n-spain",
     "author": "Binovo,"
@@ -16,8 +16,7 @@
     "auto_install": False,
     "development_status": "Beta",
     "maintainers": [
-        'ljsalvatierra-binovo',
-        'ao-landoo'
+        "ao-landoo",
     ],
     "depends": [
         "base_vat",

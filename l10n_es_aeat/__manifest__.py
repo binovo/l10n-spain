@@ -10,14 +10,14 @@
 {
     'name': "AEAT Base",
     'summary': "Modulo base para declaraciones de la AEAT",
-    'version': "12.0.2.3.0",
+    'version': "12.0.2.3.1",
     'author': "Pexego,"
               "Acysos S.L.,"
               "AvanzOSC,"
               "Tecnativa,"
               "Odoo Community Association (OCA)",
     'license': "AGPL-3",
-    'website': "https://odoo-community.org/",
+    'website': "https://github.com/OCA/l10n-spain",
     'category': "Accounting & Finance",
     'depends': [
         'account',

@@ -5,14 +5,14 @@
 
 {
     "name": "Gestión de activos fijos para España",
-    "version": "12.0.2.0.6",
+    "version": "12.0.2.0.7",
     "depends": [
         "account_asset_management",
     ],
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "website": "https://odoo-community.org/",
+    "website": "https://github.com/OCA/l10n-spain",
     "category": "Accounting & Finance",
     "data": [
         "views/account_asset_profile_views.xml",

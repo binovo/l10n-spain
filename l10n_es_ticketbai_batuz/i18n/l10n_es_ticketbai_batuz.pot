@@ -49,9 +49,9 @@ msgid "Chapter"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:661
+#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:645
 #, python-format
-msgid "Chapter and type are required for search a pending LROE Operation"
+msgid "Chapter and Operation Type are required for search a pending LROE Operation"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
@@ -138,13 +138,13 @@ msgid "LROE API URL"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:726
+#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:711
 #, python-format
 msgid "LROE Build: method for model %s chapter %s not implemented!"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:707
+#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:692
 #, python-format
 msgid "LROE Build: operation type is necessary!"
 msgstr ""
@@ -155,7 +155,7 @@ msgid "LROE Operation"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/lroe_operation.py:200
+#: code:addons/l10n_es_ticketbai_batuz/models/lroe_operation.py:202
 #, python-format
 msgid "LROE Operation %s: XML schema not supported!"
 msgstr ""
@@ -316,7 +316,7 @@ msgid "The last attemp to sent to LROE has failed"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:400
+#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:384
 #, python-format
 msgid "There's a mismatch in taxes for RE. Check them."
 msgstr ""
@@ -393,13 +393,18 @@ msgid "With delay"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:712
+#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:793
+#, python-format
+msgid "You can not cancel this invoice because there is a job running!"
+msgstr ""
+
+#. module: l10n_es_ticketbai_batuz
+#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:697
 #, python-format
 msgid "You can not communicate this invoice at this moment because there is a job running!"
 msgstr ""
 
 #. module: l10n_es_ticketbai_batuz
-#: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:804
 #: code:addons/l10n_es_ticketbai_batuz/models/account_invoice.py:838
 #, python-format
 msgid "You can not set to draft this invoice because there is a job running!"
