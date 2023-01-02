@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<odoo>
     <record id="fptt_extra_0a" model="account.fiscal.position.tax.template">
         <field name="position_id" ref="l10n_es.fp_extra"/>
         <field name="tax_src_id" ref="account_tax_template_p_iva0_a"/>
