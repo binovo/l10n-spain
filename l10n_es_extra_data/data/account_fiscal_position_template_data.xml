@@ -3,6 +3,26 @@
     <data>
 
         <!-- Recargo de equivalencia -->
+        <record id="fptt_extra_0a" model="account.fiscal.position.tax.template">
+            <field name="position_id" ref="l10n_es.fp_extra"/>
+            <field name="tax_src_id" ref="account_tax_template_p_iva0_bc"/>
+            <field name="tax_dest_id" ref="account_tax_template_p_iva0_ia"/>
+        </record>
+        <record id="fptt_extra_5a" model="account.fiscal.position.tax.template">
+            <field name="position_id" ref="l10n_es.fp_extra"/>
+            <field name="tax_src_id" ref="account_tax_template_p_iva5_bc"/>
+            <field name="tax_dest_id" ref="account_tax_template_p_iva5_ia"/>
+        </record>
+        <record id="fptt_intra_0a" model="account.fiscal.position.tax.template">
+            <field name="position_id" ref="l10n_es.fp_intra"/>
+            <field name="tax_src_id" ref="account_tax_template_p_iva0_bc"/>
+            <field name="tax_dest_id" ref="account_tax_template_p_iva0_ic_a"/>
+        </record>
+        <record id="fptt_intra_5a" model="account.fiscal.position.tax.template">
+            <field name="position_id" ref="l10n_es.fp_intra"/>
+            <field name="tax_src_id" ref="account_tax_template_p_iva5_bc"/>
+            <field name="tax_dest_id" ref="account_tax_template_p_iva5_ic_a"/>
+        </record>
         <record id="fptt_recargo_0b" model="account.fiscal.position.tax.template">
             <field name="position_id" ref="l10n_es.fp_recargo"/>
             <field name="tax_src_id" ref="account_tax_template_s_iva0b"/>
