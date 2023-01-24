@@ -298,41 +298,73 @@ class L10nEsAeatMod390Report(models.Model):
     @api.depends('tax_line_ids')
     def _compute_casilla_33(self):
         for report in self:
-            report.casilla_33 = sum(report.tax_line_ids.filtered(
-                lambda x: x.field_number in (
-                    1, 3, 5,  # Régimen ordinario
-                    500, 502, 504,  # Intragrupo - no incluido aún
-                    643, 645, 647,  # Criterio de caja - no incluido aún
-                    7, 9, 11,  # Bienes usados, etc - no incluido aún
-                    13,  # Agencias de viajes - no incluido aún
-                    21, 23, 25,  # Adquis. intracomunitaria bienes
-                    545, 547, 551,  # Adquis. intracomunitaria servicios
-                    27,  # IVA otras operaciones sujeto pasivo
-                    29,  # Modificación bases y cuotas
-                    649,  # Modif. bases y cuotas intragrupo - no incluido aún
-                    31,  # Modif. bases y cuotas concurso ac. - no incluido aún
-                )
-            ).mapped('amount'))
+            report.casilla_33 = sum(
+                report.tax_line_ids.filtered(
+                    lambda x: x.field_number
+                    in (
+                        1,
+                        3,
+                        5,  # Régimen ordinario
+                        702,
+                        500,
+                        502,
+                        504,  # Intragrupo - no incluido aún
+                        643,
+                        645,
+                        647,  # Criterio de caja - no incluido aún
+                        7,
+                        9,
+                        11,  # Bienes usados, etc - no incluido aún
+                        13,  # Agencias de viajes - no incluido aún
+                        21,
+                        23,
+                        25,  # Adquis. intracomunitaria bienes
+                        545,
+                        547,
+                        551,  # Adquis. intracomunitaria servicios
+                        27,  # IVA otras operaciones sujeto pasivo
+                        29,  # Modificación bases y cuotas
+                        649,  # Modif. bases y cuotas intragrupo - no incluido aún
+                        31,  # Modif. bases y cuotas concurso ac. - no incluido aún
+                    )
+                ).mapped("amount")
+            )
 
     @api.multi
     @api.depends('tax_line_ids')
     def _compute_casilla_34(self):
         for report in self:
-            report.casilla_34 = sum(report.tax_line_ids.filtered(
-                lambda x: x.field_number in (
-                    2, 4, 6,  # Régimen ordinario
-                    501, 503, 505,  # Intragrupo - no incluido aún
-                    644, 646, 648,  # Criterio de caja - no incluido aún
-                    8, 10, 12,  # Bienes usados, etc - no incluido aún
-                    14,  # Agencias de viajes - no incluido aún
-                    22, 24, 26,  # Adquis. intracomunitaria bienes
-                    546, 548, 552,  # Adquis. intracomunitaria servicios
-                    28,  # IVA otras operaciones sujeto pasivo
-                    30,  # Modificación bases y cuotas
-                    650,  # Modif. bases y cuotas intragrupo - no incluido aún
-                    32,  # Modif. bases y cuotas concurso ac. - no incluido aún
-                )
-            ).mapped('amount'))
+            report.casilla_34 = sum(
+                report.tax_line_ids.filtered(
+                    lambda x: x.field_number
+                    in (
+                        2,
+                        4,
+                        6,  # Régimen ordinario
+                        703,
+                        501,
+                        503,
+                        505,  # Intragrupo - no incluido aún
+                        644,
+                        646,
+                        648,  # Criterio de caja - no incluido aún
+                        8,
+                        10,
+                        12,  # Bienes usados, etc - no incluido aún
+                        14,  # Agencias de viajes - no incluido aún
+                        22,
+                        24,
+                        26,  # Adquis. intracomunitaria bienes
+                        546,
+                        548,
+                        552,  # Adquis. intracomunitaria servicios
+                        28,  # IVA otras operaciones sujeto pasivo
+                        30,  # Modificación bases y cuotas
+                        650,  # Modif. bases y cuotas intragrupo - no incluido aún
+                        32,  # Modif. bases y cuotas concurso ac. - no incluido aún
+                    )
+                ).mapped("amount")
+            )
 
     @api.multi
     @api.depends('casilla_34', 'tax_line_ids')
@@ -373,21 +405,21 @@ class L10nEsAeatMod390Report(models.Model):
     @api.depends('tax_line_ids')
     def _compute_casilla_48(self):
         for report in self:
-            report.casilla_48 = sum(report.tax_line_ids.filtered(
-                lambda x: x.field_number in (
-                    190, 192, 555, 603, 194, 557, 605,
-                )
-            ).mapped('amount'))
+            report.casilla_48 = sum(
+                report.tax_line_ids.filtered(
+                    lambda x: x.field_number in (190, 192, 555, 603, 194, 557, 605, 724)
+                ).mapped("amount")
+            )
 
     @api.multi
     @api.depends('tax_line_ids')
     def _compute_casilla_49(self):
         for report in self:
-            report.casilla_49 = sum(report.tax_line_ids.filtered(
-                lambda x: x.field_number in (
-                    191, 193, 556, 604, 195, 558, 606,
-                )
-            ).mapped('amount'))
+            report.casilla_49 = sum(
+                report.tax_line_ids.filtered(
+                    lambda x: x.field_number in (191, 193, 556, 604, 195, 558, 606, 725)
+                ).mapped("amount")
+            )
 
     @api.multi
     @api.depends('tax_line_ids')
