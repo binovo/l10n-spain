@@ -368,11 +368,6 @@ msgid "Number prefix of this invoice name e.g. if the invoice name is INV/2021/0
 msgstr ""
 
 #. module: l10n_es_ticketbai
-#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_date_operation
-msgid "Operation Date"
-msgstr ""
-
-#. module: l10n_es_ticketbai
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_description_operation
 msgid "Operation Description"
 msgstr ""
@@ -479,11 +474,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_tbai_tax_map_tax_template_ids
 #: model:ir.ui.view,arch_db:l10n_es_ticketbai.tbai_tax_map_view_form
 msgid "Taxes"
-msgstr ""
-
-#. module: l10n_es_ticketbai
-#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_datetime_invoice
-msgid "Tbai Datetime Invoice"
 msgstr ""
 
 #. module: l10n_es_ticketbai
@@ -779,4 +769,14 @@ msgstr ""
 #. module: l10n_es_ticketbai
 #: model:ir.model,name:l10n_es_ticketbai.model_tbai_info
 msgid "tbai.info"
+msgstr ""
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,help:l10n_es_ticketbai.field_account_invoice_tbai_expedition_date
+msgid "TicketBai expedition date format: %dd-%mm-%yyyy"
+msgstr ""
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice__tbai_expedition_date
+msgid "Expedition date"
 msgstr ""

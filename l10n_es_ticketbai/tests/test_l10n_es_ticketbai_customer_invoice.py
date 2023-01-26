@@ -1,7 +1,7 @@
 # Copyright 2021 Binovo IT Human Project SL
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
-from datetime import date
+from datetime import date, datetime, timedelta
 from odoo import exceptions
 from odoo.tests import common
 from .common import TestL10nEsTicketBAI
@@ -529,3 +529,57 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         for journal in journals:
             self.assertEqual(journal.sequence_id.suffix, '')
             self.assertEqual(journal.refund_sequence, True)
+
+    def test_invoice_without_operation_date(self):
+        invoice = self.create_draft_invoice(
+            self.account_billing.id, self.fiscal_position_national
+        )
+        expedition_date = datetime.today().date()
+        invoice.onchange_fiscal_position_id_tbai_vat_regime_key()
+        invoice.compute_taxes()
+        invoice.action_invoice_open()
+        self.assertEqual(invoice.state, "open")
+        self.assertEqual(1, len(invoice.tbai_invoice_ids))
+        tbai_invoice_id = invoice.tbai_invoice_id
+        self.assertTrue(tbai_invoice_id.expedition_date)
+        self.assertTrue(tbai_invoice_id.expedition_hour)
+        self.assertFalse(tbai_invoice_id.operation_date)
+        self.assertEqual(
+            tbai_invoice_id.expedition_date, expedition_date.strftime("%d-%m-%Y")
+        )
+        (
+            root,
+            signature_value,
+        ) = invoice.sudo().tbai_invoice_ids.get_tbai_xml_signed_and_signature_value()
+        res = XMLSchema.xml_is_valid(self.test_xml_invoice_schema_doc, root)
+        self.assertTrue(res)
+
+    def test_invoice_with_operation_date(self):
+        invoice = self.create_draft_invoice(
+            self.account_billing.id, self.fiscal_position_national
+        )
+        expedition_date = datetime.today().date()
+        operation_date = expedition_date - timedelta(days=7)
+        invoice.date_invoice = operation_date
+        invoice.onchange_fiscal_position_id_tbai_vat_regime_key()
+        invoice.compute_taxes()
+        invoice.action_invoice_open()
+        self.assertEqual(invoice.state, "open")
+        self.assertEqual(1, len(invoice.tbai_invoice_ids))
+        tbai_invoice_id = invoice.tbai_invoice_id
+        self.assertTrue(tbai_invoice_id.expedition_date)
+        self.assertTrue(tbai_invoice_id.expedition_hour)
+        self.assertTrue(tbai_invoice_id.operation_date)
+        self.assertFalse(expedition_date == operation_date)
+        self.assertEqual(
+            tbai_invoice_id.expedition_date, expedition_date.strftime("%d-%m-%Y")
+        )
+        self.assertEqual(
+            tbai_invoice_id.operation_date, operation_date.strftime("%d-%m-%Y")
+        )
+        (
+            root,
+            signature_value,
+        ) = invoice.sudo().tbai_invoice_ids.get_tbai_xml_signed_and_signature_value()
+        res = XMLSchema.xml_is_valid(self.test_xml_invoice_schema_doc, root)
+        self.assertTrue(res)

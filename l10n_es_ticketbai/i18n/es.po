@@ -370,11 +370,6 @@ msgstr ""
 "entonces el prefijo es FV/2021/, incluyendo el caracter separador final"
 
 #. module: l10n_es_ticketbai
-#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_date_operation
-msgid "Operation Date"
-msgstr "Fecha operación"
-
-#. module: l10n_es_ticketbai
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_description_operation
 msgid "Operation Description"
 msgstr "Descripción operación"
@@ -497,11 +492,6 @@ msgstr "El impuesto debe ser único por posición fiscal."
 #: model:ir.ui.view,arch_db:l10n_es_ticketbai.tbai_tax_map_view_form
 msgid "Taxes"
 msgstr "Impuestos"
-
-#. module: l10n_es_ticketbai
-#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_datetime_invoice
-msgid "Tbai Datetime Invoice"
-msgstr "Fecha factura TicketBAI"
 
 #. module: l10n_es_ticketbai
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_tbai_info_tbai_enabled
@@ -861,3 +851,13 @@ msgstr "No puede haber líneas con y sin recargo de equivalencia o de régimen s
 #: model:ir.ui.view,arch_db:l10n_es_ticketbai.product_template_form_view
 msgid "Equivalence Surcharge"
 msgstr "Recargo de equivalencia"
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,help:l10n_es_ticketbai.field_account_invoice_tbai_expedition_date
+msgid "TicketBai expedition date format: %dd-%mm-%yyyy"
+msgstr "Contenido de la fecha de expedición en formato TicketBai: %dd-%mm-%yyyy"
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_expedition_date
+msgid "Expedition date"
+msgstr "Fecha expedición"

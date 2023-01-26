@@ -31,9 +31,12 @@ class AccountInvoice(models.Model):
     tbai_response_ids = fields.Many2many(
         comodel_name='tbai.response', compute='_compute_tbai_response_ids',
         string='Responses')
-    tbai_datetime_invoice = fields.Datetime(
-        compute='_compute_tbai_datetime_invoice', store=True, copy=False)
-    tbai_date_operation = fields.Datetime('Operation Date', copy=False)
+    tbai_expedition_date = fields.Char(
+        string="Expedition date",
+        related="tbai_invoice_id.expedition_date",
+        readonly=True,
+        help="TicketBai expedition date format: %dd-%mm-%yyyy",
+    )
     tbai_description_operation = fields.Text(
         'Operation Description', default="/", copy=False)
     tbai_substitute_simplified_invoice = fields.Boolean(
@@ -145,11 +148,6 @@ class AccountInvoice(models.Model):
             response_ids += record.tbai_cancellation_ids.mapped('tbai_response_ids').ids
             record.tbai_response_ids = [(6, 0, response_ids)]
 
-    @api.depends('date', 'date_invoice')
-    def _compute_tbai_datetime_invoice(self):
-        for record in self:
-            record.tbai_datetime_invoice = fields.Datetime.now()
-
     @api.onchange('fiscal_position_id')
     def onchange_fiscal_position_id_tbai_vat_regime_key(self):
         if self.company_id.tbai_vat_regime.id in [
@@ -216,6 +214,13 @@ class AccountInvoice(models.Model):
         def tbai_prepare_refund_values():
             refunded_inv = self.refund_invoice_id
             if refunded_inv:
+                refund_datetime = refunded_inv.date or refunded_inv.invoice_date
+                refund_expedition_date = (
+                    refunded_inv.tbai_expedition_date
+                    or refunded_inv.tbai_get_value_fecha_expedicion_factura(
+                        invoice_datetime=refund_datetime
+                    )
+                )
                 vals.update({
                     'is_invoice_refund': True,
                     'refund_code': self.tbai_refund_key,
@@ -223,8 +228,7 @@ class AccountInvoice(models.Model):
                     'tbai_invoice_refund_ids': [(0, 0, {
                         'number_prefix': refunded_inv.tbai_get_value_serie_factura(),
                         'number': refunded_inv.tbai_get_value_num_factura(),
-                        'expedition_date':
-                            refunded_inv.tbai_get_value_fecha_expedicion_factura()
+                        'expedition_date': refund_expedition_date
                     })]
                 })
             else:
@@ -245,6 +249,13 @@ class AccountInvoice(models.Model):
                     })
 
         self.ensure_one()
+        expedition_datetime = fields.Datetime.now()
+        expedition_date = self.tbai_get_value_fecha_expedicion_factura(
+            invoice_datetime=expedition_datetime
+        )
+        expedition_hour = self.tbai_get_value_hora_expedicion_factura(
+            invoice_datetime=expedition_datetime
+        )
         vals = {
             'invoice_id': self.id,
             'schema': TicketBaiSchema.TicketBai.value,
@@ -252,8 +263,8 @@ class AccountInvoice(models.Model):
             'company_id': self.company_id.id,
             'number_prefix': self.tbai_get_value_serie_factura(),
             'number': self.tbai_get_value_num_factura(),
-            'expedition_date': self.tbai_get_value_fecha_expedicion_factura(),
-            'expedition_hour': self.tbai_get_value_hora_expedicion_factura(),
+            'expedition_date': expedition_date,
+            'expedition_hour': expedition_hour,
             'substitutes_simplified_invoice':
                 self.tbai_get_value_factura_emitida_sustitucion_simplificada(),
             'description': self.tbai_description_operation,
@@ -269,7 +280,7 @@ class AccountInvoice(models.Model):
                 RefundType.differences.value == self.tbai_refund_type:
             tbai_prepare_refund_values()
         operation_date = self.tbai_get_value_fecha_operacion()
-        if operation_date:
+        if operation_date and operation_date != expedition_date:
             vals['operation_date'] = operation_date
         gipuzkoa_tax_agency = self.env.ref(
             "l10n_es_ticketbai_api.tbai_tax_agency_gipuzkoa")
@@ -335,6 +346,13 @@ class AccountInvoice(models.Model):
 
     def tbai_prepare_cancellation_values(self):
         self.ensure_one()
+        cancel_datetime = self.date or self.invoice_date
+        cancel_expedition_date = (
+            self.tbai_expedition_date
+            or self.tbai_get_value_fecha_expedicion_factura(
+                invoice_datetime=cancel_datetime
+            )
+        )
         vals = {
             'cancelled_invoice_id': self.id,
             'schema': TicketBaiSchema.AnulaTicketBai.value,
@@ -342,7 +360,7 @@ class AccountInvoice(models.Model):
             'company_id': self.company_id.id,
             'number_prefix': self.tbai_get_value_serie_factura(),
             'number': self.tbai_get_value_num_factura(),
-            'expedition_date': self.tbai_get_value_fecha_expedicion_factura()
+            'expedition_date': cancel_expedition_date
         }
         return vals
 
@@ -506,14 +524,14 @@ class AccountInvoice(models.Model):
             ) % (invoice_prefix, self.number))
         return self.number[len(invoice_prefix):]
 
-    def tbai_get_value_fecha_expedicion_factura(self):
-        invoice_date = self.date or self.date_invoice
+    def tbai_get_value_fecha_expedicion_factura(self, invoice_datetime=None):
+        invoice_datetime = invoice_datetime or fields.Datetime.now()
         date = fields.Datetime.context_timestamp(self, fields.Datetime.from_string(
-            invoice_date))
+            invoice_datetime))
         return date.strftime("%d-%m-%Y")
 
-    def tbai_get_value_hora_expedicion_factura(self):
-        invoice_datetime = self.tbai_datetime_invoice
+    def tbai_get_value_hora_expedicion_factura(self, invoice_datetime=None):
+        invoice_datetime = invoice_datetime or fields.Datetime.now()
         date = fields.Datetime.context_timestamp(self, fields.Datetime.from_string(
             invoice_datetime))
         return date.strftime("%H:%M:%S")
@@ -533,18 +551,7 @@ class AccountInvoice(models.Model):
         return "%.2f" % amount
 
     def tbai_get_value_fecha_operacion(self):
-        if self.tbai_date_operation:
-            tbai_date_operation = datetime.strptime(
-                self.tbai_date_operation, DEFAULT_SERVER_DATETIME_FORMAT).strftime(
-                "%d-%m-%Y")
-            date_invoice = datetime.strptime(
-                self.date or self.date_invoice, DEFAULT_SERVER_DATE_FORMAT).strftime(
-                "%d-%m-%Y")
-            if tbai_date_operation == date_invoice:
-                tbai_date_operation = None
-        else:
-            tbai_date_operation = None
-        return tbai_date_operation
+        return datetime.strptime(self.date or self.date_invoice, DEFAULT_SERVER_DATE_FORMAT).strftime("%d-%m-%Y")
 
     def tbai_get_value_retencion_soportada(self):
         tbai_maps = self.env["tbai.tax.map"].search(

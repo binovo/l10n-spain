@@ -19,6 +19,8 @@
                         <field name="tbai_identifier" readonly="1"
                                attrs="{'invisible': [('schema', '!=', 'TicketBai')]}"/>
                         <field name="signature_value" readonly="1"/>
+                        <field name="expedition_date" readonly="1"/>
+                        <field name="operation_date" readonly="1"/>
                     </group>
                     <group name="file" string="File">
                         <field name="datas" string="File" filename="datas_fname" readonly="1"/>

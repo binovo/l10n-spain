@@ -67,8 +67,9 @@ class LROETicketBaiApi(TicketBaiApi):
                 def get_fiscal_year():
                     if lroe_operation.tbai_invoice_ids:
                         return str(datetime.strptime(
-                            lroe_operation.tbai_invoice_ids[0]
-                            .expedition_date, '%d-%m-%Y').date().year)
+                            lroe_operation.tbai_invoice_ids[0].operation_date or
+                            lroe_operation.tbai_invoice_ids[0].expedition_date,
+                            '%d-%m-%Y').date().year)
                     else:
                         return str(datetime.now().year)
 

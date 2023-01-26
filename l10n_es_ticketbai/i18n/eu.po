@@ -355,11 +355,6 @@ msgstr ""
 "00001 bada aurrizkia INV/2021/ da, amaierako barra barne"
 
 #. module: l10n_es_ticketbai
-#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_date_operation
-msgid "Operation Date"
-msgstr "Eragiketa Data"
-
-#. module: l10n_es_ticketbai
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_description_operation
 msgid "Operation Description"
 msgstr "Eragiketaren Deskribapena"
@@ -473,11 +468,6 @@ msgstr "Zerga bakarra izan behar da posizio fiskal bakoitzeko!"
 #: model:ir.ui.view,arch_db:l10n_es_ticketbai.tbai_tax_map_view_form
 msgid "Taxes"
 msgstr "Zergak"
-
-#. module: l10n_es_ticketbai
-#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice_tbai_datetime_invoice
-msgid "Tbai Datetime Invoice"
-msgstr "Tbai Datetime faktura"
 
 #. module: l10n_es_ticketbai
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_tbai_info_tbai_enabled
@@ -796,3 +786,13 @@ msgstr "l10n.es.aeat.ziurtagiria.pasahitza"
 #: model:ir.model,name:l10n_es_ticketbai.model_tbai_info
 msgid "tbai.info"
 msgstr "tbai.informazioa"
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,help:l10n_es_ticketbai.field_account_invoice_tbai_expedition_date
+msgid "TicketBai expedition date format: %dd-%mm-%yyyy"
+msgstr "Emateko dataren edukia TicketBAI formatuan: %dd-%mm-%yyyy"
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice__tbai_expedition_date
+msgid "Expedition date"
+msgstr "Emateko data"
