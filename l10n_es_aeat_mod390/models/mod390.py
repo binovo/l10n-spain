@@ -55,8 +55,19 @@ class L10nEsAeatMod390Report(models.Model):
         states=REQUIRED_ON_CALCULATED,
     )
     main_activity_code = fields.Selection(
-        selection=ACTIVITY_CODE_SELECTION, states=REQUIRED_ON_CALCULATED,
-        string="Código actividad principal", readonly=True,
+        selection=ACTIVITY_CODE_SELECTION,
+        string="Código actividad principal (antiguo)",
+    )
+    main_activity_code_id = fields.Many2one(
+        comodel_name="l10n.es.aeat.mod303.report.activity.code",
+        domain="["
+        "   '|',"
+        "   ('period_type', '=', False), ('period_type', '=', period_type),"
+        "   '&',"
+        "   '|', ('date_start', '=', False), ('date_start', '<=', date_start),"
+        "   '|', ('date_end', '=', False), ('date_end', '>=', date_end),"
+        "]",
+        string="Código actividad principal",
     )
     main_activity_iae = fields.Char(
         string="Epígrafe I.A.E. actividad principal", readonly=True, size=4,
@@ -67,8 +78,20 @@ class L10nEsAeatMod390Report(models.Model):
         states=EDITABLE_ON_CALCULATED,
     )
     other_first_activity_code = fields.Selection(
-        selection=ACTIVITY_CODE_SELECTION, states=EDITABLE_ON_CALCULATED,
-        string="Código 1ª actividad", readonly=True,
+        selection=ACTIVITY_CODE_SELECTION,
+        string="Código 1ª actividad (antiguo)",
+        readonly=True,
+    )
+    other_first_activity_code_id = fields.Many2one(
+        comodel_name="l10n.es.aeat.mod303.report.activity.code",
+        domain="["
+        "   '|',"
+        "   ('period_type', '=', False), ('period_type', '=', period_type),"
+        "   '&',"
+        "   '|', ('date_start', '=', False), ('date_start', '<=', date_start),"
+        "   '|', ('date_end', '=', False), ('date_end', '>=', date_end),"
+        "]",
+        string="Código 1ª actividad",
     )
     other_first_activity_iae = fields.Char(
         string="Epígrafe I.A.E. 1ª actividad", readonly=True, size=4,
@@ -79,8 +102,21 @@ class L10nEsAeatMod390Report(models.Model):
         states=EDITABLE_ON_CALCULATED,
     )
     other_second_activity_code = fields.Selection(
-        selection=ACTIVITY_CODE_SELECTION, states=EDITABLE_ON_CALCULATED,
-        string="Código 2ª actividad", readonly=True,
+        selection=ACTIVITY_CODE_SELECTION,
+        states=EDITABLE_ON_CALCULATED,
+        string="Código 2ª actividad (antiguo)",
+        readonly=True,
+    )
+    other_second_activity_code_id = fields.Many2one(
+        comodel_name="l10n.es.aeat.mod303.report.activity.code",
+        domain="["
+        "   '|',"
+        "   ('period_type', '=', False), ('period_type', '=', period_type),"
+        "   '&',"
+        "   '|', ('date_start', '=', False), ('date_start', '<=', date_start),"
+        "   '|', ('date_end', '=', False), ('date_end', '>=', date_end),"
+        "]",
+        string="Código 2ª actividad",
     )
     other_second_activity_iae = fields.Char(
         string="Epígrafe I.A.E. 2ª actividad", readonly=True, size=4,
@@ -91,8 +127,20 @@ class L10nEsAeatMod390Report(models.Model):
         states=EDITABLE_ON_CALCULATED,
     )
     other_third_activity_code = fields.Selection(
-        selection=ACTIVITY_CODE_SELECTION, states=EDITABLE_ON_CALCULATED,
-        string="Código 3ª actividad", readonly=True,
+        selection=ACTIVITY_CODE_SELECTION,
+        states=EDITABLE_ON_CALCULATED,
+        string="Código 3ª actividad (antiguo)",
+    )
+    other_third_activity_code_id = fields.Many2one(
+        comodel_name="l10n.es.aeat.mod303.report.activity.code",
+        domain="["
+        "   '|',"
+        "   ('period_type', '=', False), ('period_type', '=', period_type),"
+        "   '&',"
+        "   '|', ('date_start', '=', False), ('date_start', '<=', date_start),"
+        "   '|', ('date_end', '=', False), ('date_end', '>=', date_end),"
+        "]",
+        string="Código 3ª actividad",
     )
     other_third_activity_iae = fields.Char(
         string="Epígrafe I.A.E. 3ª actividad", readonly=True, size=4,
@@ -103,8 +151,20 @@ class L10nEsAeatMod390Report(models.Model):
         states=EDITABLE_ON_CALCULATED,
     )
     other_fourth_activity_code = fields.Selection(
-        selection=ACTIVITY_CODE_SELECTION, states=EDITABLE_ON_CALCULATED,
-        string="Código 4ª actividad", readonly=True,
+        selection=ACTIVITY_CODE_SELECTION,
+        states=EDITABLE_ON_CALCULATED,
+        string="Código 4ª actividad (antiguo)",
+    )
+    other_fourth_activity_code_id = fields.Many2one(
+        comodel_name="l10n.es.aeat.mod303.report.activity.code",
+        domain="["
+        "   '|',"
+        "   ('period_type', '=', False), ('period_type', '=', period_type),"
+        "   '&',"
+        "   '|', ('date_start', '=', False), ('date_start', '<=', date_start),"
+        "   '|', ('date_end', '=', False), ('date_end', '>=', date_end),"
+        "]",
+        string="Código 4ª actividad",
     )
     other_fourth_activity_iae = fields.Char(
         string="Epígrafe I.A.E. 4ª actividad", readonly=True, size=4,
@@ -115,8 +175,21 @@ class L10nEsAeatMod390Report(models.Model):
         states=EDITABLE_ON_CALCULATED,
     )
     other_fifth_activity_code = fields.Selection(
-        selection=ACTIVITY_CODE_SELECTION, states=EDITABLE_ON_CALCULATED,
-        string="Código 5ª actividad", readonly=True,
+        selection=ACTIVITY_CODE_SELECTION,
+        states=EDITABLE_ON_CALCULATED,
+        string="Código 5ª actividad (antiguo)",
+        readonly=True,
+    )
+    other_fifth_activity_code_id = fields.Many2one(
+        comodel_name="l10n.es.aeat.mod303.report.activity.code",
+        domain="["
+        "   '|',"
+        "   ('period_type', '=', False), ('period_type', '=', period_type),"
+        "   '&',"
+        "   '|', ('date_start', '=', False), ('date_start', '<=', date_start),"
+        "   '|', ('date_end', '=', False), ('date_end', '>=', date_end),"
+        "]",
+        string="Código 5ª actividad",
     )
     other_fifth_activity_iae = fields.Char(
         string="Epígrafe I.A.E. 5ª actividad", readonly=True, size=4,
@@ -304,8 +377,8 @@ class L10nEsAeatMod390Report(models.Model):
                     in (
                         1,
                         3,
-                        5,  # Régimen ordinario
                         702,
+                        5,  # Régimen ordinario
                         500,
                         502,
                         504,  # Intragrupo - no incluido aún
@@ -340,8 +413,8 @@ class L10nEsAeatMod390Report(models.Model):
                     in (
                         2,
                         4,
-                        6,  # Régimen ordinario
                         703,
+                        6,  # Régimen ordinario
                         501,
                         503,
                         505,  # Intragrupo - no incluido aún

@@ -55,6 +55,9 @@
         'data/aeat_export_mod390_2021_sub07_data.xml',
         'data/aeat_export_mod390_2021_sub08_data.xml',
         'data/aeat_export_mod390_2021_main_data.xml',
+        # 2022
+        "data/2022/aeat.model.export.config.csv",
+        "data/2022/aeat.model.export.config.line.csv",
         'data/tax_code_map_mod390_data.xml',
         'views/mod390_view.xml',
         'security/ir.model.access.csv',
