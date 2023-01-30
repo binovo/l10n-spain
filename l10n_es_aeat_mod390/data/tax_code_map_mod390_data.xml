@@ -238,7 +238,7 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es.account_tax_template_s_iva5b'), ref('l10n_es.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
+            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
         />
     </record>
 
@@ -266,7 +266,7 @@
          S_IVA4B, S_IVA4S, S_IVA5B, S_IVA5S, S_IVA10B, S_IVA10S, S_IVA21B, S_IVA21S -->
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es.account_tax_template_s_iva5b'), ref('l10n_es.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
+            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
         />
     </record>
 
@@ -863,7 +863,7 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva5b'), ref('l10n_es.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s')])]"
+            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s')])]"
         />
     </record>
 
@@ -975,7 +975,7 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva5b'), ref('l10n_es.account_tax_template_s_iva5s')])]"
+            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s')])]"
         />
     </record>
     <record id="aeat_mod390_map_line_703" model="l10n.es.aeat.map.tax.line">
@@ -988,7 +988,7 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva5b'), ref('l10n_es.account_tax_template_s_iva5s')])]"
+            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s')])]"
         />
     </record>
     <record id="aeat_mod390_map_line_724" model="l10n.es.aeat.map.tax.line">
@@ -1003,7 +1003,7 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva5_sc')])]"
+            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_p_iva5_sc')])]"
         />
     </record>
     <record id="aeat_mod390_map_line_725" model="l10n.es.aeat.map.tax.line">
@@ -1018,7 +1018,7 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva5_sc')])]"
+            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_p_iva5_sc')])]"
         />
     </record>
 </odoo>

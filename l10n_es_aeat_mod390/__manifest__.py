@@ -13,6 +13,7 @@
         'l10n_es',
         'l10n_es_aeat',
         'account_tax_balance',
+        'l10n_es_extra_data',
     ],
     'data': [
         # 2017
