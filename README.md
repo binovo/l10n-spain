@@ -43,23 +43,23 @@ addon | version | maintainers | summary
 [l10n_es_aeat_mod190](l10n_es_aeat_mod190/) | 12.0.1.0.2 |  | AEAT modelo 190
 [l10n_es_aeat_mod216](l10n_es_aeat_mod216/) | 12.0.2.4.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | AEAT modelo 216
 [l10n_es_aeat_mod296](l10n_es_aeat_mod296/) | 12.0.2.2.0 |  | AEAT modelo 296
-[l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 12.0.3.2.0 |  | AEAT modelo 303
+[l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 12.0.3.3.0 |  | AEAT modelo 303
 [l10n_es_aeat_mod303_extra_data](l10n_es_aeat_mod303_extra_data/) | 12.0.1.1.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Módulo para incluir los impuestos extra en el modelo 303.
 [l10n_es_aeat_mod303_oss](l10n_es_aeat_mod303_oss/) | 12.0.1.0.0 |  | AEAT modelo 303 - OSS
-[l10n_es_aeat_mod347](l10n_es_aeat_mod347/) | 12.0.2.0.0 |  | AEAT modelo 347
+[l10n_es_aeat_mod347](l10n_es_aeat_mod347/) | 12.0.2.0.1 |  | AEAT modelo 347
 [l10n_es_aeat_mod349](l10n_es_aeat_mod349/) | 12.0.1.3.4 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Modelo 349 AEAT
-[l10n_es_aeat_mod390](l10n_es_aeat_mod390/) | 12.0.3.1.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | AEAT modelo 390
+[l10n_es_aeat_mod390](l10n_es_aeat_mod390/) | 12.0.4.1.1 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | AEAT modelo 390
 [l10n_es_aeat_mod390_vat_prorate](l10n_es_aeat_mod390_vat_prorate/) | 12.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | AEAT - Prorrata de IVA 390
 [l10n_es_aeat_partner_check](l10n_es_aeat_partner_check/) | 12.0.1.0.3 |  | AEAT - Comprobación de Calidad de datos identificativos
 [l10n_es_aeat_sii](l10n_es_aeat_sii/) | 12.0.1.9.1 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Suministro Inmediato de Información en el IVA
 [l10n_es_aeat_sii_extra_data](l10n_es_aeat_sii_extra_data/) | 12.0.1.0.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Módulo para incluir los impuestos extra en el módulo del SII.
 [l10n_es_aeat_sii_oss](l10n_es_aeat_sii_oss/) | 12.0.1.0.1 |  | Suministro Inmediato de Información en el IVA: OSS
-[l10n_es_aeat_vat_prorrate](l10n_es_aeat_vat_prorrate/) | 12.0.1.1.0 |  | AEAT - Prorrata de IVA
+[l10n_es_aeat_vat_prorrate](l10n_es_aeat_vat_prorrate/) | 12.0.1.2.0 |  | AEAT - Prorrata de IVA
 [l10n_es_aeat_vat_prorrate_asset](l10n_es_aeat_vat_prorrate_asset/) | 12.0.1.0.0 |  | AEAT - Prorrata de IVA - Extensión para los activos
 [l10n_es_dua](l10n_es_dua/) | 12.0.1.2.0 |  | Importaciones con DUA
 [l10n_es_dua_sii](l10n_es_dua_sii/) | 12.0.1.1.2 |  | Suministro Inmediato de Información de importaciones con DUA
 [l10n_es_dua_ticketbai_batuz](l10n_es_dua_ticketbai_batuz/) | 12.0.1.0.1 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Batuz con DUA
-[l10n_es_extra_data](l10n_es_extra_data/) | 12.0.1.0.1 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Datos extra de la localización española
+[l10n_es_extra_data](l10n_es_extra_data/) | 12.0.2.0.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Datos extra de la localización española
 [l10n_es_facturae](l10n_es_facturae/) | 12.0.3.2.0 |  | Creación de Factura-e
 [l10n_es_facturae_efact](l10n_es_facturae_efact/) | 12.0.1.0.3 |  | Envío de Factura-e a e.FACT
 [l10n_es_facturae_face](l10n_es_facturae_face/) | 12.0.1.1.0 |  | Envío de Factura-e a FACe
@@ -72,8 +72,8 @@ addon | version | maintainers | summary
 [l10n_es_pos](l10n_es_pos/) | 12.0.2.0.0 |  | Punto de venta adaptado a la legislación española
 [l10n_es_subcontractor_certificate](l10n_es_subcontractor_certificate/) | 12.0.1.0.0 |  | Certificado de subcontratista
 [l10n_es_ticketbai](l10n_es_ticketbai/) | 12.0.2.7.6 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas
-[l10n_es_ticketbai_api](l10n_es_ticketbai_api/) | 12.0.2.3.3 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - API
-[l10n_es_ticketbai_api_batuz](l10n_es_ticketbai_api_batuz/) | 12.0.1.1.2 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI (API) - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
+[l10n_es_ticketbai_api](l10n_es_ticketbai_api/) | 12.0.2.3.4 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - API
+[l10n_es_ticketbai_api_batuz](l10n_es_ticketbai_api_batuz/) | 12.0.1.1.3 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI (API) - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
 [l10n_es_ticketbai_batuz](l10n_es_ticketbai_batuz/) | 12.0.1.3.4 | [![enriquemartin](https://github.com/enriquemartin.png?size=30px)](https://github.com/enriquemartin) [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
 [l10n_es_ticketbai_batuz_extra_data](l10n_es_ticketbai_batuz_extra_data/) | 12.0.1.0.1 | [![xAdrianC-Kernet](https://github.com/xAdrianC-Kernet.png?size=30px)](https://github.com/xAdrianC-Kernet) [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Batuz - Extra data
 [l10n_es_ticketbai_extra_data](l10n_es_ticketbai_extra_data/) | 12.0.1.0.1 | [![xAdrianC-Kernet](https://github.com/xAdrianC-Kernet.png?size=30px)](https://github.com/xAdrianC-Kernet) [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Extra data
