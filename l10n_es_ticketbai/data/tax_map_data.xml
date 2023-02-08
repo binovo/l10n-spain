@@ -76,7 +76,7 @@
                 ref('l10n_es.account_tax_template_s_req52'),
                 ref('l10n_es.account_tax_template_s_req014'),
                 ref('l10n_es.account_tax_template_s_req05'),
-                ref('l10n_es_extra_data.account_tax_template_s_req0625'),
+                ref('l10n_es_extra_data.account_tax_template_s_req062'),
                 ref('l10n_es_extra_data.account_tax_template_s_req0'),
             ])]"/>
             <field name="name">Recargo Equivalencia</field>
