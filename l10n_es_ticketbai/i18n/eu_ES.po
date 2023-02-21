@@ -493,6 +493,12 @@ msgid "Templates for Account Chart"
 msgstr ""
 
 #. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:426
+#, python-format
+msgid "The certificate expired on %s"
+msgstr "Ziurtagiria %s-an iraungi da"
+
+#. module: l10n_es_ticketbai
 #: model:ir.model.fields,help:l10n_es_ticketbai.field_tbai_invoice_refund_origin_number
 msgid "The number of the invoice name e.g. if the invoice name is INV/2021/00001 then the number is 00001"
 msgstr ""
@@ -763,6 +769,17 @@ msgid "TicketBai expedition date format: %dd-%mm-%yyyy"
 msgstr "Emateko dataren edukia TicketBAI formatuan: %dd-%mm-%yyyy"
 
 #. module: l10n_es_ticketbai
+#: model:ir.ui.view,arch_db:l10n_es_ticketbai.tbai_invoice_form
+msgid "Update signature and requeue"
+msgstr "Sinadura eguneratu eta berriz kolatu"
+
+#. module: l10n_es_ticketbai
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_account_invoice__tbai_expedition_date
 msgid "Expedition date"
 msgstr "Emateko data"
+
+#. module: l10n_es_ticketbai
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_l10n_es_aeat_certificate_tbai_p12_expiration_date
+#: model:ir.model.fields,field_description:l10n_es_ticketbai.field_res_company_tbai_expiration_date
+msgid "Expiration Date"
+msgstr "Iraungitze-data"

@@ -418,6 +418,14 @@ class AccountInvoice(models.Model):
                         "equivalence surcharge or the simplified regime."
                     ))
 
+    def _check_certificate_expiration(self):
+        for invoice in self:
+            if invoice.company_id.tbai_certificate_is_expired:
+                expiration_date = invoice.company_id.tbai_expiration_date
+                raise exceptions.ValidationError(
+                    _("The certificate expired on %s") % expiration_date
+                )
+
     @api.multi
     def invoice_validate(self):
 
@@ -447,6 +455,7 @@ class AccountInvoice(models.Model):
                     raise exceptions.ValidationError(error_refund_msg)
 
         res = super().invoice_validate()
+        self._check_certificate_expiration()
         self._check_surcharge_invoice_lines()
         # Credit Notes:
         # A. refund: creates a draft credit note, not validated from wizard.

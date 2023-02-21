@@ -3,6 +3,7 @@
 import logging
 import base64
 from odoo import models, fields, api
+from datetime import datetime
 
 _logger = logging.getLogger(__name__)
 
@@ -17,6 +18,36 @@ class L10nEsAeatCertificate(models.Model):
 
     tbai_p12 = fields.Binary(compute='_compute_tbai_p12')
     tbai_p12_friendlyname = fields.Char('Alias')
+    tbai_p12_expiration_date = fields.Date(
+        "Expiration Date", compute="_compute_tbai_cert_expiration_date"
+    )
+    tbai_certificate_is_expired = fields.Boolean(
+        compute="_compute_tbai_certificate_is_expired"
+    )
+
+    def _get_expiration_datetime(self):
+        self.ensure_one()
+        expiration_datetime = (
+            self.get_p12().get_certificate().get_notAfter().decode("utf-8")
+        )
+        return datetime.strptime(expiration_datetime, "%Y%m%d%H%M%S%fZ")
+
+    @api.multi
+    def _compute_tbai_cert_expiration_date(self):
+        for certificate in self:
+            try:
+                certificate.tbai_p12_expiration_date = (
+                    certificate._get_expiration_datetime().date()
+                )
+            except crypto.Error:
+                certificate.tbai_p12_expiration_date = None
+
+    @api.depends("file")
+    def _compute_tbai_certificate_is_expired(self):
+        for certificate in self:
+            certificate.tbai_certificate_is_expired = (
+                certificate.get_p12().get_certificate().has_expired()
+            )
 
     def get_p12(self):
         """

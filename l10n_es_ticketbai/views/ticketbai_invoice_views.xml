@@ -10,6 +10,11 @@
                 <form string="TicketBAI Invoice" create="false" delete="false" edit="false" import="false">
                     <header>
                         <field name="state" widget="statusbar" readonly="1"/>
+                        <button name="resign_tbai_invoice_and_send"
+                            string="Update signature and requeue" type="object"
+                            class="btn-danger"
+                            attrs="{'invisible': [('state','!=','error')]}"
+                        />
                     </header>
                     <group name="invoice" string="Invoice">
                         <field name="schema" invisible="1"/>

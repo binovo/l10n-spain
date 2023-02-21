@@ -665,6 +665,26 @@ class TicketBAIInvoice(models.Model):
         signature_value = XMLSchema.sign(root, p12, tax_agency)
         return root, signature_value
 
+    def resign_tbai_invoice_xml(self):
+        self.ensure_one()
+        p12 = self.company_id.tbai_certificate_get_p12()
+        tax_agency = self.company_id.tbai_tax_agency_id
+        tbai_xml = base64.b64decode(self.datas)
+        root = etree.fromstring(tbai_xml)
+        signature = root.findall("ds:Signature", root.nsmap)
+        for node in signature:
+            root.remove(node)
+        signature_value = XMLSchema.sign(root, p12, tax_agency)
+        root_str = etree.tostring(root, xml_declaration=True, encoding="utf-8")
+        self.datas = base64.b64encode(root_str)
+        self.file_size = len(self.datas)
+        self.signature_value = signature_value
+
+    def resign_tbai_invoice_and_send(self):
+        self.ensure_one()
+        self.resign_tbai_invoice_xml()
+        self.mark_as_pending()
+
     def build_tbai_invoice(self):
         self.ensure_one()
         if self.schema == TicketBaiSchema.TicketBai.value:
