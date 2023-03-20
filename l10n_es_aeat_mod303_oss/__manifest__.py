@@ -3,7 +3,7 @@
 
 {
     "name": "AEAT modelo 303 - OSS",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.1.0",
     "category": "Accounting",
     "author": "PESOL,"
               "Odoo Community Association (OCA)",
@@ -14,7 +14,8 @@
         "l10n_eu_oss",
     ],
     "data": [
-        "data/tax_code_map_mod303_data.xml",
+        "data/2021-07/l10n_es_aeat_map_tax_line.xml",
+        "data/2023/l10n_es_aeat_map_tax_line.xml",
     ],
     "installable": True,
     'autoinstall': True,
