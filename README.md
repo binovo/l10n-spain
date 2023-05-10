@@ -43,7 +43,7 @@ addon | version | maintainers | summary
 [l10n_es_aeat_mod190](l10n_es_aeat_mod190/) | 12.0.1.0.2 |  | AEAT modelo 190
 [l10n_es_aeat_mod216](l10n_es_aeat_mod216/) | 12.0.2.4.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | AEAT modelo 216
 [l10n_es_aeat_mod296](l10n_es_aeat_mod296/) | 12.0.2.2.0 |  | AEAT modelo 296
-[l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 12.0.4.0.0 |  | AEAT modelo 303
+[l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 12.0.4.1.0 |  | AEAT modelo 303
 [l10n_es_aeat_mod303_extra_data](l10n_es_aeat_mod303_extra_data/) | 12.0.2.0.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Módulo para incluir los impuestos extra en el modelo 303.
 [l10n_es_aeat_mod303_oss](l10n_es_aeat_mod303_oss/) | 12.0.1.0.0 |  | AEAT modelo 303 - OSS
 [l10n_es_aeat_mod347](l10n_es_aeat_mod347/) | 12.0.2.2.0 |  | AEAT modelo 347
@@ -80,7 +80,7 @@ addon | version | maintainers | summary
 [l10n_es_ticketbai_pos](l10n_es_ticketbai_pos/) | 12.0.1.0.5 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Point of Sale - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas
 [l10n_es_toponyms](l10n_es_toponyms/) | 12.0.1.0.0 |  | Topónimos españoles
 [l10n_es_vat_book](l10n_es_vat_book/) | 12.0.1.7.0 |  | Libro de IVA
-[l10n_es_vat_book_extra_data](l10n_es_vat_book_extra_data/) | 12.0.1.1.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Módulo para incluir los impuestos extra en el libro de IVA.
+[l10n_es_vat_book_extra_data](l10n_es_vat_book_extra_data/) | 12.0.1.2.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Módulo para incluir los impuestos extra en el libro de IVA.
 [payment_redsys](payment_redsys/) | 12.0.2.0.1 |  | Payment Acquirer: Redsys Implementation
 
 [//]: # (end addons)
