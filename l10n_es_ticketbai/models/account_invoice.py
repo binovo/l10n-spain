@@ -116,6 +116,17 @@ class AccountInvoice(models.Model):
                     fiscal_position.tbai_vat_regime_key3.id
         return super().create(vals)
 
+    @api.multi
+    def write(self, vals):
+        res = super().write(vals)
+        for invoice in self.filtered(
+            lambda i: i.company_id.tbai_enabled and i.type == "out_refund"):
+            if not invoice.tbai_refund_type:
+                invoice.tbai_refund_type = RefundType.differences.value
+            if not invoice.tbai_refund_key:
+                invoice.tbai_refund_key = RefundCode.R1.value
+        return res
+
     def is_surcharge_or_simplified_regime_key(self):
         self.ensure_one()
         return True if self.tbai_vat_regime_key.id in [
