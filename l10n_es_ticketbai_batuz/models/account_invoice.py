@@ -845,9 +845,11 @@ class AccountInvoice(models.Model):
     @api.multi
     def invoice_validate(self):
         res = super(AccountInvoice, self).invoice_validate()
+        tax_agency_bizkaia = self.env.ref("l10n_es_ticketbai_api_batuz.tbai_tax_agency_bizkaia")
         lroe_invoices = self.sudo().filtered(
             lambda x: x.tbai_enabled
             and x.date and x.date >= x.journal_id.tbai_active_date
+            and x.company_id.tbai_tax_agency_id == tax_agency_bizkaia
             and (
                 x.type == "in_invoice"
                 or (

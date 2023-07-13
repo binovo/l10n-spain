@@ -50,15 +50,17 @@
                         attrs="{'invisible': [('lroe_state', 'not in', ['error','recorded_warning'])]}" />
             </button>
             <xpath expr="//notebook" position="inside">
-                <page name='lroe_result' string="LROE" attrs="{'invisible': [('tbai_enabled', '=', False)]}">
+                <page name='lroe_result' string="LROE"
+                      attrs="{'invisible': ['|', ('tbai_enabled', '=', False), ('tbai_tax_agency_id', '!=', %(l10n_es_ticketbai_api_batuz.tbai_tax_agency_bizkaia)s)]}">
+                    <field name="tbai_tax_agency_id" invisible="1"/>
                     <field name="tbai_enabled" invisible="1" />
                     <group name="lroe_refund" string="Refund" attrs="{'invisible': [('type', '!=', 'in_refund')]}">
-                        <field name="refund_invoice_id" attrs="{'required': [('type', '=', 'in_refund')]}" />
+                        <field name="refund_invoice_id" attrs="{'required': [('type', '=', 'in_refund'), ('tbai_tax_agency_id', '=', %(l10n_es_ticketbai_api_batuz.tbai_tax_agency_bizkaia)s)]}" />
                     </group>
                     <group>
                         <group name="tbai_vat_purchase_regimes" string="VAT Regimes">
                             <field name="tbai_vat_regime_purchase_key"
-                                   attrs="{'required': [('tbai_enabled', '=', True)], 'readonly': [('state', '!=', 'draft')]}"
+                                   attrs="{'required': [('tbai_enabled', '=', True), ('tbai_tax_agency_id', '=', %(l10n_es_ticketbai_api_batuz.tbai_tax_agency_bizkaia)s)], 'readonly': [('state', '!=', 'draft')]}"
                                    options="{'no_open': True,'no_create': True}" />
                             <field name="tbai_vat_regime_purchase_key2" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open':True,'no_create':True}" />
                             <field name="tbai_vat_regime_purchase_key3" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open':True,'no_create':True}" />

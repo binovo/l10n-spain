@@ -16,6 +16,9 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     tbai_enabled = fields.Boolean(related='company_id.tbai_enabled', readonly=True)
+    tbai_tax_agency_id = fields.Many2one(
+        related='company_id.tbai_tax_agency_id',
+        readonly=True)
     tbai_invoice_id = fields.Many2one(
         comodel_name='tbai.invoice', string='TicketBAI Invoice',
         copy=False)
