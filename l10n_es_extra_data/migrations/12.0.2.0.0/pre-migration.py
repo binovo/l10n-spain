@@ -22,6 +22,7 @@ def update_general_external_ids(env):
         ('l10n_es_extra_data.account_tax_template_s_iva0b', 'l10n_es_extra_data.account_tax_template_s_iva0_a'),
         ('l10n_es_extra_data.account_tax_template_s_req0625', 'l10n_es_extra_data.account_tax_template_s_req062'),
         ('l10n_es_extra_data.account_tax_template_p_req0625', 'l10n_es_extra_data.account_tax_template_p_req062'),
+        ('l10n_es_extra_data.account_tax_template_p_iva0_sc', 'l10n_es_extra_data.account_tax_template_p_iva0_s_sc'),
     ]
     openupgrade.rename_xmlids(env.cr, xmlids_to_rename)
 
