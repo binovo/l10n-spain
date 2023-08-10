@@ -851,7 +851,7 @@ class TicketBAIInvoice(models.Model):
             customer_res["IDOtro"]["CodigoPais"] = customer.country_id.code
             customer_res["IDOtro"]["IDType"] = customer.tbai_partner_idtype
             customer_res["IDOtro"]["ID"] = customer.get_identification_number()
-        customer_res["ApellidosNombreRazonSocial"] = customer.name
+        customer_res["ApellidosNombreRazonSocial"] = customer.tbai_get_value_apellidos_nombre_razon_social()
         if customer.zip:
             customer_res["CodigoPostal"] = customer.zip
         elif tax_agency in (gipuzkoa_tax_agency, araba_tax_agency):

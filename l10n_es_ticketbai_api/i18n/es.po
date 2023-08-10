@@ -1811,3 +1811,9 @@ msgstr "Se han encontrado claves de IVA incompatibles cuando la primera clave es
 #, python-format
 msgid "TicketBAI Invoice %s: partner identification type is not valid for non-community."
 msgstr "TicketBAI Factura %s: el tipo de identificación del cliente no es válido para los extracomunitarios."
+
+#. module: l10n_es_ticketbai_api
+#: code:addons/l10n_es_ticketbai_api/models/res_partner.py:159
+#, python-format
+msgid "You must inform the name of the billing address."
+msgstr "Debe informar el nombre de la dirección de facturación."

@@ -1730,3 +1730,9 @@ msgstr ""
 #, python-format
 msgid "TicketBAI Invoice %s: partner identification type is not valid for non-community."
 msgstr "TicketBAI faktura %s: identifikazio-mota ez da baliozkoa erkidegoz kanpoko bezeroentzat."
+
+#. module: l10n_es_ticketbai_api
+#: code:addons/l10n_es_ticketbai_api/models/res_partner.py:159
+#, python-format
+msgid "You must inform the name of the billing address."
+msgstr "Fakturazio-helbidearen izena adierazi behar duzu."

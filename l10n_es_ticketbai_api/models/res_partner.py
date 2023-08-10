@@ -155,6 +155,8 @@ class ResPartner(models.Model):
         :return: Name and surname, or business name
         """
         name = self.commercial_partner_id.name
+        if not name:
+            raise exceptions.ValidationError(_("You must inform the name of the billing address."))
         return name.strip()[:120]  # Remove leading and trailing whitespace
 
     def tbai_get_value_nif(self):
