@@ -967,6 +967,11 @@ msgstr "Año"
 msgid "report.l10n_es_vat_book.l10n_es_vat_book_xlsx"
 msgstr "report.l10n_es_vat_book.l10n_es_vat_book_xlsx"
 
+#. module: l10n_es_vat_book
+#: model:ir.model.fields,field_description:l10n_es_vat_book.field_aeat_vat_book_map_line__tax_account_id
+msgid "Tax Account Restriction"
+msgstr "Restricción de la cuenta de impuestos"
+
 #~ msgid "l10n.es.vat.book"
 #~ msgstr "l10n.es.vat.book"
 

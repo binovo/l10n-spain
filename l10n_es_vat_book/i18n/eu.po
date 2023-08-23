@@ -962,3 +962,8 @@ msgstr ""
 #: model:ir.model,name:l10n_es_vat_book.model_report_l10n_es_vat_book_l10n_es_vat_book_xlsx
 msgid "report.l10n_es_vat_book.l10n_es_vat_book_xlsx"
 msgstr ""
+
+#. module: l10n_es_vat_book
+#: model:ir.model.fields,field_description:l10n_es_vat_book.field_aeat_vat_book_map_line__tax_account_id
+msgid "Tax Account Restriction"
+msgstr "Zerga-kontuaren murrizketa"

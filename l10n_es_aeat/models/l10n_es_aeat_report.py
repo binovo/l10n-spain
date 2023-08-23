@@ -208,6 +208,10 @@ class L10nEsAeatReport(models.AbstractModel):
         company = self.company_id or self.env.user.company_id
         return company.get_taxes_from_templates(tax_templates)
 
+    def get_account_from_template(self, account_template):
+        company = self.company_id or self.env.user.company_id
+        return company.get_account_from_template(account_template)
+
     @api.onchange('company_id')
     def onchange_company_id(self):
         """Load some company data (the VAT number) when company changes.
