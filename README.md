@@ -31,7 +31,7 @@ addon | version | maintainers | summary
 [account_promissory_note_santander](account_promissory_note_santander/) | 12.0.1.0.0 | [![cubells](https://github.com/cubells.png?size=30px)](https://github.com/cubells) | Impresión de pagaré del Santander en A4
 [delivery_gls_asm](delivery_gls_asm/) | 12.0.1.0.8 |  | Delivery Carrier implementation for GLS with ASMRed API
 [delivery_seur](delivery_seur/) | 12.0.1.1.6 |  | Integrate SEUR webservice
-[l10n_es_account_asset](l10n_es_account_asset/) | 12.0.2.0.7 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Gestión de activos fijos para España
+[l10n_es_account_asset](l10n_es_account_asset/) | 12.0.2.0.8 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Gestión de activos fijos para España
 [l10n_es_account_bank_statement_import_n43](l10n_es_account_bank_statement_import_n43/) | 12.0.1.0.7 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Importación de extractos bancarios españoles (Norma 43)
 [l10n_es_account_banking_sepa_fsdd](l10n_es_account_banking_sepa_fsdd/) | 12.0.1.0.0 |  | Account Banking Sepa - FSDD (Anticipos de crédito)
 [l10n_es_account_invoice_sequence](l10n_es_account_invoice_sequence/) | 12.0.1.0.2 |  | Secuencia para facturas separada de la secuencia de asientos
@@ -68,12 +68,12 @@ addon | version | maintainers | summary
 [l10n_es_irnr](l10n_es_irnr/) | 12.0.2.2.0 |  | Retenciones IRNR (No residentes)
 [l10n_es_location_nuts](l10n_es_location_nuts/) | 12.0.1.0.0 |  | NUTS specific options for Spain
 [l10n_es_mis_report](l10n_es_mis_report/) | 12.0.1.2.0 |  | Plantillas MIS Builder para informes contables españoles
-[l10n_es_partner](l10n_es_partner/) | 12.0.1.0.3 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Adaptación de los clientes, proveedores y bancos para España
+[l10n_es_partner](l10n_es_partner/) | 12.0.1.0.4 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Adaptación de los clientes, proveedores y bancos para España
 [l10n_es_partner_mercantil](l10n_es_partner_mercantil/) | 12.0.1.0.0 |  | Añade los datos del registro mercantil a la empresa
 [l10n_es_pos](l10n_es_pos/) | 12.0.2.0.0 |  | Punto de venta adaptado a la legislación española
 [l10n_es_subcontractor_certificate](l10n_es_subcontractor_certificate/) | 12.0.1.0.0 |  | Certificado de subcontratista
-[l10n_es_ticketbai](l10n_es_ticketbai/) | 12.0.2.7.8 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas
-[l10n_es_ticketbai_api](l10n_es_ticketbai_api/) | 12.0.2.3.5 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - API
+[l10n_es_ticketbai](l10n_es_ticketbai/) | 12.0.2.7.9 | [![oihane](https://github.com/oihane.png?size=30px)](https://github.com/oihane) | TicketBAI - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas
+[l10n_es_ticketbai_api](l10n_es_ticketbai_api/) | 12.0.2.3.6 | [![oihane](https://github.com/oihane.png?size=30px)](https://github.com/oihane) | TicketBAI - API
 [l10n_es_ticketbai_api_batuz](l10n_es_ticketbai_api_batuz/) | 12.0.1.1.3 | [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI (API) - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
 [l10n_es_ticketbai_batuz](l10n_es_ticketbai_batuz/) | 12.0.1.3.4 | [![enriquemartin](https://github.com/enriquemartin.png?size=30px)](https://github.com/enriquemartin) [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
 [l10n_es_ticketbai_batuz_extra_data](l10n_es_ticketbai_batuz_extra_data/) | 12.0.1.0.1 | [![xAdrianC-Kernet](https://github.com/xAdrianC-Kernet.png?size=30px)](https://github.com/xAdrianC-Kernet) [![ao-landoo](https://github.com/ao-landoo.png?size=30px)](https://github.com/ao-landoo) | TicketBAI - Batuz - Extra data
