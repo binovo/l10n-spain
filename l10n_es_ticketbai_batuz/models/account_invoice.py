@@ -202,12 +202,19 @@ class AccountInvoice(models.Model):
         return description
 
     def batuz_get_supplier_serie_factura(self):
-        """Consultamos a hacienda cómo extraer la serie de una factura de proveedor.
-        Al no ser posible en algunos casos, decidimos tomar ciertos caracteres
-        como serie y el resto como número.
-        Aunque la serie no es obligatoria en facturas recibidas,
-        sí lo es en las rectificativas, por lo que es necesario informarla siempre."""
-        return self.reference[:3]
+        """En caso de las facturas de compra, básicamente para Bizkaia, la serie y el número de la factura son
+        las del proveedor y no las de esta factura, por lo tanto hay que extraerlas del campo reference. Como no
+        tenemos manera de saber donde termina la serie y donde comienza la numeración, seguimos el siguiente
+        criterio: comenzando desde el último caracter del string hacia el primero, el primer caracter que no sea
+        un dígito será donde comience la serie y el resto el número
+        """
+        counter = 0
+        for r in reversed(self.reference):
+            if r.isdigit():
+                counter += 1
+            else:
+                break
+        return self.reference[0: len(self.reference) - counter]
 
     def _get_amount_company_currency(self, amount=0.0):
         """Convertimos el importe amount a la moneda de la compañía."""
@@ -225,7 +232,19 @@ class AccountInvoice(models.Model):
         return amount_cur
 
     def batuz_get_supplier_num_factura(self):
-        return self.reference[3:]
+        """En caso de las facturas de compra, básicamente para Bizkaia, la serie y el número de la factura son
+        las del proveedor y no las de esta factura, por lo tanto hay que extraerlas del campo reference. Como no
+        tenemos manera de saber donde termina la serie y donde comienza la numeración, seguimos el siguiente
+        criterio: comenzando desde el último caracter del string hacia el primero, el primer caracter que no sea
+        un dígito será donde comience la serie y el resto el número
+        """
+        counter = 0
+        for r in reversed(self.reference):
+            if r.isdigit():
+                counter += 1
+            else:
+                break
+        return self.reference[len(self.reference) - counter: len(self.reference)]
 
     @api.multi
     def _get_lroe_identifier(self):
@@ -571,7 +590,7 @@ class AccountInvoice(models.Model):
             id_gasto = OrderedDict([
                 ("IDGasto", OrderedDict([
                     ("SerieFactura", self.batuz_get_supplier_serie_factura()[:20]),
-                    ("NumFactura", self.batuz_get_supplier_num_factura[:20]),
+                    ("NumFactura", self.batuz_get_supplier_num_factura()[:20]),
                     ("FechaExpedicionFactura", invoice_date),
                     ("EmisorFacturaRecibida", lroe_identifier),
                 ]))
