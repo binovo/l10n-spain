@@ -356,6 +356,19 @@ msgstr ""
 "¡En este momento no puede poner en borrador esta factura porque hay un "
 "trabajo ejecutándose!"
 
+#. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:912
+#, python-format
+msgid "TicketBAI BATUZ: vendor refunds not supported for 140 model."
+msgstr "TicketBAI BATUZ: las facturas rectificativas de compra no están soportadas para el modelo 140."
+
+#. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:916
+#, python-format
+msgid "TicketBAI BATUZ: reference field required."
+msgstr "TicketBAI BATUZ: el campo referencia del proveedor es obligatorio."
+
+
 #~ msgid "At fixed time"
 #~ msgstr "A una hora fija"
 

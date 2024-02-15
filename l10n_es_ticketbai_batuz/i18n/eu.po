@@ -349,3 +349,15 @@ msgstr ""
 msgid "You can not set to draft this invoice because there is a job running!"
 msgstr ""
 "Ezin duzu faktura hau zirriborrora aldatu, beste lan bat martxan dagoelako!"
+
+#. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:912
+#, python-format
+msgid "TicketBAI BATUZ: vendor refunds not supported for 140 model."
+msgstr "TicketBAI BATUZ: erosketen faktura zuzentzaileak ez dira onartzen 140 ereduan"
+
+#. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:916
+#, python-format
+msgid "TicketBAI BATUZ: reference field required."
+msgstr "TicketBAI BATUZ: hornitzailearen erreferentzia-eremua nahitaezkoa da."

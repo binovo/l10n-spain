@@ -202,19 +202,10 @@ class AccountInvoice(models.Model):
         return description
 
     def batuz_get_supplier_serie_factura(self):
-        """En caso de las facturas de compra, básicamente para Bizkaia, la serie y el número de la factura son
-        las del proveedor y no las de esta factura, por lo tanto hay que extraerlas del campo reference. Como no
-        tenemos manera de saber donde termina la serie y donde comienza la numeración, seguimos el siguiente
-        criterio: comenzando desde el último caracter del string hacia el primero, el primer caracter que no sea
-        un dígito será donde comience la serie y el resto el número
+        """En caso de las facturas de compra, básicamente para Bizkaia, no enviaremos la serie, no es obligatorio
+        solo en caso de modelo 140 y rectificativa, caso que de momento no soportaremos.
         """
-        counter = 0
-        for r in reversed(self.reference):
-            if r.isdigit():
-                counter += 1
-            else:
-                break
-        return self.reference[0: len(self.reference) - counter]
+        return ""
 
     def _get_amount_company_currency(self, amount=0.0):
         """Convertimos el importe amount a la moneda de la compañía."""
@@ -232,19 +223,15 @@ class AccountInvoice(models.Model):
         return amount_cur
 
     def batuz_get_supplier_num_factura(self):
-        """En caso de las facturas de compra, básicamente para Bizkaia, la serie y el número de la factura son
-        las del proveedor y no las de esta factura, por lo tanto hay que extraerlas del campo reference. Como no
-        tenemos manera de saber donde termina la serie y donde comienza la numeración, seguimos el siguiente
-        criterio: comenzando desde el último caracter del string hacia el primero, el primer caracter que no sea
-        un dígito será donde comience la serie y el resto el número
+        """En caso de las facturas de compra, básicamente para Bizkaia, en el número vamos a enviar la referencia
+        del proveedor, si la longitud de la cadena es superior a 20, vamos a enviar los últimos 20 caracteres
+        ya que el número de la factura normalmente irá al final.
         """
-        counter = 0
-        for r in reversed(self.reference):
-            if r.isdigit():
-                counter += 1
-            else:
-                break
-        return self.reference[len(self.reference) - counter: len(self.reference)]
+        return (
+            self.reference
+            if len(self.reference) <= 20
+            else self.reference[len(self.reference) - 20:]
+        )
 
     @api.multi
     def _get_lroe_identifier(self):
@@ -320,8 +307,7 @@ class AccountInvoice(models.Model):
         tipo_factura = "F2" if self._is_lroe_simplified_invoice() else "F1"
         last_number = self._get_last_move_number()
         header = OrderedDict()
-        header["SerieFactura"] = self.batuz_get_supplier_serie_factura()[:20]
-        header["NumFactura"] = self.batuz_get_supplier_num_factura()[:20]
+        header["NumFactura"] = self.batuz_get_supplier_num_factura()
         if last_number:
             # NumFacturaFin = número de la factura que identifica a la
             #  última factura cuando se trata de un asiento resumen de facturas
@@ -353,9 +339,7 @@ class AccountInvoice(models.Model):
             header["FacturasRectificadasSustituidas"] = OrderedDict([
                 ("IDFacturaRectificadaSustituida",
                     OrderedDict([
-                        ("SerieFactura",
-                            origin.batuz_get_supplier_serie_factura()[:20]),
-                        ("NumFactura", origin.batuz_get_supplier_num_factura()[:20]),
+                        ("NumFactura", origin.batuz_get_supplier_num_factura()),
                         ("FechaExpedicionFactura", origin_date)
                     ])),
             ])
@@ -589,8 +573,7 @@ class AccountInvoice(models.Model):
             lroe_identifier.pop("ApellidosNombreRazonSocial")
             id_gasto = OrderedDict([
                 ("IDGasto", OrderedDict([
-                    ("SerieFactura", self.batuz_get_supplier_serie_factura()[:20]),
-                    ("NumFactura", self.batuz_get_supplier_num_factura()[:20]),
+                    ("NumFactura", self.batuz_get_supplier_num_factura()),
                     ("FechaExpedicionFactura", invoice_date),
                     ("EmisorFacturaRecibida", lroe_identifier),
                 ]))
@@ -631,8 +614,7 @@ class AccountInvoice(models.Model):
             lroe_identifier.pop("ApellidosNombreRazonSocial")
             last_number = self._get_last_move_number()
             id_recibida = OrderedDict()
-            id_recibida["SerieFactura"] = self.batuz_get_supplier_serie_factura()[:20]
-            id_recibida["NumFactura"] = self.batuz_get_supplier_num_factura()[:20]
+            id_recibida["NumFactura"] = self.batuz_get_supplier_num_factura()
             if last_number:
                 id_recibida["NumFacturaFin"] = last_number[:20]
             id_recibida["FechaExpedicionFactura"] = invoice_date
@@ -864,6 +846,7 @@ class AccountInvoice(models.Model):
     @api.multi
     def invoice_validate(self):
         res = super(AccountInvoice, self).invoice_validate()
+        self._check_agency_bizkaia_values()
         tax_agency_bizkaia = self.env.ref("l10n_es_ticketbai_api_batuz.tbai_tax_agency_bizkaia")
         lroe_invoices = self.sudo().filtered(
             lambda x: x.tbai_enabled
@@ -910,3 +893,25 @@ class AccountInvoice(models.Model):
         if supplier_invoice_number_refund:
             res["reference"] = supplier_invoice_number_refund
         return res
+
+    @api.multi
+    def _check_agency_bizkaia_values(self):
+        bizkaia_tax_agency = self.env.ref(
+            "l10n_es_ticketbai_api_batuz.tbai_tax_agency_bizkaia"
+        )
+        for invoice in self.filtered(
+            lambda i: i.tbai_enabled
+            and i.type in ["in_invoice", "in_refund"]
+            and i.company_id.tbai_tax_agency_id == bizkaia_tax_agency
+        ):
+            if (
+                invoice.type == "in_refund"
+                and invoice.company_id.lroe_model == LROEModelEnum.model_pf_140.value
+            ):
+                raise exceptions.ValidationError(
+                    _("TicketBAI BATUZ: vendor refunds not supported for 140 model.")
+                )
+            if not invoice.reference:
+                raise exceptions.ValidationError(
+                    _("TicketBAI BATUZ: reference field required.")
+                )
