@@ -250,6 +250,7 @@ class AccountInvoice(models.Model):
         if idtype == TicketBaiCustomerIdType.T02.value:
             if country_code != "ES":
                 id_type = "06" if vat == "NO_DISPONIBLE" else "02"
+                vat = vat if vat.startswith(country_code) else country_code + vat
                 res["IDOtro"] = OrderedDict(
                     [
                         ("CodigoPais", country_code),

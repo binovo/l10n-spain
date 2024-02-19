@@ -9,8 +9,7 @@
             <field name="arch" type="xml">
                 <field name="vat" position="before">
                         <field name="tbai_enabled" invisible="1"/>
-                        <field name="tbai_partner_idtype"
-                               attrs="{'invisible': [('tbai_enabled', '=', False)]}" />
+                        <field name="tbai_partner_idtype"/>
                 </field>
             </field>
         </record>
