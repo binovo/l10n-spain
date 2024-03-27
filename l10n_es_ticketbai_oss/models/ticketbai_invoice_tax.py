@@ -1,7 +1,7 @@
 # Copyright 2024 Binovo IT Human Project SL
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, exceptions, _
+from odoo import fields, models
 
 
 class TicketBaiTax(models.Model):

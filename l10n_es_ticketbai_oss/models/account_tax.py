@@ -12,9 +12,11 @@ class AccountTax(models.Model):
     )
     not_subject_to_cause = fields.Selection(
         selection=[
-            ("OT", "OT - No sujeto por el artículo 7 de la Norma Foral de IVA Otros supuestos de no sujeción. "),
+            ("OT", "OT - No sujeto por el artículo 7 de la Norma Foral de IVA Otros"
+                   " supuestos de no sujeción. "),
             ("RL", "RL - No sujeto por reglas de localización."),
-            ("IE", "IE - No sujeto en el TAI por reglas de localización, pero repercute impuesto extranjero, IPS/IGIC o IVA de otro estado miembro UE."),
+            ("IE", "IE - No sujeto en el TAI por reglas de localización, pero repercute"
+                   " impuesto extranjero, IPS/IGIC o IVA de otro estado miembro UE."),
         ],
         string="Not Subject to Cause",
     )

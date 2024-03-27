@@ -3,7 +3,7 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <data>
-    	<record model="ir.ui.view" id="account_tax_tbai_form">
+        <record model="ir.ui.view" id="account_tax_tbai_form">
             <field name="name">account.tax.tbai.form</field>
             <field name="model">account.tax</field>
             <field name="inherit_id" ref="account.view_tax_form" />

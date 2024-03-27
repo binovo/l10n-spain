@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2024 Binovo IT Human Project SL
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
@@ -65,7 +64,8 @@ class TestInvoiceAddress(TransactionCase):
         self.env["account.invoice.line"].create(vals)
         invoice._onchange_invoice_line_ids()
         self.assertEqual(len(invoice.invoice_line_ids), 1)
-        is_subject_tax = invoice.invoice_line_ids[0].invoice_line_tax_ids.tbai_is_subject_to_tax()
+        is_subject_tax = (
+            invoice.invoice_line_ids[0].invoice_line_tax_ids.tbai_is_subject_to_tax())
         self.assertFalse(is_subject_tax)
         invoice.compute_taxes()
         self.assertEqual(len(invoice.tax_line_ids), 1)
