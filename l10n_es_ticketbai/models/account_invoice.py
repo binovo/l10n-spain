@@ -81,6 +81,24 @@ class AccountInvoice(models.Model):
                 ) % record.number)
 
     @api.multi
+    @api.constrains("tbai_refund_key", "date_invoice")
+    def _check_cancel_number_invoice(self):
+        today = fields.Date.today()
+        for record in self.filtered(
+            lambda i: i.company_id.tbai_enabled and i.type in ["out_refund"]
+        ):
+            if (
+                record.tbai_refund_key != RefundCode.R4.value
+                and record.date_invoice
+                and record.date_invoice < today
+            ):
+                raise exceptions.ValidationError(
+                    _(
+                        "The invoice date cannot be earlier than today. Only R4 types allow an earlier date."
+                    )
+                )
+
+    @api.multi
     def unlink(self):
         for record in self:
             if record.state != 'draft':
@@ -105,7 +123,7 @@ class AccountInvoice(models.Model):
                     if not vals.get('tbai_refund_type', False):
                         vals['tbai_refund_type'] = RefundType.differences.value
                     if not vals.get('tbai_refund_key', False):
-                        vals['tbai_refund_key'] = RefundCode.R1.value
+                        vals['tbai_refund_key'] = RefundCode.R4.value
             if vals.get('fiscal_position_id', False) and\
                not vals.get('tbai_vat_regime_key', False):
                 fiscal_position =\
@@ -127,7 +145,7 @@ class AccountInvoice(models.Model):
             if not invoice.tbai_refund_type:
                 invoice.tbai_refund_type = RefundType.differences.value
             if not invoice.tbai_refund_key:
-                invoice.tbai_refund_key = RefundCode.R1.value
+                invoice.tbai_refund_key = RefundCode.R4.value
         return res
 
     def is_surcharge_or_simplified_regime_key(self):
@@ -221,7 +239,7 @@ class AccountInvoice(models.Model):
             if not self.tbai_refund_type:
                 self.tbai_refund_type = RefundType.differences.value
             if not self.tbai_refund_key:
-                self.tbai_refund_key = RefundCode.R1.value
+                self.tbai_refund_key = RefundCode.R4.value
 
     def tbai_prepare_invoice_values(self):
 

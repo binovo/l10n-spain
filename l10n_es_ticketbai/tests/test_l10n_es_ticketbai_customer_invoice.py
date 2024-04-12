@@ -217,7 +217,7 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         self.assertEqual(1, len(invoice.refund_invoice_ids))
         refund = invoice.refund_invoice_ids
         self.assertEqual('I', refund.tbai_refund_type)
-        self.assertEqual('R1', refund.tbai_refund_key)
+        self.assertEqual('R4', refund.tbai_refund_key)
         refund.compute_taxes()
         refund.action_invoice_open()
         self.assertEqual(refund.state, 'open')
@@ -300,7 +300,7 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         self.assertEqual(1, len(invoice.refund_invoice_ids))
         refund = invoice.refund_invoice_ids
         self.assertEqual('I', refund.tbai_refund_type)
-        self.assertEqual('R1', refund.tbai_refund_key)
+        self.assertEqual('R4', refund.tbai_refund_key)
         refund.compute_taxes()
         refund.action_invoice_open()
         self.assertEqual(refund.state, 'open')
@@ -334,7 +334,7 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         refund = invoice.refund_invoice_ids
         self.assertEqual(refund.state, 'paid')
         self.assertEqual('I', refund.tbai_refund_type)
-        self.assertEqual('R1', refund.tbai_refund_key)
+        self.assertEqual('R4', refund.tbai_refund_key)
         self.assertEqual(1, len(refund.tbai_invoice_ids))
         invs = refund.sudo().tbai_invoice_ids
         r_root, r_signature_value = invs.get_tbai_xml_signed_and_signature_value()
@@ -368,7 +368,7 @@ class TestL10nEsTicketBAICustomerInvoice(TestL10nEsTicketBAI):
         self.assertEqual(1, len(invoice.refund_invoice_ids))
         refund = invoice.refund_invoice_ids
         self.assertEqual('I', refund.tbai_refund_type)
-        self.assertEqual('R1', refund.tbai_refund_key)
+        self.assertEqual('R4', refund.tbai_refund_key)
         self.assertEqual(refund.state, 'paid')
         self.assertEqual(1, len(refund.tbai_invoice_ids))
         r_root, r_signature_value = \

@@ -807,3 +807,9 @@ msgstr "tbai.informazioa"
 #, python-format
 #~ msgid "Refunded Invoice %s Expedition Date"
 #~ msgstr "Itzulitako %s fakturaren espedizio-data"
+
+#. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:96
+#, python-format
+msgid "The invoice date cannot be earlier than today. Only R4 types allow an earlier date."
+msgstr "Fakturaren data ezin da gaurko eguna baino lehenagokoa izan. R4 motek bakarrik onartzen dute lehenagoko data bat."

@@ -885,3 +885,10 @@ msgstr "Fecha expedición"
 #: model:ir.model.fields,field_description:l10n_es_ticketbai.field_res_company_tbai_expiration_date
 msgid "Expiration Date"
 msgstr "Fecha de caducidad"
+
+#. module: l10n_es_ticketbai
+#: code:addons/l10n_es_ticketbai/models/account_invoice.py:96
+#, python-format
+msgid "The invoice date cannot be earlier than today. Only R4 types allow an earlier date."
+msgstr "La fecha de la factura no puede ser anterior a hoy. Sólo los tipos R4 permiten una fecha anterior."
+
