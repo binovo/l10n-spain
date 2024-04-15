@@ -82,7 +82,7 @@ class AccountInvoice(models.Model):
 
     @api.multi
     @api.constrains("tbai_refund_key", "date_invoice")
-    def _check_cancel_number_invoice(self):
+    def _check_tbai_refund_key(self):
         today = fields.Date.today()
         for record in self.filtered(
             lambda i: i.company_id.tbai_enabled and i.type in ["out_refund"]
