@@ -16,18 +16,10 @@ odoo.define("l10n_es_pos.models", function (require) {
             this.pushed_simple_invoices = [];
             return this;
         },
+        // :WARNING: también se usa en l10n_es_pos_by_device que se
+        // romperá con este cambio
         get_simple_inv_next_number: function () {
-            // If we had pending orders to sync we want to avoid getting the next number
-            // from the DB as we'd be ovelaping the sequence.
-            if (this.env.pos.db.get_orders().length) {
-                return Promise.reject({message: {code: "pending_orders"}});
-            }
-            return this.rpc({
-                method: "search_read",
-                domain: [["id", "=", this.config_id]],
-                fields: ["l10n_es_simplified_invoice_number"],
-                model: "pos.config",
-            });
+            return this.config.l10n_es_simplified_invoice_prefix+this.get_padding_simple_inv(this.config.l10n_es_simplified_invoice_number);
         },
         get_padding_simple_inv: function (number, padding) {
             var diff = padding - number.toString().length;
@@ -44,6 +36,13 @@ odoo.define("l10n_es_pos.models", function (require) {
         },
         _update_sequence_number: function () {
             ++this.config.l10n_es_simplified_invoice_number;
+        },
+        push_single_order: function(order, opts) {
+            if (order && order.simplified_invoice && this.pushed_simple_invoices.indexOf(order.simplified_invoice) === -1) {
+                this.pushed_simple_invoices.push(order.simplified_invoice);
+                ++this.config.l10n_es_simplified_invoice_number;
+            }
+            return pos_super.push_single_order.apply(this, arguments);
         },
         push_simple_invoice: function (order) {
             if (
@@ -86,31 +85,6 @@ odoo.define("l10n_es_pos.models", function (require) {
             this.is_simplified_invoice =
                 below_limit && this.pos.config.is_simplified_config;
             return total;
-        },
-        set_simple_inv_number: function () {
-            return this.pos
-                .get_simple_inv_next_number()
-                .then(([config]) => {
-                    // We'll get the number from DB only when we're online. Otherwise
-                    // the sequence will run on the client side until the orders are
-                    // synced.
-                    this.pos._set_simplified_invoice_number(config);
-                })
-                .catch((error) => {
-                    // We'll only consider network errors (XmlHttpRequestError) or
-                    // forced rejections to resync invoice numbers
-                    if (
-                        error.message &&
-                        ![-32098, "pending_orders"].includes(error.message.code)
-                    ) {
-                        throw error;
-                    }
-                })
-                .finally(() => {
-                    const simplified_invoice_number = this.pos._get_simplified_invoice_number();
-                    this.l10n_es_unique_id = simplified_invoice_number;
-                    this.is_simplified_invoice = true;
-                });
         },
         get_base_by_tax: function () {
             var base_by_tax = {};
