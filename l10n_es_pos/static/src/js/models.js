@@ -9,12 +9,24 @@ odoo.define("l10n_es_pos.models", function (require) {
     var models = require("point_of_sale.models");
     var field_utils = require("web.field_utils");
 
+    models.load_fields('pos.config', ['l10n_es_last_pos_order']);
+
     var pos_super = models.PosModel.prototype;
     models.PosModel = models.PosModel.extend({
         initialize: function () {
             pos_super.initialize.apply(this, arguments);
             this.pushed_simple_invoices = [];
             return this;
+        },
+        // para cuando se recarga el POS. Justo después de cargar
+        // revisar el último ticket registrado en el servidor y
+        // eliminarlo de la cola junto con todos los anteriores.
+        after_load_server_data: function() {
+            var self = this,
+                orders = this.db.get_orders(),
+                resIndex = orders.findIndex((p) => p.data.name == this.config.l10n_es_last_pos_order);
+            orders.slice(0, resIndex + 1).forEach(o => self.db.remove_order(o.id));
+            return pos_super.after_load_server_data.call(this);
         },
         // :WARNING: también se usa en l10n_es_pos_by_device que se
         // romperá con este cambio
