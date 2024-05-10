@@ -7,4 +7,4 @@ from odoo import models, fields, api, exceptions, _
 class TicketBaiTax(models.Model):
     _inherit = "tbai.invoice.tax"
 
-    not_subject_to_cause = fields.Selection(selection_add=[("IE", "IE")])
+    not_subject_to_cause = fields.Selection(selection_add=[("IE", "IE"), ("VT", "VT")])
