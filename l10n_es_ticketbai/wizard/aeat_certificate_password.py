@@ -17,6 +17,8 @@ class L10nEsAeatCertificatePassword(models.TransientModel):
 
     @staticmethod
     def _sanitize_p12_friendly_name(p12_friendly_name):
+        if not p12_friendly_name:
+            return False
         return p12_friendly_name.decode('utf-8').strip('\x00')
 
     @api.multi
