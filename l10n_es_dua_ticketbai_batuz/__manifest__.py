@@ -12,7 +12,7 @@
         "ao-landoo",
     ],
     "depends": [
-        "l10n_es_ticketbai_batuz",
+        "l10n_es_ticketbai",
         "l10n_es_dua",
     ],
     "data": [
