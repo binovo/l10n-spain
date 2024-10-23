@@ -9,6 +9,7 @@ from pytz import timezone
 from .common import TestEdiVerifactuCommon
 from odoo.tests import tagged
 from odoo.tools.xml_utils import validate_xml_from_attachment
+from ..lib.aeat import NAMESPACE_SUM_INFO
 
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
@@ -100,15 +101,14 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
             validate_xml_from_attachment(
                 self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
             )
-            # TODO active these lines when SuministroLR.xsd is a stable version
-            # invoice_records_node = verifactu_xml.xpath(
-            #     ".//sum:RegFactuSistemaFacturacion", namespaces=verifactu_xml.nsmap
-            # )[0]
-            # validate_xml_from_attachment(
-            #     self.env,
-            #     invoice_records_node,
-            #     "SuministroLR.xsd",
-            #     prefix="l10n_es_verifactu",
-            # )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sum:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SUM_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
             xml_expected = etree.fromstring(SPANISH_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
