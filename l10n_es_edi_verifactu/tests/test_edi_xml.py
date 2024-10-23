@@ -9,7 +9,7 @@ from pytz import timezone
 from .common import TestEdiVerifactuCommon
 from odoo.tests import tagged
 from odoo.tools.xml_utils import validate_xml_from_attachment
-from ..lib.aeat import NAMESPACE_SUM_INFO
+from ..lib.aeat import NAMESPACE_SUM_INFO, TEST_AEAT_VERIFACTU_QR_URL
 
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
@@ -112,3 +112,19 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
             )
             xml_expected = etree.fromstring(SPANISH_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_qr_url(self):
+        with freeze_time(self.operation_date):
+            invoice = self.spanish_invoice
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                invoice
+            )
+            invoice.update_l10n_es_edi_verifactu_xml(verifactu_xml, False)
+            invoice.l10n_es_edi_verifactu_chain_index = (
+                invoice.company_id.get_l10n_es_verifactu_next_chain_index()
+            )
+            expected_qr_url = (
+                TEST_AEAT_VERIFACTU_QR_URL
+                + "?nif=93074269P&numserie=INV%2F2024%2F00001&fecha=01-01-2024&importe=4840.00"
+            )
+            self.assertEqual(invoice.l10n_es_edi_verifactu_qr_url, expected_qr_url)
