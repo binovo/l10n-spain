@@ -5,6 +5,8 @@
 from base64 import b64encode, b64decode
 from lxml import etree
 from odoo import models, fields, api
+from urllib.parse import urlencode
+from .account_edi_format import NAMESPACE_SUM1_INFO
 
 
 class AccountMove(models.Model):
@@ -37,31 +39,39 @@ class AccountMove(models.Model):
             )
 
     def _compute_l10n_es_edi_verifactu_qr_url(self):
-        # TODO this is a fake compute of the QR, do not have information about the content of the QR yet,
-        #  take the data from post XML file instead of the move
-        for move in self:
-            qr_url = ""
-            if move.l10n_es_verifactu_is_in_chain():
-                qr_url = (
-                    "http://localhost:8069"
-                    + "?"
-                    + "&".join(
-                        [
-                            "nif=" + move.company_id.vat,
-                            "num=" + move.name,
-                            "fecha=" + move.get_verifactu_issued_time_from_xml(),
-                            "total=" + str(move.amount_total_signed),
-                        ]
-                    )
-                )
-            move.l10n_es_edi_verifactu_qr_url = qr_url
+        for move in self.filtered(lambda m: m.has_verifactu_xml_and_chain_index()):
+            base_url = self.env["account.edi.format"]._l10n_es_verifactu_aeat_qr_url(
+                move
+            )
+            xml_node = move.get_l10n_es_edi_verifactu_xml()
+            values = {
+                "nif": xml_node.xpath(
+                    "//sum1:IDFactura/sum1:IDEmisorFactura",
+                    namespaces=NAMESPACE_SUM1_INFO,
+                )[0].text,
+                "numserie": xml_node.xpath(
+                    "//sum1:IDFactura/sum1:NumSerieFactura",
+                    namespaces=NAMESPACE_SUM1_INFO,
+                )[0].text,
+                "fecha": xml_node.xpath(
+                    "//sum1:IDFactura/sum1:FechaExpedicionFactura",
+                    namespaces=NAMESPACE_SUM1_INFO,
+                )[0].text,
+                "importe": xml_node.xpath(
+                    "//sum1:ImporteTotal", namespaces=NAMESPACE_SUM1_INFO
+                )[0].text,
+            }
+            move.l10n_es_edi_verifactu_qr_url = "%s?%s" % (
+                base_url,
+                urlencode(values, encoding="utf-8"),
+            )
 
     def get_l10n_es_edi_verifactu_xml(self, cancel=False):
         self.ensure_one()
         doc = (
-            self.with_context(bin_size=False).l10n_es_edi_verifactu_cancel_xml
+            self.l10n_es_edi_verifactu_cancel_xml
             if cancel
-            else self.with_context(bin_size=False).l10n_es_edi_verifactu_xml
+            else self.l10n_es_edi_verifactu_xml
         )
         if not doc:
             return None

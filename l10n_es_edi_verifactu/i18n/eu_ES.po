@@ -282,3 +282,95 @@ msgstr "Verifactu QR URL"
 #: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_config_settings__config_verifactu_software_version
 msgid "Version"
 msgstr "Sistema informatikoaren bertsioa"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "(test mode)"
+msgstr "(proba ingurunea)"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "<pre>Verifactu: posted emission XML response %(test_suffix)s</pre>"
+msgstr "<pre>Verifactu: erantzun XML-a %(test_suffix)s</pre>"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid ""
+"<pre>Verifactu: posted emission XML {test_suffix}\n"
+"{message}</pre>"
+msgstr ""
+"<pre>Verifactu: bidalitako XML-a {test_suffix}\n"
+"{message}</pre>"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Duplicated record state: "
+msgstr "Erregistro bikoiztuaren egoera: "
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Record state: "
+msgstr "Erregistroaren egoera: "
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Sent state: "
+msgstr "Bidalketaren egoera: "
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__account_edi_document__verifactu_state__cancelled
+msgid "Cancelled"
+msgstr "Ezeztatuta"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__account_edi_document__verifactu_state__error
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.view_account_edi_document_verifactu_search
+msgid "Error"
+msgstr "Errorea"
+
+#. module: l10n_es_edi_verifactu
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.view_tree_account_edi_document_verifactu
+msgid "Invoice"
+msgstr "Faktura"
+
+#. module: l10n_es_edi_verifactu
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.view_tree_account_edi_document_verifactu
+msgid "Sending Status"
+msgstr "Bidalketaren egoera"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__account_edi_document__verifactu_state__sent
+msgid "Sent"
+msgstr "Bidalita"
+
+#. module: l10n_es_edi_verifactu
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.view_tree_account_edi_document_verifactu
+msgid "Status"
+msgstr "Egoera"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__account_edi_document__verifactu_state__to_cancel
+msgid "To Cancel"
+msgstr "Ezeztatzeke"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__account_edi_document__verifactu_state__to_send
+msgid "To Send"
+msgstr "Bidaltzeke"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_account_edi_document__verifactu_state
+msgid "Verifactu State"
+msgstr "Verifactu egoera"

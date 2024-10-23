@@ -8,6 +8,19 @@
               id="menu_account_l10n_es_edi_verifactu"
               groups="account.group_account_manager"/>
 
+    <record id="view_account_edi_document_verifactu_search" model="ir.ui.view">
+        <field name="name">view.account.edi.document.verifactu.search</field>
+        <field name="model">account.edi.document</field>
+        <field name="arch" type="xml">
+            <search>
+               <filter string="Error"
+                        name="error"
+                        domain="[('verifactu_state','=','error')]"
+               />
+            </search>
+        </field>
+    </record>
+
     <record id="view_tree_account_edi_document_verifactu" model="ir.ui.view">
         <field name="name">view.tree.account.edi.document.verifactu</field>
         <field name="model">account.edi.document</field>
@@ -15,10 +28,12 @@
             <tree create="false" delete="false" edit="false"
                   decoration-info="blocking_level == 'info'"
                   decoration-warning="blocking_level == 'warning'"
-                  decoration-danger="blocking_level == 'error'">
+                  decoration-danger="blocking_level in ['error']">
                 <field name="create_date"/>
-                <field name="name"/>
-                <field name="state"/>
+                <field name="move_id" string="Invoice"/>
+                <field name="name" groups="base.group_no_one"/>
+                <field name="verifactu_state" string="Status"/>
+                <field name="state" string="Sending Status" groups="base.group_no_one"/>
                 <field name="error"/>
                 <field name="blocking_level" invisible="1" />
             </tree>

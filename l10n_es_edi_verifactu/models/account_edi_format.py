@@ -16,10 +16,7 @@ from odoo.addons.l10n_es_edi_sii.models.account_edi_format import PatchedHTTPAda
 from ..lib.verifactu_xmlgen import verifactu_xmlgen
 from ..lib.verifactu_xmlgen import OPERATION_CREATE, OPERATION_CANCEL
 
-AEAT_VERIFACTU_URL = """ 
-"""
-
-VERIFACTU_XML_BASE = """
+VERIFACTU_XML_ENVELOPE = """
 <soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
     xmlns:sum="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
@@ -41,6 +38,28 @@ VERIFACTU_XML_BASE = """
     "utf-8"
 )
 
+TEST_AEAT_VERIFACTU_SERVICE_URL = (
+    "https://prewww1.aeat.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP"
+)
+
+TEST_AEAT_VERIFACTU_QR_URL = "https://prewww2.aeat.es/wlpl/TIKE-CONT/ValidarQR"
+
+NAMESPACE_TIK_INFO = {
+    "tik": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd"
+}
+
+NAMESPACE_SUM_INFO = {
+    "sum": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+}
+
+NAMESPACE_SUM1_INFO = {
+    "sum1": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd"
+}
+
+NAMESPACE_TIK_RESPONSE = {
+    "tikR": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/RespuestaSuministro.xsd"
+}
+
 
 class AccountEdiFormat(models.Model):
     _inherit = "account.edi.format"
@@ -54,34 +73,56 @@ class AccountEdiFormat(models.Model):
     def _l10n_es_edi_verifactu_post_invoice(self, invoice):
         if self.code != "es_verifactu":
             return super()._post_invoice_edi(invoice)
-        # TODO chain integrity check ¿?
+
         # Call the web service and get response
         res = self._l10n_es_verifactu_post_to_web_service(invoice)
-        if res[invoice].get("success"):
-            # Create attachment, post and save as EDI DOC
-            attachment = self.env["ir.attachment"].create(
-                {
-                    "name": invoice.name + "_verifactu_post.xml",
-                    "datas": invoice.l10n_es_edi_verifactu_xml,
-                    "mimetype": "application/xml",
-                    "res_id": invoice.id,
-                    "res_model": "account.move",
-                }
-            )
+        if res[invoice].get("response"):
             test_suffix = (
-                "(test mode)" if invoice.company_id.l10n_es_edi_test_env else ""
+                _("(test mode)") if invoice.company_id.l10n_es_edi_test_env else ""
             )
-            # TODO message XXX
             invoice.with_context(no_new_invoice=True).message_post(
-                body=Markup(
-                    "<pre>Verifactu: posted emission XML {test_suffix}\n{message}</pre>"
-                ).format(test_suffix=test_suffix, message="XXX"),
-                attachment_ids=[attachment.id],
+                body=_(
+                    "<pre>Verifactu: posted emission XML response %(test_suffix)s</pre>"
+                )
+                % {"test_suffix": test_suffix},
+                attachments=[
+                    (
+                        invoice.name + "_verifactu_post_response.xml",
+                        etree.tostring(res[invoice].get("response"), encoding="UTF-8"),
+                        {"mimetype": "application/xml"},
+                    )
+                ],
             )
-            res[invoice]["attachment"] = attachment
-        else:
-            # TODO error management
-            pass
+        # Create attachment, post and save as EDI DOC
+        attachment = self.env["ir.attachment"].create(
+            {
+                "name": invoice.name + "_verifactu_post.xml",
+                "datas": invoice.l10n_es_edi_verifactu_xml,
+                "mimetype": "application/xml",
+                "res_id": invoice.id,
+                "res_model": "account.move",
+            }
+        )
+        test_suffix = (
+            _("(test mode)") if invoice.company_id.l10n_es_edi_test_env else ""
+        )
+        invoice.with_context(no_new_invoice=True).message_post(
+            body=Markup(
+                _("<pre>Verifactu: posted emission XML {test_suffix}\n{message}</pre>")
+            ).format(
+                test_suffix=test_suffix, message=res[invoice].get("message", "XXX")
+            ),
+            attachment_ids=[attachment.id],
+        )
+        if res[invoice].get("success", False):
+            invoice.with_context(no_new_invoice=True).message_post(
+                body="Verifactu URL: <a href='%s' target='_blank'> %s </a>"
+                % (
+                    invoice.l10n_es_edi_verifactu_qr_url,
+                    invoice.l10n_es_edi_verifactu_qr_url,
+                )
+            )
+        res[invoice]["attachment"] = attachment
         return res
 
     def _l10n_es_edi_verifactu_cancel_invoice(self, invoice):
@@ -104,7 +145,7 @@ class AccountEdiFormat(models.Model):
             )
         invoice_records_xml = self.cmd_get_verifactu_xml(invoice)
         root_records = etree.fromstring(invoice_records_xml)
-        xml_root_node = etree.fromstring(VERIFACTU_XML_BASE)
+        xml_root_node = etree.fromstring(VERIFACTU_XML_ENVELOPE)
         issuer_name_node = xml_root_node.xpath(
             ".//sum1:NombreRazon", namespaces=xml_root_node.nsmap
         )[0]
@@ -124,34 +165,120 @@ class AccountEdiFormat(models.Model):
             records_node.append(copy.deepcopy(child_node))
         return xml_root_node
 
+    def _l10n_es_verifactu_aeat_service_url(self, invoice):
+        if invoice.company_id.l10n_es_edi_test_env:
+            return TEST_AEAT_VERIFACTU_SERVICE_URL
+        else:
+            # TODO post to verifactu production systems, not available yet
+            raise NotImplementedError()
+
+    def _l10n_es_verifactu_aeat_qr_url(self, invoice):
+        if invoice.company_id.l10n_es_edi_test_env:
+            return TEST_AEAT_VERIFACTU_QR_URL
+        else:
+            # TODO post to verifactu production systems, not available yet
+            raise NotImplementedError()
+
     def _l10n_es_verifactu_post_to_web_service(self, invoice):
-        # TODO post to verifactu systems, not available yet
-        # try:
-        #     session = requests.Session()
-        #     session.cert = invoice.company_id.l10n_es_edi_certificate_id
-        #     session.mount("https://", PatchedHTTPAdapter())
-        #     headers = {"Content-Type": "text/xml; charset=utf-8"}
-        #     data = etree.tostring(
-        #         invoice.get_l10n_es_edi_verifactu_xml(), encoding="UTF-8"
-        #     )
-        #     res = session.request(
-        #         "post", AEAT_VERIFACTU_URL, data=data, headers=headers
-        #     )
-        # except (ValueError, requests.exceptions.RequestException) as e:
-        #     return {
-        #         invoice: {
-        #             "error": str(e),
-        #             "blocking_level": "warning",
-        #             "response": None,
-        #         }
-        #     }
-        return {
-            invoice: {
-                "success": True,
-                "message": "XXX",
-                "response": "XXX",
+        try:
+            session = requests.Session()
+            company_pkcs12 = invoice.company_id.l10n_es_edi_certificate_id
+            session.cert = company_pkcs12
+            session.mount("https://", PatchedHTTPAdapter())
+            headers = {"Content-Type": "text/xml; charset=utf-8"}
+            data = etree.tostring(
+                invoice.get_l10n_es_edi_verifactu_xml(), encoding="UTF-8"
+            )
+            response = session.request(
+                "post",
+                self._l10n_es_verifactu_aeat_service_url(invoice),
+                data=data,
+                headers=headers,
+            )
+            (
+                success,
+                message,
+                response_xml,
+            ) = self._l10n_es_verifactu_process_post_response(response)
+        except (ValueError, requests.exceptions.RequestException) as e:
+            return {
+                invoice: {
+                    "error": str(e),
+                    "blocking_level": "warning",
+                    "response": None,
+                }
             }
-        }
+        if success:
+            return {
+                invoice: {
+                    "success": True,
+                    "message": message,
+                    "response": response_xml,
+                }
+            }
+        else:
+            return {
+                invoice: {
+                    "error": message,
+                    "blocking_level": "error",
+                    "response": response_xml,
+                }
+            }
+
+    def _l10n_es_verifactu_process_post_response(self, response):
+        try:
+            response_xml = etree.fromstring(response.content)
+        except etree.XMLSyntaxError as e:
+            return False, str(e) + "\n" + str(response.content or ""), None
+
+        already_received = False
+        error_code = False
+        error_message = False
+        sent_state = response_xml.xpath(
+            ".//tikR:EstadoEnvio", namespaces=NAMESPACE_TIK_RESPONSE
+        )
+        message = _("Sent state: ") + sent_state[0].text + "\n"
+        csv_code_node = response_xml.xpath(
+            ".//tikR:CSV", namespaces=NAMESPACE_TIK_RESPONSE
+        )
+        if csv_code_node:
+            message += "CSV: " + csv_code_node[0].text + "\n"
+        for xml_res_node in response_xml.xpath(
+            ".//tikR:RespuestaLinea", namespaces=NAMESPACE_TIK_RESPONSE
+        ):
+            record_state = response_xml.xpath(
+                ".//tikR:EstadoRegistro", namespaces=NAMESPACE_TIK_RESPONSE
+            )
+            duplicated_record_state = response_xml.xpath(
+                ".//tik:EstadoRegistroDuplicado", namespaces=NAMESPACE_TIK_INFO
+            )
+            if duplicated_record_state:
+                message += (
+                    _("Duplicated record state: ")
+                    + duplicated_record_state[0].text
+                    + "\n"
+                )
+            else:
+                message += _("Record state: ") + record_state[0].text + "\n"
+            error_code_node = xml_res_node.xpath(
+                ".//tikR:CodigoErrorRegistro", namespaces=NAMESPACE_TIK_RESPONSE
+            )
+            if error_code_node:
+                error_code = error_code_node[0].text
+            error_message_node = xml_res_node.xpath(
+                ".//tikR:DescripcionErrorRegistro", namespaces=NAMESPACE_TIK_RESPONSE
+            )
+            if error_message_node:
+                error_message = error_message_node[0].text
+            if error_code and error_message:
+                message += error_code + ": " + error_message + "\n"
+            if error_code and error_code in ("3000", "3001"):
+                already_received = True
+        response_success = (
+            sent_state[0].text in ("Correcto", "ParcialmenteCorrecto")
+            or already_received
+        )
+        return response_success, message, response_xml
 
     @staticmethod
     def _get_verifactu_issuer(invoice):
