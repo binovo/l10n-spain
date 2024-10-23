@@ -4,8 +4,7 @@
 Spain - Verifactu
 =================
 
-When posting an invoice, a Verifactu XML is created, sending of the XML to the Verifactu systems is not implemented
-because there is not developing environment yet.
+When posting an invoice, a Verifactu XML is created, sending of the XML to the Verifactu systems is only implemented to the developing environment, there is no production environment yet.
 
 Supported and tested validation schemas: 0.12.2	16/04/2024
 

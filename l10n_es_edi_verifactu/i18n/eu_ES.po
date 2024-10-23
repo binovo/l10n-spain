@@ -282,3 +282,49 @@ msgstr "Verifactu QR URL"
 #: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_config_settings__config_verifactu_software_version
 msgid "Version"
 msgstr "Sistema informatikoaren bertsioa"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "(test mode)"
+msgstr "(proba ingurunea)"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "<pre>Verifactu: posted emission XML response %(test_suffix)s</pre>"
+msgstr "<pre>Verifactu: erantzun XML-a %(test_suffix)s</pre>"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid ""
+"<pre>Verifactu: posted emission XML {test_suffix}\n"
+"{message}</pre>"
+msgstr ""
+"<pre>Verifactu: bidalitako XML-a {test_suffix}\n"
+"{message}</pre>"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Duplicated record state: "
+msgstr "Erregistro bikoiztuaren egoera: "
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Record state: "
+msgstr "Erregistroaren egoera: "
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Sent state: "
+msgstr "Bidalketaren egoera: "
