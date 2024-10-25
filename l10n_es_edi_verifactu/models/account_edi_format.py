@@ -335,6 +335,15 @@ class AccountEdiFormat(models.Model):
             return ""
 
     @staticmethod
+    def _get_verifactu_credit_note(invoice):
+        return {
+            "style": "I",
+            "ids": [
+                AccountEdiFormat._get_verifactu_invoice_id(invoice.reversed_entry_id)
+            ],
+        }
+
+    @staticmethod
     def _get_verifactu_es_vat_lines(vat_breakdown):
         subject_lines = []
         no_subject_lines = []
@@ -470,6 +479,10 @@ class AccountEdiFormat(models.Model):
                     "type": self._get_verifactu_invoice_type(invoice),
                 }
             }
+            if invoice.move_type == "out_refund":
+                json_input["invoice"]["creditNote"] = self._get_verifactu_credit_note(
+                    invoice
+                )
             invoice_info_list = self._l10n_es_edi_get_invoices_info(invoice)
             if invoice_info_list:
                 edi_sii_invoice_node = self._l10n_es_edi_get_invoices_info(invoice)[
@@ -589,9 +602,6 @@ class AccountEdiFormat(models.Model):
             raise ValidationError(
                 _("Verifactu: non Spanish customer invoices are not supported.")
             )
-        # 2. Refund invoices
-        if invoice.move_type == "out_refund":
-            raise ValidationError(_("Verifactu: refund invoices are not supported."))
         # 3. Simplified invoices
         simplified_partner = invoice.env.ref("l10n_es_edi_sii.partner_simplified")
         is_simplified = invoice.partner_id == simplified_partner

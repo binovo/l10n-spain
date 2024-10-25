@@ -13,6 +13,7 @@ from ..models.account_edi_format import NAMESPACE_SUM_INFO, TEST_AEAT_VERIFACTU_
 
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
+    REFUND_INVOICE_XML_POST,
 )
 
 
@@ -111,6 +112,43 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 prefix="l10n_es_verifactu",
             )
             xml_expected = etree.fromstring(SPANISH_INVOICE_XML_POST)
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_create_refund_invoice(self):
+        with freeze_time(self.operation_date):
+            self.spanish_invoice.action_post()
+            move_reversal = (
+                self.env["account.move.reversal"]
+                .with_context(
+                    active_model="account.move", active_ids=self.spanish_invoice.ids
+                )
+                .create(
+                    {
+                        "date": self.operation_date,
+                        "reason": "A reason",
+                        "refund_method": "refund",
+                        "journal_id": self.spanish_invoice.journal_id.id,
+                    }
+                )
+            )
+            reversal = move_reversal.reverse_moves()
+            refund_invoice = self.env["account.move"].browse(reversal["res_id"])
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                refund_invoice
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sum:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SUM_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(REFUND_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
 
     def test_qr_url(self):

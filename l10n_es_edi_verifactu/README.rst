@@ -12,13 +12,13 @@ Supported and tested invoices:
 
 * Standard sale invoice to a Spanish customer
 * Taxes: Exento, Sujeto, No Sujeto, No Sujeto por reglas de Localization
+* Refund invoices
 
 Not supported invoices, in these cases, when invoice confirmation a validation error is raised and the invoice
 is not validated:
 
 * Sale invoices to EU customers, services and merchandises
 * Exportation, sale invoices to non EU customers, services and merchandises
-* Refund invoices
 * Simplified invoices
 * Taxes: Sujeto ISP, Retencion, Recargo de Equivalencia
 * Cancellation of invoices
