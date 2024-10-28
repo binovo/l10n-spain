@@ -9,7 +9,7 @@ from pytz import timezone
 from .common import TestEdiVerifactuCommon
 from odoo.tests import tagged
 from odoo.tools.xml_utils import validate_xml_from_attachment
-from ..models.account_edi_format import NAMESPACE_SUM_INFO, TEST_AEAT_VERIFACTU_QR_URL
+from ..models.account_edi_format import NAMESPACE_SFLR_INFO, TEST_AEAT_VERIFACTU_QR_URL
 
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
@@ -103,7 +103,7 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
             )
             invoice_records_node = verifactu_xml.xpath(
-                ".//sum:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SUM_INFO
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
             )[0]
             validate_xml_from_attachment(
                 self.env,
@@ -140,7 +140,7 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
             )
             invoice_records_node = verifactu_xml.xpath(
-                ".//sum:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SUM_INFO
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
             )[0]
             validate_xml_from_attachment(
                 self.env,

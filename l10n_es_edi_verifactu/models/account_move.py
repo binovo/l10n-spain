@@ -6,7 +6,7 @@ from base64 import b64encode, b64decode
 from lxml import etree
 from odoo import models, fields, api
 from urllib.parse import urlencode
-from .account_edi_format import NAMESPACE_SUM1_INFO
+from .account_edi_format import NAMESPACE_SF_INFO
 
 
 class AccountMove(models.Model):
@@ -46,19 +46,19 @@ class AccountMove(models.Model):
             xml_node = move.get_l10n_es_edi_verifactu_xml()
             values = {
                 "nif": xml_node.xpath(
-                    "//sum1:IDFactura/sum1:IDEmisorFactura",
-                    namespaces=NAMESPACE_SUM1_INFO,
+                    "//sf:IDFactura/sf:IDEmisorFactura",
+                    namespaces=NAMESPACE_SF_INFO,
                 )[0].text,
                 "numserie": xml_node.xpath(
-                    "//sum1:IDFactura/sum1:NumSerieFactura",
-                    namespaces=NAMESPACE_SUM1_INFO,
+                    "//sf:IDFactura/sf:NumSerieFactura",
+                    namespaces=NAMESPACE_SF_INFO,
                 )[0].text,
                 "fecha": xml_node.xpath(
-                    "//sum1:IDFactura/sum1:FechaExpedicionFactura",
-                    namespaces=NAMESPACE_SUM1_INFO,
+                    "//sf:IDFactura/sf:FechaExpedicionFactura",
+                    namespaces=NAMESPACE_SF_INFO,
                 )[0].text,
                 "importe": xml_node.xpath(
-                    "//sum1:ImporteTotal", namespaces=NAMESPACE_SUM1_INFO
+                    "//sf:ImporteTotal", namespaces=NAMESPACE_SF_INFO
                 )[0].text,
             }
             move.l10n_es_edi_verifactu_qr_url = "%s?%s" % (
@@ -94,9 +94,9 @@ class AccountMove(models.Model):
         xml_root_node = self.get_l10n_es_edi_verifactu_xml()
         if xml_root_node is not None:
             xml_issued_time = xml_root_node.xpath(
-                ".//sum1:IDFactura/sum1:NumSerieFactura[text()='%s']/following::sum1:FechaExpedicionFactura"
+                ".//sf:IDFactura/sf:NumSerieFactura[text()='%s']/following::sf:FechaExpedicionFactura"
                 % self.name,
-                namespaces=xml_root_node.nsmap,
+                namespaces=NAMESPACE_SF_INFO,
             )[0].text
             return xml_issued_time
         else:
@@ -107,9 +107,9 @@ class AccountMove(models.Model):
         xml_root_node = self.get_l10n_es_edi_verifactu_xml()
         if xml_root_node is not None:
             xml_hash = xml_root_node.xpath(
-                ".//sum1:IDFactura/sum1:NumSerieFactura[text()='%s']/following::sum1:TipoHuella/following::sum1:Huella"
+                ".//sf:IDFactura/sf:NumSerieFactura[text()='%s']/following::sf:TipoHuella/following::sf:Huella"
                 % self.name,
-                namespaces=xml_root_node.nsmap,
+                namespaces=NAMESPACE_SF_INFO,
             )[0].text
             return xml_hash
         else:
@@ -120,9 +120,9 @@ class AccountMove(models.Model):
         xml_root_node = self.get_l10n_es_edi_verifactu_xml()
         if xml_root_node is not None:
             xml_issuer_vat = xml_root_node.xpath(
-                ".//sum1:IDFactura/sum1:NumSerieFactura[text()='%s']/parent::sum1:IDFactura/sum1:IDEmisorFactura"
+                ".//sf:IDFactura/sf:NumSerieFactura[text()='%s']/parent::sf:IDFactura/sf:IDEmisorFactura"
                 % self.name,
-                namespaces=xml_root_node.nsmap,
+                namespaces=NAMESPACE_SF_INFO,
             )[0].text
             return xml_issuer_vat
         else:

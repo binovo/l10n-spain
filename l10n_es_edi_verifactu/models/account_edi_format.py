@@ -19,19 +19,19 @@ from ..lib.verifactu_xmlgen import OPERATION_CREATE, OPERATION_CANCEL
 VERIFACTU_XML_ENVELOPE = """
 <soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:sum="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
-    xmlns:sum1="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd">
+    xmlns:sfLR="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+    xmlns:sf="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd">
     <soapenv:Header/>
     <soapenv:Body>
-        <sum:RegFactuSistemaFacturacion>
-            <sum1:Cabecera>
-                <sum1:ObligadoEmision>
-                    <sum1:NombreRazon/>
-                    <sum1:NIF/>
-                </sum1:ObligadoEmision>
-            </sum1:Cabecera>
-            <sum:RegistroFactura/>
-        </sum:RegFactuSistemaFacturacion>
+        <sfLR:RegFactuSistemaFacturacion>
+            <sfLR:Cabecera>
+                <sf:ObligadoEmision>
+                    <sf:NombreRazon/>
+                    <sf:NIF/>
+                </sf:ObligadoEmision>
+            </sfLR:Cabecera>
+            <sfLR:RegistroFactura/>
+        </sfLR:RegFactuSistemaFacturacion>
     </soapenv:Body>
 </soapenv:Envelope>
 """.encode(
@@ -48,12 +48,12 @@ NAMESPACE_TIK_INFO = {
     "tik": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd"
 }
 
-NAMESPACE_SUM_INFO = {
-    "sum": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+NAMESPACE_SFLR_INFO = {
+    "sfLR": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
 }
 
-NAMESPACE_SUM1_INFO = {
-    "sum1": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd"
+NAMESPACE_SF_INFO = {
+    "sf": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd"
 }
 
 NAMESPACE_TIK_RESPONSE = {
@@ -147,11 +147,11 @@ class AccountEdiFormat(models.Model):
         root_records = etree.fromstring(invoice_records_xml)
         xml_root_node = etree.fromstring(VERIFACTU_XML_ENVELOPE)
         issuer_name_node = xml_root_node.xpath(
-            ".//sum1:NombreRazon", namespaces=xml_root_node.nsmap
+            ".//sf:NombreRazon", namespaces=NAMESPACE_SF_INFO
         )[0]
         issuer_name_node.text = invoice.company_id.name[:120]
         issuer_vat_node = xml_root_node.xpath(
-            ".//sum1:NIF", namespaces=xml_root_node.nsmap
+            ".//sf:NIF", namespaces=NAMESPACE_SF_INFO
         )[0]
         issuer_vat_node.text = (
             invoice.company_id.vat[2:]
@@ -159,7 +159,7 @@ class AccountEdiFormat(models.Model):
             else invoice.company_id.vat
         )
         records_node = xml_root_node.xpath(
-            ".//sum:RegistroFactura", namespaces=xml_root_node.nsmap
+            ".//sfLR:RegistroFactura", namespaces=NAMESPACE_SFLR_INFO
         )[0]
         for child_node in root_records:
             records_node.append(copy.deepcopy(child_node))
