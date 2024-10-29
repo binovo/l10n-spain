@@ -143,3 +143,144 @@ REFUND_INVOICE_XML_POST = """
 """.encode(
     "utf-8"
 )
+
+EU_INVOICE_XML_POST = """
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:sfLR="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+    xmlns:sf="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sfLR:RegFactuSistemaFacturacion>
+            <sfLR:Cabecera>
+                <sf:ObligadoEmision>
+                    <sf:NombreRazon>Binovo IT Human Project</sf:NombreRazon>
+                    <sf:NIF>93074269P</sf:NIF>
+                </sf:ObligadoEmision>
+            </sfLR:Cabecera>
+            <sfLR:RegistroFactura>
+                <sfLR:RegistroAlta>
+                    <sf:IDVersion>1.0</sf:IDVersion>
+                    <sf:IDFactura>
+                        <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
+                        <sf:NumSerieFactura>INV/2024/00002</sf:NumSerieFactura>
+                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                    </sf:IDFactura>
+                    <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
+                    <sf:TipoFactura>F1</sf:TipoFactura>
+                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
+					<sf:Destinatarios>
+						<sf:IDDestinatario>
+							<sf:NombreRazon>Allez Les Bleus</sf:NombreRazon>
+							<sf:IDOtro>
+								<sf:IDType>02</sf:IDType>
+								<sf:ID>FR05677404089</sf:ID>
+							</sf:IDOtro>
+						</sf:IDDestinatario>
+					</sf:Destinatarios>
+                    <sf:Desglose>
+                        <sf:DetalleDesglose>
+                            <sf:ClaveRegimen>01</sf:ClaveRegimen>
+                            <sf:OperacionExenta>E5</sf:OperacionExenta>
+                            <sf:BaseImponibleOimporteNoSujeto>4000.00</sf:BaseImponibleOimporteNoSujeto>
+                        </sf:DetalleDesglose>
+                    </sf:Desglose>
+					<sf:CuotaTotal>0.00</sf:CuotaTotal>
+					<sf:ImporteTotal>4000.00</sf:ImporteTotal>
+                    <sf:Encadenamiento>
+                        <sf:PrimerRegistro>S</sf:PrimerRegistro>
+                    </sf:Encadenamiento>
+                    <sf:SistemaInformatico>
+                        <sf:NombreRazon>ODOO BINOVO</sf:NombreRazon>
+                        <sf:NIF>19960488F</sf:NIF>
+                        <sf:NombreSistemaInformatico>BINOVOFACTU</sf:NombreSistemaInformatico>
+                        <sf:IdSistemaInformatico>22</sf:IdSistemaInformatico>
+                        <sf:Version>16.0</sf:Version>
+                        <sf:NumeroInstalacion>123</sf:NumeroInstalacion>
+                        <sf:TipoUsoPosibleSoloVerifactu>S</sf:TipoUsoPosibleSoloVerifactu>
+                        <sf:TipoUsoPosibleMultiOT>S</sf:TipoUsoPosibleMultiOT>
+                        <sf:IndicadorMultiplesOT>N</sf:IndicadorMultiplesOT>
+                    </sf:SistemaInformatico>
+                    <sf:FechaHoraHusoGenRegistro>___ignore___</sf:FechaHoraHusoGenRegistro>
+                    <sf:TipoHuella>01</sf:TipoHuella>
+                    <sf:Huella>___ignore___</sf:Huella>
+                </sfLR:RegistroAlta>
+            </sfLR:RegistroFactura>
+        </sfLR:RegFactuSistemaFacturacion>
+    </soapenv:Body>
+</soapenv:Envelope>
+""".encode(
+    "utf-8"
+)
+
+NON_EU_INVOICE_XML_POST = """
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:sfLR="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+    xmlns:sf="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sfLR:RegFactuSistemaFacturacion>
+            <sfLR:Cabecera>
+                <sf:ObligadoEmision>
+                    <sf:NombreRazon>Binovo IT Human Project</sf:NombreRazon>
+                    <sf:NIF>93074269P</sf:NIF>
+                </sf:ObligadoEmision>
+            </sfLR:Cabecera>
+            <sfLR:RegistroFactura>
+                <sfLR:RegistroAlta>
+                    <sf:IDVersion>1.0</sf:IDVersion>
+                    <sf:IDFactura>
+                        <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
+                        <sf:NumSerieFactura>INV/2024/00002</sf:NumSerieFactura>
+                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                    </sf:IDFactura>
+                    <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
+                    <sf:TipoFactura>F1</sf:TipoFactura>
+                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
+					<sf:Destinatarios>
+						<sf:IDDestinatario>
+							<sf:NombreRazon>Pal Arinsal</sf:NombreRazon>
+							<sf:IDOtro>
+								<sf:CodigoPais>AD</sf:CodigoPais>
+								<sf:IDType>04</sf:IDType>
+								<sf:ID>L789987Z</sf:ID>
+							</sf:IDOtro>
+						</sf:IDDestinatario>
+					</sf:Destinatarios>
+					<sf:Desglose>
+						<sf:DetalleDesglose>
+							<sf:ClaveRegimen>02</sf:ClaveRegimen>
+							<sf:OperacionExenta>E2</sf:OperacionExenta>
+							<sf:BaseImponibleOimporteNoSujeto>4000.00</sf:BaseImponibleOimporteNoSujeto>
+						</sf:DetalleDesglose>
+					</sf:Desglose>
+					<sf:CuotaTotal>0.00</sf:CuotaTotal>
+					<sf:ImporteTotal>4000.00</sf:ImporteTotal>
+                    <sf:Encadenamiento>
+                        <sf:PrimerRegistro>S</sf:PrimerRegistro>
+                    </sf:Encadenamiento>
+                    <sf:SistemaInformatico>
+                        <sf:NombreRazon>ODOO BINOVO</sf:NombreRazon>
+                        <sf:NIF>19960488F</sf:NIF>
+                        <sf:NombreSistemaInformatico>BINOVOFACTU</sf:NombreSistemaInformatico>
+                        <sf:IdSistemaInformatico>22</sf:IdSistemaInformatico>
+                        <sf:Version>16.0</sf:Version>
+                        <sf:NumeroInstalacion>123</sf:NumeroInstalacion>
+                        <sf:TipoUsoPosibleSoloVerifactu>S</sf:TipoUsoPosibleSoloVerifactu>
+                        <sf:TipoUsoPosibleMultiOT>S</sf:TipoUsoPosibleMultiOT>
+                        <sf:IndicadorMultiplesOT>N</sf:IndicadorMultiplesOT>
+                    </sf:SistemaInformatico>
+                    <sf:FechaHoraHusoGenRegistro>___ignore___</sf:FechaHoraHusoGenRegistro>
+                    <sf:TipoHuella>01</sf:TipoHuella>
+                    <sf:Huella>___ignore___</sf:Huella>
+                </sfLR:RegistroAlta>
+            </sfLR:RegistroFactura>
+        </sfLR:RegFactuSistemaFacturacion>
+    </soapenv:Body>
+</soapenv:Envelope>
+""".encode(
+    "utf-8"
+)

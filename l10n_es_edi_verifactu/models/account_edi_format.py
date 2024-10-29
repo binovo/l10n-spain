@@ -344,13 +344,11 @@ class AccountEdiFormat(models.Model):
         }
 
     @staticmethod
-    def _get_verifactu_es_vat_lines(vat_breakdown):
+    def _get_verifactu_vat_lines(vat_breakdown):
         subject_lines = []
         no_subject_lines = []
-        subject_breakdown = vat_breakdown.get("DesgloseFactura").get("Sujeta", False)
-        no_subject_breakdown = vat_breakdown.get("DesgloseFactura").get(
-            "NoSujeta", False
-        )
+        subject_breakdown = vat_breakdown.get("Sujeta", False)
+        no_subject_breakdown = vat_breakdown.get("NoSujeta", False)
         tax_amount = 0
         if subject_breakdown:
             if subject_breakdown.get("NoExenta", False):
@@ -375,12 +373,13 @@ class AccountEdiFormat(models.Model):
             if subject_breakdown.get("Exenta", False):
                 tax_details = subject_breakdown.get("Exenta").get("DetalleExenta")
                 for tax_detail in tax_details:
+                    exempt_reason = tax_detail.get("CausaExencion")
                     subject_lines.append(
                         {
                             "base": tax_detail.get("BaseImponible"),
                             "rate": 0,
-                            "vatOperation": tax_detail.get("CausaExencion"),
-                            "vatKey": "01",
+                            "vatOperation": exempt_reason,
+                            "vatKey": "01" if exempt_reason != "E2" else "02",
                         }
                     )
         if no_subject_breakdown:
@@ -411,17 +410,6 @@ class AccountEdiFormat(models.Model):
                     }
                 )
         return tax_amount, subject_lines + no_subject_lines
-
-    @staticmethod
-    def _get_verifactu_eu_extra_com_vat_lines(vat_breakdown):
-        raise NotImplementedError()
-
-    @api.model
-    def _get_verifactu_vat_lines(self, invoice, vat_breakdown):
-        if invoice.commercial_partner_id.country_id.code == "ES":
-            return self._get_verifactu_es_vat_lines(vat_breakdown)
-        else:
-            return self._get_verifactu_eu_extra_com_vat_lines(vat_breakdown)
 
     @staticmethod
     def _get_verifactu_previous_id(previous_invoice):
@@ -483,18 +471,25 @@ class AccountEdiFormat(models.Model):
                 json_input["invoice"]["creditNote"] = self._get_verifactu_credit_note(
                     invoice
                 )
-            invoice_info_list = self._l10n_es_edi_get_invoices_info(invoice)
-            if invoice_info_list:
-                edi_sii_invoice_node = self._l10n_es_edi_get_invoices_info(invoice)[
-                    0
-                ].get("FacturaExpedida")
+            tax_details_info_vals = self._l10n_es_edi_get_invoices_tax_details_info(
+                invoice
+            )
+            if tax_details_info_vals:
+                sign = -1 if invoice.move_type == "out_refund" else 1
+                total_amount = round(
+                    sign
+                    * (
+                        tax_details_info_vals["tax_details"]["base_amount"]
+                        + tax_details_info_vals["tax_details"]["tax_amount"]
+                        - tax_details_info_vals["tax_amount_retention"]
+                    ),
+                    2,
+                )
                 tax_amount, vat_lines = self._get_verifactu_vat_lines(
-                    invoice, edi_sii_invoice_node.get("TipoDesglose")
+                    tax_details_info_vals.get("tax_details_info")
                 )
                 json_input["invoice"]["vatLines"] = vat_lines
-                json_input["invoice"]["total"] = edi_sii_invoice_node.get(
-                    "ImporteTotal"
-                )
+                json_input["invoice"]["total"] = total_amount
                 json_input["invoice"]["amount"] = tax_amount
             previous_invoice = (
                 invoice.company_id.get_l10n_es_verifactu_last_posted_invoice()
@@ -597,11 +592,6 @@ class AccountEdiFormat(models.Model):
     @staticmethod
     def _ensure_verifactu_supported_invoice(invoice):
         # TODO Not supported invoices that actually we should support
-        # 1. Non Spanish customers
-        if not invoice.partner_id.country_id.code == "ES":
-            raise ValidationError(
-                _("Verifactu: non Spanish customer invoices are not supported.")
-            )
         # 3. Simplified invoices
         simplified_partner = invoice.env.ref("l10n_es_edi_sii.partner_simplified")
         is_simplified = invoice.partner_id == simplified_partner

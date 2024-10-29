@@ -10,4 +10,22 @@
         <field name="state_id" ref="base.state_es_ss"/>
         <field name="vat">ES46764649Z</field>
     </record>
+    <record id="l10n_es_verifactu_partner_fr" model="res.partner">
+        <field name="name">Allez Les Bleus</field>
+        <field name="is_company" eval="True"/>
+        <field name="street">Une rue 1</field>
+        <field name="city">Paris</field>
+        <field name="zip">111222</field>
+        <field name="country_id" ref="base.fr"/>
+        <field name="vat">FR05677404089</field>
+    </record>
+    <record id="l10n_es_verifactu_partner_ad" model="res.partner">
+        <field name="name">Pal Arinsal</field>
+        <field name="is_company" eval="True"/>
+        <field name="street">Un carrer, 1</field>
+        <field name="city">Andorra La Vella</field>
+        <field name="zip">AD900</field>
+        <field name="country_id" ref="base.ad"/>
+        <field name="vat">L789987Z</field>
+    </record>
 </odoo>

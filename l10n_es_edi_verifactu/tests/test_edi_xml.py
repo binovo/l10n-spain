@@ -14,6 +14,8 @@ from ..models.account_edi_format import NAMESPACE_SFLR_INFO, TEST_AEAT_VERIFACTU
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
     REFUND_INVOICE_XML_POST,
+    EU_INVOICE_XML_POST,
+    NON_EU_INVOICE_XML_POST,
 )
 
 
@@ -81,6 +83,84 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 }
             )
         )
+        self.eu_invoice = (
+            self.env["account.move"]
+            .with_context(edi_test_mode=True)
+            .create(
+                {
+                    "move_type": "out_invoice",
+                    "partner_id": self.env.ref(
+                        "l10n_es_edi_verifactu.l10n_es_verifactu_partner_fr"
+                    ).id,
+                    "fiscal_position_id": self.env.ref(
+                        f"l10n_es.{self.env.company.id}_fp_intra"
+                    ).id,
+                    "invoice_date": self.operation_date,
+                    "invoice_line_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "product_id": self.env.ref(
+                                    "product.product_product_7"
+                                ).id,
+                                "price_unit": 1000.0,
+                                "quantity": 5,
+                                "discount": 20.0,
+                                "tax_ids": [
+                                    (
+                                        6,
+                                        0,
+                                        self.env.ref(
+                                            f"l10n_es.{self.env.company.id}_account_tax_template_s_iva0_ic"
+                                        ).ids,
+                                    )
+                                ],
+                            },
+                        ),
+                    ],
+                }
+            )
+        )
+        self.non_eu_invoice = (
+            self.env["account.move"]
+            .with_context(edi_test_mode=True)
+            .create(
+                {
+                    "move_type": "out_invoice",
+                    "partner_id": self.env.ref(
+                        "l10n_es_edi_verifactu.l10n_es_verifactu_partner_ad"
+                    ).id,
+                    "fiscal_position_id": self.env.ref(
+                        f"l10n_es.{self.env.company.id}_fp_extra"
+                    ).id,
+                    "invoice_date": self.operation_date,
+                    "invoice_line_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "product_id": self.env.ref(
+                                    "product.product_product_7"
+                                ).id,
+                                "price_unit": 1000.0,
+                                "quantity": 5,
+                                "discount": 20.0,
+                                "tax_ids": [
+                                    (
+                                        6,
+                                        0,
+                                        self.env.ref(
+                                            f"l10n_es.{self.env.company.id}_account_tax_template_s_iva0_e"
+                                        ).ids,
+                                    )
+                                ],
+                            },
+                        ),
+                    ],
+                }
+            )
+        )
 
     def test_check_move_configuration(self):
         self.env.ref(
@@ -96,6 +176,7 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
 
     def test_create_spanish_recipient_national_fp(self):
         with freeze_time(self.operation_date):
+            self.spanish_invoice.action_post()
             verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
                 self.spanish_invoice
             )
@@ -149,6 +230,48 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 prefix="l10n_es_verifactu",
             )
             xml_expected = etree.fromstring(REFUND_INVOICE_XML_POST)
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_create_eu_recipient_intra_fp(self):
+        with freeze_time(self.operation_date):
+            self.eu_invoice.action_post()
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                self.eu_invoice
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(EU_INVOICE_XML_POST)
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_create_non_eu_invoice_invoice(self):
+        with freeze_time(self.operation_date):
+            self.non_eu_invoice.action_post()
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                self.non_eu_invoice
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(NON_EU_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
 
     def test_qr_url(self):
