@@ -126,8 +126,60 @@ class AccountEdiFormat(models.Model):
         return res
 
     def _l10n_es_edi_verifactu_cancel_invoice(self, invoice):
-        # TODO cancellation of invoices
-        raise NotImplementedError("")
+        # EXTENDS account_edi
+        if self.code != "es_verifactu":
+            return super()._cancel_invoice_edi(invoice)
+
+        # Generate the XML values.
+        verifactu_cancel_xml = self._l10n_es_verifactu_get_xml(invoice, cancel=True)
+
+        # Store the XML as attachment to ensure it is never lost (even in case of timeout error)
+        invoice.update_l10n_es_edi_verifactu_xml(verifactu_cancel_xml, True)
+
+        # Call the web service and get response
+        res = self._l10n_es_verifactu_post_to_web_service(invoice, cancel=True)
+        if res[invoice].get("response"):
+            test_suffix = (
+                _("(test mode)") if invoice.company_id.l10n_es_edi_test_env else ""
+            )
+            invoice.with_context(no_new_invoice=True).message_post(
+                body=_(
+                    "<pre>Verifactu: posted cancellation XML response %(test_suffix)s</pre>"
+                )
+                % {"test_suffix": test_suffix},
+                attachments=[
+                    (
+                        invoice.name + "_verifactu_cancel_post_response.xml",
+                        etree.tostring(res[invoice].get("response"), encoding="UTF-8"),
+                        {"mimetype": "application/xml"},
+                    )
+                ],
+            )
+        # Create attachment, post and save as EDI DOC
+        attachment = self.env["ir.attachment"].create(
+            {
+                "name": invoice.name + "_verifactu_cancel_post.xml",
+                "datas": invoice.l10n_es_edi_verifactu_cancel_xml,
+                "mimetype": "application/xml",
+                "res_id": invoice.id,
+                "res_model": "account.move",
+            }
+        )
+        test_suffix = (
+            _("(test mode)") if invoice.company_id.l10n_es_edi_test_env else ""
+        )
+        invoice.with_context(no_new_invoice=True).message_post(
+            body=Markup(
+                _(
+                    "<pre>Verifactu: posted cancellation XML {test_suffix}\n{message}</pre>"
+                )
+            ).format(
+                test_suffix=test_suffix, message=res[invoice].get("message", "XXX")
+            ),
+            attachment_ids=[attachment.id],
+        )
+        res[invoice]["attachment"] = attachment
+        return res
 
     def _l10n_es_verifactu_get_xml(self, invoice, cancel=False):
         """l10n_es_edi_verifactu: generates the XML"""
@@ -136,6 +188,7 @@ class AccountEdiFormat(models.Model):
         if xml_root_node is not None:
             return xml_root_node
         # Otherwise, generate a new XML
+        self._ensure_verifactu_supported_invoice(invoice)
         errors = self._ensure_verifactu_software_settings(
             invoice
         ) + self._ensure_verifactu_invoice_data(invoice)
@@ -143,7 +196,7 @@ class AccountEdiFormat(models.Model):
             raise UserError(
                 _("Invalid invoice configuration:\n\n%s") % "\n".join(errors)
             )
-        invoice_records_xml = self.cmd_get_verifactu_xml(invoice)
+        invoice_records_xml = self.cmd_get_verifactu_xml(invoice, cancel=cancel)
         root_records = etree.fromstring(invoice_records_xml)
         xml_root_node = etree.fromstring(VERIFACTU_XML_ENVELOPE)
         issuer_name_node = xml_root_node.xpath(
@@ -179,7 +232,7 @@ class AccountEdiFormat(models.Model):
             # TODO post to verifactu production systems, not available yet
             raise NotImplementedError()
 
-    def _l10n_es_verifactu_post_to_web_service(self, invoice):
+    def _l10n_es_verifactu_post_to_web_service(self, invoice, cancel=False):
         try:
             session = requests.Session()
             company_pkcs12 = invoice.company_id.l10n_es_edi_certificate_id
@@ -187,7 +240,7 @@ class AccountEdiFormat(models.Model):
             session.mount("https://", PatchedHTTPAdapter())
             headers = {"Content-Type": "text/xml; charset=utf-8"}
             data = etree.tostring(
-                invoice.get_l10n_es_edi_verifactu_xml(), encoding="UTF-8"
+                invoice.get_l10n_es_edi_verifactu_xml(cancel=cancel), encoding="UTF-8"
             )
             response = session.request(
                 "post",
@@ -291,13 +344,15 @@ class AccountEdiFormat(models.Model):
 
     @staticmethod
     def _get_verifactu_invoice_id(invoice, cancel=False):
-        issued_time = datetime.now().isoformat()
+        issued_time = (
+            datetime.now().isoformat()
+            if not cancel
+            else invoice.get_verifactu_issued_time_from_xml()
+        )
         if cancel:
             xml_issued_time = invoice.get_verifactu_issued_time_from_xml()
             if xml_issued_time:
-                issued_time = datetime.strptime(xml_issued_time, "%d-%m-%Y").strftime(
-                    "%Y-%m-%dT%H:%M:%SZ"
-                )
+                issued_time = xml_issued_time
         return {
             "number": invoice.name[:60],
             "issuedTime": issued_time,
@@ -414,17 +469,12 @@ class AccountEdiFormat(models.Model):
     @staticmethod
     def _get_verifactu_previous_id(previous_invoice):
         previous_issuer_id = previous_invoice.get_verifactu_issuer_vat_from_xml() or ""
-        previous_issued_time = ""
         xml_issued_time = previous_invoice.get_verifactu_issued_time_from_xml()
-        if xml_issued_time:
-            previous_issued_time = datetime.strptime(
-                xml_issued_time, "%d-%m-%Y"
-            ).strftime("%Y-%m-%dT%H:%M:%SZ")
         previous_hash = previous_invoice.get_verifactu_hash_from_xml() or ""
         return {
             "number": previous_invoice.name,
             "issuerIrsId": previous_issuer_id,
-            "issuedTime": previous_issued_time,
+            "issuedTime": xml_issued_time if xml_issued_time else "",
             "hash": previous_hash,
         }
 
@@ -502,8 +552,22 @@ class AccountEdiFormat(models.Model):
                 self._attach_verifactu_xmlgen_json_input(json_input, invoice)
             return json_input
         elif invoice and cancel:
-            # TODO invoice cancellation
-            raise NotImplementedError(_("Verifactu: invoice cancel not supported yet."))
+            json_input = {
+                "invoice": {
+                    "issuer": self._get_verifactu_issuer(invoice),
+                    "id": self._get_verifactu_invoice_id(invoice, cancel),
+                }
+            }
+            previous_invoice = (
+                invoice.company_id.get_l10n_es_verifactu_last_posted_invoice()
+            )
+            if previous_invoice:
+                json_input["previousId"] = self._get_verifactu_previous_id(
+                    previous_invoice
+                )
+            if attach:
+                self._attach_verifactu_xmlgen_json_input(json_input, invoice)
+            return json_input
         else:
             raise ValidationError(_("Verifactu: invoice needed."))
 

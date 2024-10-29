@@ -94,13 +94,11 @@ class AccountMove(models.Model):
         xml_root_node = self.get_l10n_es_edi_verifactu_xml()
         if xml_root_node is not None:
             xml_issued_time = xml_root_node.xpath(
-                ".//sf:IDFactura/sf:NumSerieFactura[text()='%s']/following::sf:FechaExpedicionFactura"
-                % self.name,
-                namespaces=NAMESPACE_SF_INFO,
+                ".//sf:FechaHoraHusoGenRegistro", namespaces=NAMESPACE_SF_INFO
             )[0].text
             return xml_issued_time
         else:
-            return xml_root_node
+            return None
 
     def get_verifactu_hash_from_xml(self):
         self.ensure_one()

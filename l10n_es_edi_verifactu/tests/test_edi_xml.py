@@ -16,6 +16,7 @@ from .test_xml_post_data import (
     REFUND_INVOICE_XML_POST,
     EU_INVOICE_XML_POST,
     NON_EU_INVOICE_XML_POST,
+    CANCEL_SPANISH_INVOICE_XML_POST,
 )
 
 
@@ -272,6 +273,29 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 prefix="l10n_es_verifactu",
             )
             xml_expected = etree.fromstring(NON_EU_INVOICE_XML_POST)
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_cancel_spanish_recipient_national_fp(self):
+        with freeze_time(self.operation_date):
+            self.env.ref("l10n_es_edi_verifactu.edi_es_verifactu").with_context(
+                l10n_es_verifactu_get_xml=True
+            )._check_move_configuration(self.spanish_invoice)
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                self.spanish_invoice, cancel=True
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(CANCEL_SPANISH_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
 
     def test_qr_url(self):

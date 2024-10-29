@@ -284,3 +284,56 @@ NON_EU_INVOICE_XML_POST = """
 """.encode(
     "utf-8"
 )
+
+CANCEL_SPANISH_INVOICE_XML_POST = """
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:sfLR="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+    xmlns:sf="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sfLR:RegFactuSistemaFacturacion>
+            <sfLR:Cabecera>
+                <sf:ObligadoEmision>
+                    <sf:NombreRazon>Binovo IT Human Project</sf:NombreRazon>
+                    <sf:NIF>93074269P</sf:NIF>
+                </sf:ObligadoEmision>
+            </sfLR:Cabecera>
+            <sfLR:RegistroFactura>
+                <sfLR:RegistroAnulacion>
+                    <sf:IDVersion>1.0</sf:IDVersion>
+                    <sf:IDFactura>
+                        <sf:IDEmisorFacturaAnulada>93074269P</sf:IDEmisorFacturaAnulada>
+                        <sf:NumSerieFacturaAnulada>INV/2024/00001</sf:NumSerieFacturaAnulada>
+                        <sf:FechaExpedicionFacturaAnulada>___ignore___</sf:FechaExpedicionFacturaAnulada>
+                    </sf:IDFactura>
+                    <sf:Encadenamiento>
+                        <sf:RegistroAnterior>
+                            <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
+                            <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
+                            <sf:FechaExpedicionFactura>___ignore___</sf:FechaExpedicionFactura>
+                            <sf:Huella>___ignore___</sf:Huella>
+                        </sf:RegistroAnterior>
+                    </sf:Encadenamiento>
+                    <sf:SistemaInformatico>
+                        <sf:NombreRazon>ODOO BINOVO</sf:NombreRazon>
+                        <sf:NIF>19960488F</sf:NIF>
+                        <sf:NombreSistemaInformatico>BINOVOFACTU</sf:NombreSistemaInformatico>
+                        <sf:IdSistemaInformatico>22</sf:IdSistemaInformatico>
+                        <sf:Version>16.0</sf:Version>
+                        <sf:NumeroInstalacion>123</sf:NumeroInstalacion>
+                        <sf:TipoUsoPosibleSoloVerifactu>S</sf:TipoUsoPosibleSoloVerifactu>
+                        <sf:TipoUsoPosibleMultiOT>S</sf:TipoUsoPosibleMultiOT>
+                        <sf:IndicadorMultiplesOT>N</sf:IndicadorMultiplesOT>
+                    </sf:SistemaInformatico>
+                    <sf:FechaHoraHusoGenRegistro>___ignore___</sf:FechaHoraHusoGenRegistro>
+                    <sf:TipoHuella>01</sf:TipoHuella>
+                    <sf:Huella>___ignore___</sf:Huella>
+                </sfLR:RegistroAnulacion>
+            </sfLR:RegistroFactura>
+        </sfLR:RegFactuSistemaFacturacion>
+    </soapenv:Body>
+</soapenv:Envelope>
+""".encode(
+    "utf-8"
+)
