@@ -15,6 +15,11 @@
         "views/report_invoice.xml",
         "views/res_config_settings_views.xml",
     ],
+    'assets': {
+        'web.report_assets_common': [
+            'l10n_es_edi_verifactu/static/src/css/report.css',
+        ],
+    },
     "demo": ["demo/demo.xml"],
     "author": "Binovo," "Odoo Community Association (OCA)",
     "maintainers": ["Binovo"],

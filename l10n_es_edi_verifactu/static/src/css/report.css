@@ -1,0 +1,8 @@
+
+.verifactu-qr {
+    float: left;
+}
+
+div[name="shipping_address_block"] {
+    float: right;
+}
