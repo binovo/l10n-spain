@@ -5,4 +5,5 @@
 
 div[name="shipping_address_block"] {
     float: right;
+    max-width: 250px;
 }
