@@ -7,6 +7,7 @@
 # Copyright 2018 PESOL - Angel Moya <info@pesol.es>
 # Copyright 2019 Tecnativa - Carlos Dauden
 # Copyright 2014-2022 Tecnativa - Pedro M. Baeza
+# Copyright 2023 FactorLibre - Alejandro Ji Cheung
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import datetime
@@ -589,7 +590,6 @@ class L10nEsAeatMod347PartnerRecord(models.Model):
         self.write({"state": "confirmed"})
 
     def action_send(self):
-        self.write({"state": "sent"})
         self.ensure_one()
         template = self._get_partner_report_email_template()
         compose_form = self.env.ref("mail.email_compose_message_wizard_form")
@@ -629,9 +629,12 @@ class L10nEsAeatMod347PartnerRecord(models.Model):
 
     def send_email_direct(self):
         template = self._get_partner_report_email_template()
-        for record in self:
-            template.send_mail(record.id)
-        self.write({"state": "sent"})
+        for rec in self:
+            address_id = rec.partner_id.address_get(["invoice"])["invoice"]
+            address = self.env["res.partner"].browse(address_id)
+            if address.email:
+                template.send_mail(rec.id)
+                rec.state = "sent"
 
     def action_pending(self):
         self.write({"state": "pending"})
