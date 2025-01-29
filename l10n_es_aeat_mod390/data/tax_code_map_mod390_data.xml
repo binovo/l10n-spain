@@ -1363,23 +1363,6 @@
             (4, ref('l10n_es.account_tax_template_s_iva0')),
             (4, ref('l10n_es.account_tax_template_s_iva0_ns')),]"/>
     </record>
-    <record id="aeat_mod390_map_line_110" model="l10n.es.aeat.map.tax.line">
-        <field name="map_parent_id" ref="aeat_mod390_map" />
-        <field name="field_number">110</field>
-        <field
-            name="name"
-        >Operaciones no sujetas por regla de localización (excepto las incluidas en la casilla 126)</field>
-        <field name="move_type">all</field>
-        <field name="field_type">base</field>
-        <field name="sum_type">both</field>
-        <field name="inverse" eval="False" />
-        <field
-            name="tax_ids"
-            eval="[
-            (4, ref('l10n_es.account_tax_template_s_iva_e')),
-            (4, ref('l10n_es.account_tax_template_s_iva_ns')),
-            (4, ref('l10n_es.account_tax_template_s_iva_ns_b')),]"/>
-    </record>
     <record id="aeat_mod390_map_line_102" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
         <field name="field_number">102</field>
@@ -1390,7 +1373,7 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True" />
-        <field name="tax_ids" eval="[])]" />
+        <field name="tax_ids" eval="[(6, False, [])]" />
     </record>
     <record id="aeat_mod390_map_line_230" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -2596,7 +2579,7 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[])]"/>
+        <field name="tax_ids" eval="[(6, False, [])]"/>
     </record>
 
     <record id="aeat_mod390_map_line_230" model="l10n.es.aeat.map.tax.line">
