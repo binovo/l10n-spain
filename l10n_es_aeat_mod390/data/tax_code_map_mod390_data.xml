@@ -15,7 +15,9 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_02" model="l10n.es.aeat.map.tax.line">
@@ -28,8 +30,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_03" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -41,8 +44,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_04" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -54,8 +58,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_05" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -67,8 +72,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_06" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -80,8 +86,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_21" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -93,8 +100,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_22" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -106,8 +113,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_23" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -119,8 +126,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_24" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -132,8 +139,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_25" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -145,8 +152,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_26" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -158,8 +165,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_545" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -173,8 +180,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_546" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -188,8 +195,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_547" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -203,8 +210,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_548" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -218,8 +225,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_551" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -233,8 +240,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_552" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -248,8 +255,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_27" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -263,8 +270,13 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_28" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -278,8 +290,13 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_29_sale" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -291,8 +308,15 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5_a')),
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5s')),
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_29_purchase" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -304,8 +328,22 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ref('l10n_es.account_tax_template_p_iva4_sp_in'), ref('l10n_es.account_tax_template_p_iva4_ic_bi'), ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ref('l10n_es.account_tax_template_p_iva10_sp_in'), ref('l10n_es.account_tax_template_p_iva10_ic_bi'), ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ref('l10n_es.account_tax_template_p_iva21_sp_in'), ref('l10n_es.account_tax_template_p_iva21_ic_bi'), ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_30_sale" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -319,8 +357,15 @@
          S_IVA4B, S_IVA4S, S_IVA5B, S_IVA5S, S_IVA10B, S_IVA10S, S_IVA21B, S_IVA21S -->
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5_a')),
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5s')),
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_30_purchase" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -336,8 +381,22 @@
             P_IVA21_IC_BC, P_IVA21_SP_IN, P_IVA21_IC_BI, P_IVA21_SP_EX1, P_IVA21_ISP -->
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ref('l10n_es.account_tax_template_p_iva4_sp_in'), ref('l10n_es.account_tax_template_p_iva4_ic_bi'), ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ref('l10n_es.account_tax_template_p_iva10_sp_in'), ref('l10n_es.account_tax_template_p_iva10_ic_bi'), ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ref('l10n_es.account_tax_template_p_iva21_sp_in'), ref('l10n_es.account_tax_template_p_iva21_ic_bi'), ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_663" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -349,8 +408,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_req0')])]"
-        />
+            eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_s_req0')),]"/>
     </record>
     <record id="aeat_mod390_map_line_664" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -362,8 +421,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_req0')])]"
-        />
+            eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_s_req0')),]"/>
     </record>
     <record id="aeat_mod390_map_line_35" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -375,8 +434,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),]"/>
     </record>
     <record id="aeat_mod390_map_line_36" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -388,8 +447,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),]"/>
     </record>
     <record id="aeat_mod390_map_line_665" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -401,8 +460,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_req062')])]"
-        />
+            eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_s_req062')),]"/>
     </record>
     <record id="aeat_mod390_map_line_666" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -414,8 +473,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_req062')])]"
-        />
+            eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_s_req062')),]"/>
     </record>
     <record id="aeat_mod390_map_line_599" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -427,8 +486,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req014')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req014')),]"/>
     </record>
     <record id="aeat_mod390_map_line_600" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -440,8 +499,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req014')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req014')),]"/>
     </record>
     <record id="aeat_mod390_map_line_601" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -453,8 +512,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req52')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
     <record id="aeat_mod390_map_line_602" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -466,8 +525,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req52')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
     <record id="aeat_mod390_map_line_43" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -479,8 +538,10 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05'), ref('l10n_es.account_tax_template_s_req014'), ref('l10n_es.account_tax_template_s_req52')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),
+            (4, ref('l10n_es.account_tax_template_s_req014')),
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
     <record id="aeat_mod390_map_line_44" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -492,8 +553,10 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05'), ref('l10n_es.account_tax_template_s_req014'), ref('l10n_es.account_tax_template_s_req52')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),
+            (4, ref('l10n_es.account_tax_template_s_req014')),
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
     <record id="aeat_mod390_map_line_190" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -507,8 +570,11 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_191" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -522,8 +588,11 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_603" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -537,8 +606,11 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_604" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -552,8 +624,11 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_605" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -567,8 +642,11 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_606" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -582,8 +660,11 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_196" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -597,8 +678,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_197" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -612,8 +693,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_611" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -627,8 +708,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_612" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -642,8 +723,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_613" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -657,8 +738,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_614" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -672,8 +753,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_202" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -687,8 +768,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_203" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -702,8 +783,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_619" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -717,8 +798,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_620" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -732,8 +813,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_621" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -747,8 +828,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_622" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -762,8 +843,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_208" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -777,8 +858,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_209" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -792,8 +873,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_623" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -807,8 +888,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_624" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -822,8 +903,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_625" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -837,8 +918,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_626" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -852,8 +933,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_214" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -867,8 +948,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_215" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -882,8 +963,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_627" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -897,8 +978,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_628" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -912,8 +993,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_629" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -927,8 +1008,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_630" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -942,8 +1023,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_220" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -957,8 +1038,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_221" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -972,8 +1053,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_631" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -987,8 +1068,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_632" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1002,8 +1083,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_633" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1017,8 +1098,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_634" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1032,8 +1113,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bi'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi')),]"/>
     </record>
     <record id="aeat_mod390_map_line_587" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1047,8 +1128,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_588" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1062,8 +1143,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_635" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1077,8 +1158,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_636" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1092,8 +1173,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_637" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1107,8 +1188,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_638" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1122,8 +1203,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),]"/>
     </record>
     <record id="aeat_mod390_map_line_639" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1135,8 +1216,43 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_req05'), ref('l10n_es.account_tax_template_p_req014'), ref('l10n_es.account_tax_template_p_req52'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bi'), ref('l10n_es.account_tax_template_p_iva4_ibc'), ref('l10n_es.account_tax_template_p_iva4_ibi'), ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ref('l10n_es.account_tax_template_p_iva4_ic_bi'), ref('l10n_es.account_tax_template_p_iva4_sp_in'), ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bi'), ref('l10n_es.account_tax_template_p_iva10_ibc'), ref('l10n_es.account_tax_template_p_iva10_ibi'), ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ref('l10n_es.account_tax_template_p_iva10_ic_bi'), ref('l10n_es.account_tax_template_p_iva10_sp_in'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bi'), ref('l10n_es.account_tax_template_p_iva21_ibc'), ref('l10n_es.account_tax_template_p_iva21_ibi'), ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ref('l10n_es.account_tax_template_p_iva21_ic_bi'), ref('l10n_es.account_tax_template_p_iva21_sp_in'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_isp'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_req05')),
+            (4, ref('l10n_es.account_tax_template_p_req014')),
+            (4, ref('l10n_es.account_tax_template_p_req52')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_62" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1148,8 +1264,41 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_req05'), ref('l10n_es.account_tax_template_p_req014'), ref('l10n_es.account_tax_template_p_req52'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bi'), ref('l10n_es.account_tax_template_p_iva4_ibc'), ref('l10n_es.account_tax_template_p_iva4_ibi'), ref('l10n_es.account_tax_template_p_iva4_ic_bc'), ref('l10n_es.account_tax_template_p_iva4_ic_bi'), ref('l10n_es.account_tax_template_p_iva4_sp_in'), ref('l10n_es.account_tax_template_p_iva4_sp_ex'), ref('l10n_es.account_tax_template_p_iva4_isp'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bi'), ref('l10n_es.account_tax_template_p_iva10_ibc'), ref('l10n_es.account_tax_template_p_iva10_ibi'), ref('l10n_es.account_tax_template_p_iva10_ic_bc'), ref('l10n_es.account_tax_template_p_iva10_ic_bi'), ref('l10n_es.account_tax_template_p_iva10_sp_in'), ref('l10n_es.account_tax_template_p_iva10_sp_ex'), ref('l10n_es.account_tax_template_p_iva10_isp'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bi'), ref('l10n_es.account_tax_template_p_iva21_ibc'), ref('l10n_es.account_tax_template_p_iva21_ibi'), ref('l10n_es.account_tax_template_p_iva21_ic_bc'), ref('l10n_es.account_tax_template_p_iva21_ic_bi'), ref('l10n_es.account_tax_template_p_iva21_sp_in'), ref('l10n_es.account_tax_template_p_iva21_sp_ex'), ref('l10n_es.account_tax_template_p_iva21_isp'), ref('l10n_es.account_tax_template_p_iva4_isp')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_req05')),
+            (4, ref('l10n_es.account_tax_template_p_req014')),
+            (4, ref('l10n_es.account_tax_template_p_req52')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp')),]"/>
     </record>
     <record id="aeat_mod390_map_line_99" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1161,8 +1310,15 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es_extra_data.account_tax_template_s_iva5_a'), ref('l10n_es_extra_data.account_tax_template_s_iva5s'), ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5_a')),
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5s')),
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),]"/>
     </record>
     <record id="aeat_mod390_map_line_103" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1174,8 +1330,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva0_ic'), ref('l10n_es.account_tax_template_s_iva0_sp_i')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva0_ic')),
+            (4, ref('l10n_es.account_tax_template_s_iva0_sp_i')),]"/>
     </record>
     <record id="aeat_mod390_map_line_104" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1189,8 +1346,8 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva0_e')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva0_e')),]"/>
     </record>
     <record id="aeat_mod390_map_line_105" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1202,8 +1359,9 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva0'), ref('l10n_es.account_tax_template_s_iva0_ns')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva0')),
+            (4, ref('l10n_es.account_tax_template_s_iva0_ns')),]"/>
     </record>
     <record id="aeat_mod390_map_line_110" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1217,8 +1375,10 @@
         <field name="inverse" eval="False" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva_e'), ref('l10n_es.account_tax_template_s_iva_ns'), ref('l10n_es.account_tax_template_s_iva_ns_b')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva_e')),
+            (4, ref('l10n_es.account_tax_template_s_iva_ns')),
+            (4, ref('l10n_es.account_tax_template_s_iva_ns_b')),]"/>
     </record>
     <record id="aeat_mod390_map_line_102" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1230,7 +1390,7 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True" />
-        <field name="tax_ids" eval="[(6, False, [])]" />
+        <field name="tax_ids" eval="[])]" />
     </record>
     <record id="aeat_mod390_map_line_230" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1242,8 +1402,8 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva0_bc'), ])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva0_bc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_109" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map" />
@@ -1275,8 +1435,10 @@
         <field name="inverse" eval="True" />
         <field
             name="tax_ids"
-            eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva0_nd'), ref('l10n_es.account_tax_template_p_iva10_nd'), ref('l10n_es.account_tax_template_p_iva4_nd')])]"
-        />
+            eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva0_nd')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_nd')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_nd')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_702" model="l10n.es.aeat.map.tax.line">
@@ -1287,7 +1449,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_iva5s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_703" model="l10n.es.aeat.map.tax.line">
@@ -1298,7 +1461,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_s_iva5s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_s_iva5s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_03" model="l10n.es.aeat.map.tax.line">
@@ -1309,7 +1473,9 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_04" model="l10n.es.aeat.map.tax.line">
@@ -1320,7 +1486,9 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_05" model="l10n.es.aeat.map.tax.line">
@@ -1331,7 +1499,9 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_06" model="l10n.es.aeat.map.tax.line">
@@ -1342,7 +1512,9 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_21" model="l10n.es.aeat.map.tax.line">
@@ -1353,7 +1525,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_22" model="l10n.es.aeat.map.tax.line">
@@ -1364,7 +1537,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_23" model="l10n.es.aeat.map.tax.line">
@@ -1375,7 +1549,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_24" model="l10n.es.aeat.map.tax.line">
@@ -1386,7 +1561,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_25" model="l10n.es.aeat.map.tax.line">
@@ -1397,7 +1573,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_26" model="l10n.es.aeat.map.tax.line">
@@ -1408,7 +1585,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_545" model="l10n.es.aeat.map.tax.line">
@@ -1419,7 +1597,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_546" model="l10n.es.aeat.map.tax.line">
@@ -1430,7 +1609,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_547" model="l10n.es.aeat.map.tax.line">
@@ -1441,7 +1621,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_548" model="l10n.es.aeat.map.tax.line">
@@ -1452,7 +1633,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_551" model="l10n.es.aeat.map.tax.line">
@@ -1463,7 +1645,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_552" model="l10n.es.aeat.map.tax.line">
@@ -1474,7 +1657,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in_2'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_27" model="l10n.es.aeat.map.tax.line">
@@ -1485,7 +1669,13 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva4_isp_2'), ref('l10n_es.account_tax_template_p_iva10_isp_2'), ref('l10n_es.account_tax_template_p_iva21_isp_2')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_2')),]"/>
 
     </record>
 
@@ -1497,7 +1687,13 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva4_isp_2'), ref('l10n_es.account_tax_template_p_iva10_isp_2'), ref('l10n_es.account_tax_template_p_iva21_isp_2')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_29_sale" model="l10n.es.aeat.map.tax.line">
@@ -1508,7 +1704,13 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_29_purchase" model="l10n.es.aeat.map.tax.line">
@@ -1519,7 +1721,22 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc_2'), ref('l10n_es.account_tax_template_p_iva4_sp_in_1'), ref('l10n_es.account_tax_template_p_iva4_ic_bi_2'), ref('l10n_es.account_tax_template_p_iva10_ic_bc_2'), ref('l10n_es.account_tax_template_p_iva10_sp_in_1'), ref('l10n_es.account_tax_template_p_iva10_ic_bi_2'), ref('l10n_es.account_tax_template_p_iva21_ic_bc_2'), ref('l10n_es.account_tax_template_p_iva21_sp_in_1'), ref('l10n_es.account_tax_template_p_iva21_ic_bi_2'), ref('l10n_es.account_tax_template_p_iva4_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva4_isp_1'), ref('l10n_es.account_tax_template_p_iva10_isp_1'), ref('l10n_es.account_tax_template_p_iva21_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_30_sale" model="l10n.es.aeat.map.tax.line">
@@ -1530,7 +1747,13 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_30_purchase" model="l10n.es.aeat.map.tax.line">
@@ -1541,7 +1764,22 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc_2'), ref('l10n_es.account_tax_template_p_iva4_sp_in_1'), ref('l10n_es.account_tax_template_p_iva4_ic_bi_2'), ref('l10n_es.account_tax_template_p_iva10_ic_bc_2'), ref('l10n_es.account_tax_template_p_iva10_sp_in_1'), ref('l10n_es.account_tax_template_p_iva10_ic_bi_2'), ref('l10n_es.account_tax_template_p_iva21_ic_bc_2'), ref('l10n_es.account_tax_template_p_iva21_sp_in_1'), ref('l10n_es.account_tax_template_p_iva21_ic_bi_2'), ref('l10n_es.account_tax_template_p_iva4_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_1'), ref('l10n_es.account_tax_template_p_iva4_isp_2'), ref('l10n_es.account_tax_template_p_iva10_isp_2'), ref('l10n_es.account_tax_template_p_iva21_isp_2')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_2')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_35" model="l10n.es.aeat.map.tax.line">
@@ -1552,7 +1790,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_36" model="l10n.es.aeat.map.tax.line">
@@ -1563,7 +1802,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_599" model="l10n.es.aeat.map.tax.line">
@@ -1574,7 +1814,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req014')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req014')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_600" model="l10n.es.aeat.map.tax.line">
@@ -1585,7 +1826,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req014')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req014')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_601" model="l10n.es.aeat.map.tax.line">
@@ -1596,7 +1838,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req52')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_602" model="l10n.es.aeat.map.tax.line">
@@ -1607,7 +1850,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req52')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_43" model="l10n.es.aeat.map.tax.line">
@@ -1618,7 +1862,10 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05'), ref('l10n_es.account_tax_template_s_req014'), ref('l10n_es.account_tax_template_s_req52')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),
+            (4, ref('l10n_es.account_tax_template_s_req014')),
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_44" model="l10n.es.aeat.map.tax.line">
@@ -1629,7 +1876,10 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_req05'), ref('l10n_es.account_tax_template_s_req014'), ref('l10n_es.account_tax_template_s_req52')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_req05')),
+            (4, ref('l10n_es.account_tax_template_s_req014')),
+            (4, ref('l10n_es.account_tax_template_s_req52')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_190" model="l10n.es.aeat.map.tax.line">
@@ -1640,7 +1890,11 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva4_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_191" model="l10n.es.aeat.map.tax.line">
@@ -1651,7 +1905,11 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva4_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_724" model="l10n.es.aeat.map.tax.line">
@@ -1662,7 +1920,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_p_iva5_sc')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_p_iva5_sc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_725" model="l10n.es.aeat.map.tax.line">
@@ -1673,7 +1932,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es_extra_data.account_tax_template_p_iva5_sc')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es_extra_data.account_tax_template_p_iva5_sc')),]"/>
     </record>
     <record id="aeat_mod390_map_line_603" model="l10n.es.aeat.map.tax.line">
         <field name="map_parent_id" ref="aeat_mod390_map"/>
@@ -1683,7 +1943,11 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva10_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_604" model="l10n.es.aeat.map.tax.line">
@@ -1694,7 +1958,11 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva10_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_605" model="l10n.es.aeat.map.tax.line">
@@ -1705,7 +1973,11 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva21_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_606" model="l10n.es.aeat.map.tax.line">
@@ -1716,7 +1988,11 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva21_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_196" model="l10n.es.aeat.map.tax.line">
@@ -1727,7 +2003,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_bi')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_197" model="l10n.es.aeat.map.tax.line">
@@ -1738,7 +2015,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_bi')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_611" model="l10n.es.aeat.map.tax.line">
@@ -1749,7 +2027,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_bi')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_612" model="l10n.es.aeat.map.tax.line">
@@ -1760,7 +2039,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_bi')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_613" model="l10n.es.aeat.map.tax.line">
@@ -1771,7 +2051,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_bi')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_614" model="l10n.es.aeat.map.tax.line">
@@ -1782,7 +2063,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_bi')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_202" model="l10n.es.aeat.map.tax.line">
@@ -1793,7 +2075,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_203" model="l10n.es.aeat.map.tax.line">
@@ -1804,7 +2087,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_619" model="l10n.es.aeat.map.tax.line">
@@ -1815,7 +2099,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_620" model="l10n.es.aeat.map.tax.line">
@@ -1826,7 +2111,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_621" model="l10n.es.aeat.map.tax.line">
@@ -1837,7 +2123,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_622" model="l10n.es.aeat.map.tax.line">
@@ -1848,7 +2135,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_208" model="l10n.es.aeat.map.tax.line">
@@ -1859,7 +2147,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibi'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_209" model="l10n.es.aeat.map.tax.line">
@@ -1870,7 +2159,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ibi'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_623" model="l10n.es.aeat.map.tax.line">
@@ -1881,7 +2171,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibi'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_624" model="l10n.es.aeat.map.tax.line">
@@ -1892,7 +2183,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ibi'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_625" model="l10n.es.aeat.map.tax.line">
@@ -1903,7 +2195,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibi'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_626" model="l10n.es.aeat.map.tax.line">
@@ -1914,7 +2207,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ibi'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_214" model="l10n.es.aeat.map.tax.line">
@@ -1925,7 +2219,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_215" model="l10n.es.aeat.map.tax.line">
@@ -1936,7 +2231,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bc_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_627" model="l10n.es.aeat.map.tax.line">
@@ -1947,7 +2243,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_628" model="l10n.es.aeat.map.tax.line">
@@ -1958,7 +2255,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bc_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_629" model="l10n.es.aeat.map.tax.line">
@@ -1969,7 +2267,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_630" model="l10n.es.aeat.map.tax.line">
@@ -1980,7 +2279,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bc_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_220" model="l10n.es.aeat.map.tax.line">
@@ -1991,7 +2291,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bi_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_221" model="l10n.es.aeat.map.tax.line">
@@ -2002,7 +2303,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_ic_bi_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_631" model="l10n.es.aeat.map.tax.line">
@@ -2013,7 +2315,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bi_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_632" model="l10n.es.aeat.map.tax.line">
@@ -2024,7 +2327,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_ic_bi_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_633" model="l10n.es.aeat.map.tax.line">
@@ -2035,7 +2339,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bi_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_634" model="l10n.es.aeat.map.tax.line">
@@ -2046,7 +2351,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_ic_bi_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_587" model="l10n.es.aeat.map.tax.line">
@@ -2057,7 +2363,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_588" model="l10n.es.aeat.map.tax.line">
@@ -2068,7 +2375,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva4_sp_in_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_635" model="l10n.es.aeat.map.tax.line">
@@ -2079,7 +2387,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_636" model="l10n.es.aeat.map.tax.line">
@@ -2090,7 +2399,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva10_sp_in_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_637" model="l10n.es.aeat.map.tax.line">
@@ -2101,7 +2411,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_638" model="l10n.es.aeat.map.tax.line">
@@ -2112,7 +2423,8 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva21_sp_in_1'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_639" model="l10n.es.aeat.map.tax.line">
@@ -2123,7 +2435,43 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_req05'), ref('l10n_es.account_tax_template_p_req014'), ref('l10n_es.account_tax_template_p_req52'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bi'), ref('l10n_es.account_tax_template_p_iva4_ibc'), ref('l10n_es.account_tax_template_p_iva4_ibi'), ref('l10n_es.account_tax_template_p_iva4_ic_bc_1'), ref('l10n_es.account_tax_template_p_iva4_ic_bi_1'), ref('l10n_es.account_tax_template_p_iva4_sp_in_2'), ref('l10n_es.account_tax_template_p_iva4_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva4_isp_1'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bi'), ref('l10n_es.account_tax_template_p_iva10_ibc'), ref('l10n_es.account_tax_template_p_iva10_ibi'), ref('l10n_es.account_tax_template_p_iva10_ic_bc_1'), ref('l10n_es.account_tax_template_p_iva10_ic_bi_1'), ref('l10n_es.account_tax_template_p_iva10_sp_in_2'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva10_isp_1'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bi'), ref('l10n_es.account_tax_template_p_iva21_ibc'), ref('l10n_es.account_tax_template_p_iva21_ibi'), ref('l10n_es.account_tax_template_p_iva21_ic_bc_1'), ref('l10n_es.account_tax_template_p_iva21_ic_bi_1'), ref('l10n_es.account_tax_template_p_iva21_sp_in_2'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva21_isp_1'), ref('l10n_es.account_tax_template_p_iva4_isp_1'), ref('l10n_es.account_tax_template_p_iva10_isp_1'), ref('l10n_es.account_tax_template_p_iva21_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_req05')),
+            (4, ref('l10n_es.account_tax_template_p_req014')),
+            (4, ref('l10n_es.account_tax_template_p_req52')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_62" model="l10n.es.aeat.map.tax.line">
@@ -2134,7 +2482,43 @@
         <field name="field_type">amount</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_req05'), ref('l10n_es.account_tax_template_p_req014'), ref('l10n_es.account_tax_template_p_req52'), ref('l10n_es.account_tax_template_p_iva4_bc'), ref('l10n_es.account_tax_template_p_iva4_sc'), ref('l10n_es.account_tax_template_p_iva4_bi'), ref('l10n_es.account_tax_template_p_iva4_ibc'), ref('l10n_es.account_tax_template_p_iva4_ibi'), ref('l10n_es.account_tax_template_p_iva4_ic_bc_1'), ref('l10n_es.account_tax_template_p_iva4_ic_bi_1'), ref('l10n_es.account_tax_template_p_iva4_sp_in_2'), ref('l10n_es.account_tax_template_p_iva4_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva4_isp_1'), ref('l10n_es.account_tax_template_p_iva10_bc'), ref('l10n_es.account_tax_template_p_iva10_sc'), ref('l10n_es.account_tax_template_p_iva10_bi'), ref('l10n_es.account_tax_template_p_iva10_ibc'), ref('l10n_es.account_tax_template_p_iva10_ibi'), ref('l10n_es.account_tax_template_p_iva10_ic_bc_1'), ref('l10n_es.account_tax_template_p_iva10_ic_bi_1'), ref('l10n_es.account_tax_template_p_iva10_sp_in_2'), ref('l10n_es.account_tax_template_p_iva10_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva10_isp_1'), ref('l10n_es.account_tax_template_p_iva21_bc'), ref('l10n_es.account_tax_template_p_iva21_sc'), ref('l10n_es.account_tax_template_p_iva21_bi'), ref('l10n_es.account_tax_template_p_iva21_ibc'), ref('l10n_es.account_tax_template_p_iva21_ibi'), ref('l10n_es.account_tax_template_p_iva21_ic_bc_1'), ref('l10n_es.account_tax_template_p_iva21_ic_bi_1'), ref('l10n_es.account_tax_template_p_iva21_sp_in_2'), ref('l10n_es.account_tax_template_p_iva21_sp_ex_2'), ref('l10n_es.account_tax_template_p_iva21_isp_1'), ref('l10n_es.account_tax_template_p_iva4_isp_1'), ref('l10n_es.account_tax_template_p_iva10_isp_1'), ref('l10n_es.account_tax_template_p_iva21_isp_1')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_req05')),
+            (4, ref('l10n_es.account_tax_template_p_req014')),
+            (4, ref('l10n_es.account_tax_template_p_req52')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bc_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_ic_bi_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_in_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bc_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_ic_bi_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_in_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_bi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibc')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ibi')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bc_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_ic_bi_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_in_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_sp_ex_2')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_isp_1')),
+            (4, ref('l10n_es.account_tax_template_p_iva21_isp_1')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_99" model="l10n.es.aeat.map.tax.line">
@@ -2145,7 +2529,13 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva21b'), ref('l10n_es.account_tax_template_s_iva21s'), ref('l10n_es.account_tax_template_s_iva10b'), ref('l10n_es.account_tax_template_s_iva10s'), ref('l10n_es.account_tax_template_s_iva4b'), ref('l10n_es.account_tax_template_s_iva4s')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva21b')),
+            (4, ref('l10n_es.account_tax_template_s_iva21s')),
+            (4, ref('l10n_es.account_tax_template_s_iva10b')),
+            (4, ref('l10n_es.account_tax_template_s_iva10s')),
+            (4, ref('l10n_es.account_tax_template_s_iva4b')),
+            (4, ref('l10n_es.account_tax_template_s_iva4s')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_103" model="l10n.es.aeat.map.tax.line">
@@ -2156,7 +2546,9 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva0_ic'), ref('l10n_es.account_tax_template_s_iva0_sp_i')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva0_ic')),
+            (4, ref('l10n_es.account_tax_template_s_iva0_sp_i')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_104" model="l10n.es.aeat.map.tax.line">
@@ -2167,7 +2559,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva0_e')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva0_e')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_105" model="l10n.es.aeat.map.tax.line">
@@ -2178,7 +2571,9 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva0'), ref('l10n_es.account_tax_template_s_iva0_ns')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva0')),
+            (4, ref('l10n_es.account_tax_template_s_iva0_ns')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_110" model="l10n.es.aeat.map.tax.line">
@@ -2189,7 +2584,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="False"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_s_iva_e')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_s_iva_e')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_102" model="l10n.es.aeat.map.tax.line">
@@ -2200,7 +2596,7 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [])]"/>
+        <field name="tax_ids" eval="[])]"/>
     </record>
 
     <record id="aeat_mod390_map_line_230" model="l10n.es.aeat.map.tax.line">
@@ -2211,7 +2607,8 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva0_bc'), ])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva0_bc')),]"/>
     </record>
 
     <record id="aeat_mod390_map_line_109" model="l10n.es.aeat.map.tax.line">
@@ -2244,7 +2641,10 @@
         <field name="field_type">base</field>
         <field name="sum_type">both</field>
         <field name="inverse" eval="True"/>
-        <field name="tax_ids" eval="[(6, False, [ref('l10n_es.account_tax_template_p_iva0_nd'), ref('l10n_es.account_tax_template_p_iva10_nd'), ref('l10n_es.account_tax_template_p_iva4_nd')])]"/>
+        <field name="tax_ids" eval="[
+            (4, ref('l10n_es.account_tax_template_p_iva0_nd')),
+            (4, ref('l10n_es.account_tax_template_p_iva10_nd')),
+            (4, ref('l10n_es.account_tax_template_p_iva4_nd')),]"/>
     </record>
 
 </odoo>
