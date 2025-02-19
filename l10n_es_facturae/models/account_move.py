@@ -4,6 +4,8 @@
 import base64
 from collections import defaultdict
 
+from markupsafe import Markup
+
 from odoo import _, api, fields, models, tools
 from odoo.exceptions import ValidationError
 from odoo.tools import html2plaintext
@@ -76,6 +78,14 @@ class AccountMove(models.Model):
     facturae_file_reference = fields.Char()
     facturae_receiver_transaction_reference = fields.Char()
     facturae_receiver_contract_reference = fields.Char()
+    facturae_withheld_reason = fields.Char(string="Withheld Reason")
+    facturae_withheld_percent = fields.Float(string="Withheld Percent")
+    facturae_withheld_amount = fields.Monetary(
+        compute="_compute_facturae_withheld_amount",
+        store=True,
+        string="Withheld Amount",
+        readonly=False,
+    )
 
     @api.constrains("facturae_start_date", "facturae_end_date")
     def _check_facturae_date(self):
@@ -103,6 +113,13 @@ class AccountMove(models.Model):
                     "out_invoice",
                     "out_refund",
                 ]
+            )
+
+    @api.depends("amount_untaxed", "facturae_withheld_percent")
+    def _compute_facturae_withheld_amount(self):
+        for item in self.filtered("facturae"):
+            item.facturae_withheld_amount = (
+                item.amount_untaxed * item.facturae_withheld_percent
             )
 
     def get_exchange_rate(self, euro_rate, currency_rate):
@@ -262,7 +279,7 @@ class AccountMove(models.Model):
         return html2plaintext(self.narration)
 
     def _get_facturae_headers(self):
-        return 'xmlns:ds="http://www.w3.org/2000/09/xmldsig#"'
+        return Markup('xmlns:ds="http://www.w3.org/2000/09/xmldsig#"')
 
     def _facturae_has_extensions(self):
         return False
