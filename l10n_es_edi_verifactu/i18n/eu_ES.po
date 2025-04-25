@@ -374,3 +374,8 @@ msgstr "Bidaltzeke"
 #: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_account_edi_document__verifactu_state
 msgid "Verifactu State"
 msgstr "Verifactu egoera"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.ui.menu,name:l10n_es_edi_verifactu.menu_verifactu_legal_declaration
+msgid "Download legal declaration"
+msgstr "Deskargatu erantzukizun-adierazpena"

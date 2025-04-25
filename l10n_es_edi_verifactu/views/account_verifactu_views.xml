@@ -54,4 +54,24 @@
               action="l10n_es_edi_verifactu.action_account_edi_document_es_verifactu"
               groups="account.group_account_manager"/>
 
+    <record model="ir.actions.server" id="server_action_open_legal_declaration">
+        <field name="name">Verifactu legal declaration</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                "type": "ir.actions.act_url",
+                "url": '/l10n_es_edi_verifactu/static/doc/Legal_declaration_verifactu_%s.pdf' % env.user.lang,
+                "target": 'self'
+            }
+        </field>
+    </record>
+
+    <menuitem name="Download legal declaration"
+              parent="menu_account_l10n_es_edi_verifactu"
+              id="menu_verifactu_legal_declaration"
+              action="l10n_es_edi_verifactu.server_action_open_legal_declaration"
+              groups="account.group_account_manager"/>
+
 </odoo>
