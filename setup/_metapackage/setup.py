@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo-addon-delivery_gls_asm>=16.0dev,<16.1dev',
+        'odoo-addon-delivery_seur_atlas>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_account_asset>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_account_banking_sepa_fsdd>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_account_statement_import_n43>=16.0dev,<16.1dev',
@@ -65,6 +66,7 @@ setuptools.setup(
         'odoo-addon-l10n_es_ticketbai_api>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_ticketbai_api_batuz>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_ticketbai_batuz>=16.0dev,<16.1dev',
+        'odoo-addon-l10n_es_ticketbai_oss>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_toponyms>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_vat_book>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_vat_book_igic>=16.0dev,<16.1dev',
