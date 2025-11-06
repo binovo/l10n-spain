@@ -48,6 +48,7 @@ setuptools.setup(
         'odoo-addon-l10n_es_facturae_face>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_facturae_igic>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_igic>=16.0dev,<16.1dev',
+        'odoo-addon-l10n_es_igic_verifactu_oca>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_intrastat_report>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_irnr>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_irnr_sii>=16.0dev,<16.1dev',
@@ -77,6 +78,7 @@ setuptools.setup(
         'odoo-addon-l10n_es_vat_book_oss>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_vat_prorate>=16.0dev,<16.1dev',
         'odoo-addon-l10n_es_verifactu_oca>=16.0dev,<16.1dev',
+        'odoo-addon-l10n_es_verifactu_oca_oss>=16.0dev,<16.1dev',
         'odoo-addon-payment_redsys>=16.0dev,<16.1dev',
     ],
     classifiers=[
