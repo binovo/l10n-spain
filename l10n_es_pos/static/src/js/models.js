@@ -7,6 +7,7 @@ odoo.define('l10n_es_pos.models', function (require) {
     "use strict";
 
     var models = require('point_of_sale.models');
+    var logger = require("point_of_sale.logger");
 
     models.load_fields('pos.config', ['l10n_es_last_pos_order']);
 
@@ -21,6 +22,11 @@ odoo.define('l10n_es_pos.models', function (require) {
             var self = this;
             var orders = this.db.get_orders();
             var resIndex = orders.findIndex((p) => p.data.name == this.config.l10n_es_last_pos_order);
+            if (orders.length > 0) {
+                logger.info("l10nEsPpos -> after_load_server_data: PEDIDOS DUPLICADOS " + orders.length);
+                logger.info(orders);
+                logger.info("-----------------------------------------")
+            }
             orders.slice(0, resIndex + 1).forEach(o => self.db.remove_order(o.id));
             return pos_super.after_load_server_data.call(this);
         },
