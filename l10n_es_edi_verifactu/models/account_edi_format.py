@@ -5,14 +5,15 @@
 import base64
 import copy
 import json
+import os
 import requests
+import tempfile
 from base64 import b64encode
 from datetime import datetime
 from markupsafe import Markup
 from lxml import etree
 from odoo import models, api, _
 from odoo.exceptions import ValidationError, UserError
-from odoo.addons.l10n_es_edi_sii.models.account_edi_format import PatchedHTTPAdapter
 from ..lib.verifactu_xmlgen import verifactu_xmlgen
 from ..lib.verifactu_xmlgen import OPERATION_CREATE, OPERATION_CANCEL
 
@@ -236,23 +237,31 @@ class AccountEdiFormat(models.Model):
         try:
             session = requests.Session()
             company_pkcs12 = invoice.company_id.l10n_es_edi_certificate_id
-            session.cert = company_pkcs12
-            session.mount("https://", PatchedHTTPAdapter())
-            headers = {"Content-Type": "text/xml; charset=utf-8"}
-            data = etree.tostring(
-                invoice.get_l10n_es_edi_verifactu_xml(cancel=cancel), encoding="UTF-8"
+            cert_content, key_content, _certificate = (
+                company_pkcs12._decode_certificate()
             )
-            response = session.request(
-                "post",
-                self._l10n_es_verifactu_aeat_service_url(invoice),
-                data=data,
-                headers=headers,
-            )
-            (
-                success,
-                message,
-                response_xml,
-            ) = self._l10n_es_verifactu_process_post_response(response)
+            with tempfile.NamedTemporaryFile(
+                mode="wb"
+            ) as cert_file, tempfile.NamedTemporaryFile(mode="wb") as key_file:
+                cert_file.write(cert_content)
+                key_file.write(key_content)
+                cert_file.flush()
+                key_file.flush()
+                session.cert = (cert_file.name, key_file.name)
+                headers = {"Content-Type": "text/xml; charset=utf-8"}
+                data = etree.tostring(
+                    invoice.get_l10n_es_edi_verifactu_xml(cancel=cancel),
+                    encoding="UTF-8",
+                )
+                response = session.request(
+                    "post",
+                    self._l10n_es_verifactu_aeat_service_url(invoice),
+                    data=data,
+                    headers=headers,
+                )
+                success, message, response_xml = (
+                    self._l10n_es_verifactu_process_post_response(response)
+                )
         except (ValueError, requests.exceptions.RequestException) as e:
             return {
                 invoice: {
