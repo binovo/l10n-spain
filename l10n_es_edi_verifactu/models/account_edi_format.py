@@ -299,7 +299,8 @@ class AccountEdiFormat(models.Model):
         sent_state = response_xml.xpath(
             ".//tikR:EstadoEnvio", namespaces=NAMESPACE_TIK_RESPONSE
         )
-        message = _("Sent state: ") + sent_state[0].text + "\n"
+        sent_state_txt = sent_state[0].text if sent_state else ""
+        message = _("Sent state: ") + sent_state_txt + "\n"
         csv_code_node = response_xml.xpath(
             ".//tikR:CSV", namespaces=NAMESPACE_TIK_RESPONSE
         )
@@ -337,8 +338,7 @@ class AccountEdiFormat(models.Model):
             if error_code and error_code in ("3000", "3001"):
                 already_received = True
         response_success = (
-            sent_state[0].text in ("Correcto", "ParcialmenteCorrecto")
-            or already_received
+            sent_state_txt in ("Correcto", "ParcialmenteCorrecto") or already_received
         )
         return response_success, message, response_xml
 
