@@ -10,6 +10,7 @@ from .common import TestEdiVerifactuCommon
 from odoo.tests import tagged
 from odoo.tools.xml_utils import validate_xml_from_attachment
 from ..models.account_edi_format import NAMESPACE_SFLR_INFO, TEST_AEAT_VERIFACTU_QR_URL
+from ..models.res_partner import VERIFACTU_ID_TYPE
 
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
@@ -18,6 +19,7 @@ from .test_xml_post_data import (
     NON_EU_INVOICE_XML_POST,
     CANCEL_SPANISH_INVOICE_XML_POST,
     MULTI_CURRENCY_INVOICE_XML_POST,
+    PASSPORT_SPANISH_INVOICE_XML_POST,
 )
 
 
@@ -324,6 +326,34 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 prefix="l10n_es_verifactu",
             )
             xml_expected = etree.fromstring(NON_EU_INVOICE_XML_POST)
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_create_passport_spanish_recipient_national_fp(self):
+        with freeze_time(self.operation_date):
+            partner = self.env.ref(
+                "l10n_es_edi_verifactu.l10n_es_verifactu_partner_sp_uztapide"
+            )
+            partner.l10n_es_edi_verifactu_partner_id_type = VERIFACTU_ID_TYPE.get(
+                "passport"
+            )
+            partner.vat = "H5734582F"
+            self.spanish_invoice.action_post()
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                self.spanish_invoice
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(PASSPORT_SPANISH_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
 
     def test_create_multi_currency_invoice(self):

@@ -27,5 +27,6 @@
         <field name="zip">AD900</field>
         <field name="country_id" ref="base.ad"/>
         <field name="vat">L789987Z</field>
+        <field name="l10n_es_edi_verifactu_partner_id_type">04</field>
     </record>
 </odoo>

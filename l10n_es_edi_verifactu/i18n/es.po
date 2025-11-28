@@ -386,3 +386,73 @@ msgstr "Descargar la declaración de responsabilidad"
 #, python-format
 msgid "Fiscal position is required in invoice, you can set on partner %s"
 msgstr "La posición fiscal es obligatoria en las facturas, la puede establecer en el cliente %s también para próximas facturas."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "VAT number is missing on partner %s"
+msgstr "Falta configurar el NIF en el cliente %s"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__02
+msgid "VAT identification number"
+msgstr "NIF"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__03
+msgid "Passport"
+msgstr "Pasaporte"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__04
+msgid ""
+"Official identification document issued by the country or territory of "
+"residence"
+msgstr "Documento oficial de identificación expedido por el país o territorio de residencia"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__05
+msgid "Residence certificate"
+msgstr "Certificado de residencia"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__06
+msgid "Other document"
+msgstr "Otro documento probatorio"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_partner__l10n_es_edi_verifactu_partner_id_type
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_users__l10n_es_edi_verifactu_partner_id_type
+msgid "Verifactu Identification Type Code"
+msgstr "Tipo de identificación"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_partner.py:0
+#, python-format
+msgid "Identification type can only be NIF or Passport for Spanish partners."
+msgstr "El tipo de identificación para nacionales sólo puede ser NIF o Pasaporte."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_partner.py:0
+#, python-format
+msgid "Identification type can not be NIF for non-community partners."
+msgstr "El tipo de identificación para los extracomunitarios no puede ser NIF."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_partner.py:0
+#, python-format
+msgid ""
+"Partner Identification Number %s longer than expected. Should be 20 "
+"characters max.!"
+msgstr "Número de identificación %s más largo de lo esperado. Debería tener un máximo de 20 caracteres."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "ID Type is mandatory for non-community partners."
+msgstr "El tipo de identificación es obligatorio para los extracomunitarios."

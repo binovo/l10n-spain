@@ -386,3 +386,73 @@ msgstr "Deskargatu erantzukizun-adierazpena"
 #, python-format
 msgid "Fiscal position is required in invoice, you can set on partner %s"
 msgstr "Fakturetan nahitaezkoa da posizio fiskala, %s bezeroan ezar dezakezu hurrengo fakturetarako ere."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "VAT number is missing on partner %s"
+msgstr "%s bezeroan IFZ konfiguratzea falta da"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__02
+msgid "VAT identification number"
+msgstr "IFZ"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__03
+msgid "Passport"
+msgstr "Pasaportea"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__04
+msgid ""
+"Official identification document issued by the country or territory of "
+"residence"
+msgstr "Identifikazio-agiri ofiziala, bizi den herrialdeak edo lurraldeak emana."
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__05
+msgid "Residence certificate"
+msgstr "Bizileku-ziurtagiria"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_partner__l10n_es_edi_verifactu_partner_id_type__06
+msgid "Other document"
+msgstr "Beste frogagiri bat"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_partner__l10n_es_edi_verifactu_partner_id_type
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_users__l10n_es_edi_verifactu_partner_id_type
+msgid "Verifactu Identification Type Code"
+msgstr "Identifikazio-mota"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_partner.py:0
+#, python-format
+msgid "Identification type can only be NIF or Passport for Spanish partners."
+msgstr "Espainiar estatuko bezeroen identifikazio-mota IFZ edo pasaportea baino ezin da izan."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_partner.py:0
+#, python-format
+msgid "Identification type can not be NIF for non-community partners."
+msgstr "Europar Batasunetik kanpokoentzako identifikazio-mota ezin da IFZ izan."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_partner.py:0
+#, python-format
+msgid ""
+"Partner Identification Number %s longer than expected. Should be 20 "
+"characters max.!"
+msgstr "%s identifikazio-zenbakia uste baino luzeagoa. Gehienez 20 karaktere izan behar lituzke."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "ID Type is mandatory for non-community partners."
+msgstr "Identifikazio mota nahitaezkoa da Europar Batasunetik kanpokoentzat."

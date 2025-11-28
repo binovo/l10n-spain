@@ -385,11 +385,19 @@ class AccountEdiFormat(models.Model):
             "name": partner_id.name[:120],
             "country": partner_id.country_id.code,
         }
-        if partner_id.country_id.code == "ES":
+        if partner_id.is_spanish_nif():
             recipient["irsId"] = partner_info.get("NIF")
         else:
-            recipient["id"] = partner_info.get("IDOtro").get("ID")
-            recipient["idType"] = partner_info.get("IDOtro").get("IDType")
+            recipient_id = (
+                partner_info.get("NIF")
+                if partner_id.is_spanish()
+                else partner_info.get("IDOtro").get("ID")
+            )
+            recipient["id"] = recipient_id
+            recipient["idType"] = (
+                partner_id.l10n_es_edi_verifactu_partner_id_type
+                or partner_info.get("IDOtro").get("IDType")
+            )
         return recipient
 
     @staticmethod
@@ -672,6 +680,15 @@ class AccountEdiFormat(models.Model):
             errors.append(
                 _("Country is missing on partner %s", invoice.partner_id.name)
             )
+        if not invoice.partner_id.vat:
+            errors.append(
+                _("VAT number is missing on partner %s", invoice.partner_id.name)
+            )
+        if (
+            not invoice.partner_id.is_from_eu()
+            and not invoice.partner_id.l10n_es_edi_verifactu_partner_id_type
+        ):
+            raise ValidationError(_("ID Type is mandatory for non-community partners."))
         if not invoice.fiscal_position_id:
             errors.append(
                 _(

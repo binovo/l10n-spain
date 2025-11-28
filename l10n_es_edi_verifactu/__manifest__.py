@@ -5,7 +5,7 @@
 {
     "name": "Spain - Verifactu",
     "summary": "Spain - Verifactu",
-    "version": "16.0.1.3.0",
+    "version": "16.0.1.4.0",
     "depends": ["l10n_es_edi_sii"],
     "data": [
         "data/account_edi_data.xml",
@@ -14,6 +14,7 @@
         "views/account_verifactu_views.xml",
         "views/report_invoice.xml",
         "views/res_config_settings_views.xml",
+        "views/res_partner_views.xml",
     ],
     'assets': {
         'web.report_assets_common': [
