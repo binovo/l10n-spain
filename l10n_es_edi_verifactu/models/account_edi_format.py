@@ -61,6 +61,8 @@ NAMESPACE_TIK_RESPONSE = {
     "tikR": "https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/RespuestaSuministro.xsd"
 }
 
+NAMESPACE_SOAP = {"env": "http://schemas.xmlsoap.org/soap/envelope/"}
+
 
 class AccountEdiFormat(models.Model):
     _inherit = "account.edi.format"
@@ -293,6 +295,16 @@ class AccountEdiFormat(models.Model):
         except etree.XMLSyntaxError as e:
             return False, str(e) + "\n" + str(response.content or ""), None
 
+        # --- Check for SOAP Fault in Response ---
+        # This must be done first, as a fault response does not contain the tikR elements.
+        fault_string_node = response_xml.xpath(
+            ".//env:Fault/faultstring", namespaces=NAMESPACE_SOAP
+        )
+        if fault_string_node:
+            error_message = fault_string_node[0].text
+            return False, _("AEAT Error: ") + error_message, response_xml
+
+        # --- Standard tikR Response (RespuestaSuministro.xsd) ---
         already_received = False
         error_code = False
         error_message = False
