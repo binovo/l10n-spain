@@ -379,3 +379,10 @@ msgstr "Estado Verifactu"
 #: model:ir.ui.menu,name:l10n_es_edi_verifactu.menu_verifactu_legal_declaration
 msgid "Download legal declaration"
 msgstr "Descargar la declaración de responsabilidad"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Fiscal position is required in invoice, you can set on partner %s"
+msgstr "La posición fiscal es obligatoria en las facturas, la puede establecer en el cliente %s también para próximas facturas."

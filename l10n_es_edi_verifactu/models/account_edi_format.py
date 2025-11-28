@@ -672,6 +672,13 @@ class AccountEdiFormat(models.Model):
             errors.append(
                 _("Country is missing on partner %s", invoice.partner_id.name)
             )
+        if not invoice.fiscal_position_id:
+            errors.append(
+                _(
+                    "Fiscal position is required in invoice, you can set on partner %s",
+                    invoice.partner_id.name,
+                )
+            )
         return errors
 
     @staticmethod
