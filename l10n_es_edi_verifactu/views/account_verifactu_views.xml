@@ -60,11 +60,18 @@
         <field name="model_id" ref="model_account_move"/>
         <field name="state">code</field>
         <field name="code">
-            action = {
-                "type": "ir.actions.act_url",
-                "url": '/l10n_es_edi_verifactu/static/doc/Legal_declaration_verifactu_%s.pdf' % env.user.lang,
-                "target": 'self'
-            }
+if env.company.l10n_es_verifactu_legal_file:
+    action = {
+        "type": "ir.actions.act_url",
+        "url": '/web/content/res.company/%s/l10n_es_verifactu_legal_file?download=true&amp;filename_field=l10n_es_verifactu_legal_file_filename' % env.company.id,
+        "target": 'self'
+    }
+else:
+    action = {
+        "type": "ir.actions.act_url",
+        "url": '/l10n_es_edi_verifactu/static/doc/Declaracion_responsable_sistema_informatico_verifactu_odoo.docx',
+        "target": 'self'
+    }
         </field>
     </record>
 

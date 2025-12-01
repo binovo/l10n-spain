@@ -35,6 +35,12 @@ class ResConfigSettings(models.TransientModel):
         string="Version",
         config_parameter="l10n_es_edi_verifactu.verifactu_software_version",
     )
+    l10n_es_verifactu_legal_file = fields.Binary(
+        related="company_id.l10n_es_verifactu_legal_file", readonly=False
+    )
+    l10n_es_verifactu_legal_file_filename = fields.Char(
+        related="company_id.l10n_es_verifactu_legal_file_filename", readonly=False
+    )
 
     @api.constrains("config_verifactu_developer_name")
     def _check_config_verifactu_developer_name(self):

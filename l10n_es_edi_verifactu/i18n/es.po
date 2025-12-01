@@ -456,3 +456,14 @@ msgstr "Número de identificación %s más largo de lo esperado. Debería tener 
 #, python-format
 msgid "ID Type is mandatory for non-community partners."
 msgstr "El tipo de identificación es obligatorio para los extracomunitarios."
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_company__l10n_es_verifactu_legal_file
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_res_config_settings__l10n_es_verifactu_legal_file
+msgid "Legal declaration"
+msgstr "Declaración de responsabilidad"
+
+#. module: l10n_es_edi_verifactu
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.res_config_settings_view_form
+msgid "Download Legal File Template"
+msgstr "Descargar la plantilla"

@@ -43,6 +43,22 @@
                         <field name="config_verifactu_software_version"
                                attrs="{'required': [('l10n_es_verifactu_enabled', '!=', False)]}"/>
                     </div>
+                    <div class="content-group">
+                        <div class="d-flex align-items-center">
+                            <label for="l10n_es_verifactu_legal_file" class="o_light_label col-lg-3"/>
+                            <field name="l10n_es_verifactu_legal_file_filename" invisible="1" force_save="1"/>
+                            <field name="l10n_es_verifactu_legal_file" widget="binary" class="oe_inline" filename="l10n_es_verifactu_legal_file_filename"/>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="col-lg-3"/>
+                            <a attrs="{'invisible': [('l10n_es_verifactu_legal_file', '!=', False)]}"
+                               href="/l10n_es_edi_verifactu/static/doc/Declaracion_responsable_sistema_informatico_verifactu_odoo.docx"
+                               download="Legal_declaration_verifactu_template.docx"
+                               class="oe_link">
+                                Download Legal File Template
+                            </a>
+                        </div>
+                    </div>
                     <div class="content-group mt16"/>
                 </div>
             </xpath>

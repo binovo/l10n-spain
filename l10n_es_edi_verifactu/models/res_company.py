@@ -15,6 +15,8 @@ class Company(models.Model):
         readonly=True,
         copy=False,
     )
+    l10n_es_verifactu_legal_file = fields.Binary("Legal declaration")
+    l10n_es_verifactu_legal_file_filename = fields.Char()
 
     def get_l10n_es_verifactu_license_dict(self):
         # sudo() why: ir.config_parameter is only accessible for base.group_system
