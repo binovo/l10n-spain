@@ -385,7 +385,7 @@ class AccountEdiFormat(models.Model):
             "name": partner_id.name[:120],
             "country": partner_id.country_id.code,
         }
-        if partner_id.is_spanish_nif():
+        if partner_id.l10n_es_edi_verifactu_is_spanish_nif():
             recipient["irsId"] = partner_info.get("NIF")
         else:
             recipient_id = (

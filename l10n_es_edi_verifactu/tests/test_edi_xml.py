@@ -333,10 +333,14 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
             partner = self.env.ref(
                 "l10n_es_edi_verifactu.l10n_es_verifactu_partner_sp_uztapide"
             )
-            partner.l10n_es_edi_verifactu_partner_id_type = VERIFACTU_ID_TYPE.get(
-                "passport"
+            partner.with_context(test_not_verifactu_vat_partner_id_type=True).write(
+                {
+                    "l10n_es_edi_verifactu_partner_id_type": VERIFACTU_ID_TYPE.get(
+                        "passport"
+                    ),
+                    "vat": "H5734582F",
+                }
             )
-            partner.vat = "H5734582F"
             self.spanish_invoice.action_post()
             verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
                 self.spanish_invoice

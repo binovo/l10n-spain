@@ -4,6 +4,7 @@
 
 from odoo import models, fields, api, _
 from odoo import exceptions
+from odoo.tools import config
 
 VERIFACTU_ID_TYPE = {
     "vat": "02",
@@ -38,7 +39,7 @@ class ResPartner(models.Model):
         self.ensure_one()
         return self.country_id.code == self.env.ref("base.es").code
 
-    def is_vat_id_type(self):
+    def l10n_es_edi_verifactu_is_vat_id_type(self):
         self.ensure_one()
         return (
             not self.l10n_es_edi_verifactu_partner_id_type
@@ -46,9 +47,9 @@ class ResPartner(models.Model):
             == VERIFACTU_ID_TYPE.get("vat")
         )
 
-    def is_spanish_nif(self):
+    def l10n_es_edi_verifactu_is_spanish_nif(self):
         self.ensure_one()
-        return self.is_spanish() and self.is_vat_id_type()
+        return self.is_spanish() and self.l10n_es_edi_verifactu_is_vat_id_type()
 
     def is_from_eu(self):
         self.ensure_one()
@@ -74,7 +75,10 @@ class ResPartner(models.Model):
 
     def check_l10n_es_edi_verifactu_non_eu_id_type(self):
         for partner in self:
-            if not partner.is_from_eu() and partner.is_vat_id_type():
+            if (
+                not partner.is_from_eu()
+                and partner.l10n_es_edi_verifactu_is_vat_id_type()
+            ):
                 raise exceptions.ValidationError(
                     _("Identification type can not be NIF for non-community partners.")
                 )
@@ -90,7 +94,12 @@ class ResPartner(models.Model):
     @api.constrains("vat", "l10n_es_edi_verifactu_partner_id_type")
     def check_vat(self):
         for partner in self:
-            if partner.is_vat_id_type():
+            check_vat = partner.l10n_es_edi_verifactu_is_vat_id_type()
+            if config["test_enable"]:
+                check_vat = not bool(
+                    self.env.context.get("test_not_verifactu_vat_partner_id_type")
+                )
+            if check_vat:
                 super().check_vat()
             else:
                 if partner.vat and 20 < len(partner.vat):
