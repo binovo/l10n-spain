@@ -40,4 +40,9 @@
             </t>
         </xpath>
     </template>
+    <template id="report_invoice_verifactu_adjust_shipping_address_style" inherit_id="account.report_invoice_document">
+        <xpath expr="//div[@name='shipping_address_block']" position="attributes">
+            <attribute name="t-att-class">'verifactu-address-adjust' if o.l10n_es_verifactu_is_in_chain() else ''</attribute>
+        </xpath>
+    </template>
 </odoo>

@@ -3,7 +3,7 @@
     float: left;
 }
 
-div[name="shipping_address_block"] {
+.verifactu-address-adjust {
     float: right;
     max-width: 250px;
 }
