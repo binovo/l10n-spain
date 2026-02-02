@@ -218,7 +218,7 @@
                     </InvoiceIssueData>
                     <TaxesOutputs>
                         <t t-foreach="invoice.tax_line_ids" t-as="tax_line">
-                            <Tax t-if="tax_line.tax_id.amount &gt;=0">
+                            <Tax t-if="tax_line.tax_id.amount !=0">
                                 <TaxTypeCode t-esc="tax_line.tax_id.facturae_code"/>
                                 <TaxRate t-esc="('%.2f' if version == '3_2' else '%.8f')     % (tax_line.tax_id.amount)"/>
                                 <TaxableBase>
@@ -337,7 +337,7 @@
                             </TaxesWithheld>
                             <TaxesOutputs>
                                 <t t-foreach="line_taxes['taxes']" t-as="line_tax">
-                                    <Tax t-if="line_tax['amount'] &gt;= 0">
+                                    <Tax t-if="line_tax['amount'] != 0">
                                         <t t-set="tax" t-value="invoice.env['account.tax'].browse(line_tax['id'])" />
                                         <TaxTypeCode t-esc="tax.facturae_code"/>
                                         <TaxRate t-esc="('%.2f' if version == '3_2' else '%.8f') % (tax.amount)"/>
