@@ -34,10 +34,10 @@ addon | version | maintainers | summary
 [l10n_es_aeat_mod190](l10n_es_aeat_mod190/) | 16.0.2.4.1 |  | AEAT modelo 190
 [l10n_es_aeat_mod216](l10n_es_aeat_mod216/) | 16.0.2.0.0 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | AEAT modelo 216
 [l10n_es_aeat_mod296](l10n_es_aeat_mod296/) | 16.0.1.1.0 |  | AEAT modelo 296
-[l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 16.0.2.11.3 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | AEAT modelo 303
+[l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 16.0.2.12.0 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | AEAT modelo 303
 [l10n_es_aeat_mod303_oss](l10n_es_aeat_mod303_oss/) | 16.0.1.1.0 |  | AEAT modelo 303 - OSS
-[l10n_es_aeat_mod303_vat_prorate](l10n_es_aeat_mod303_vat_prorate/) | 16.0.1.0.1 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Prorrata de IVA [303]
-[l10n_es_aeat_mod347](l10n_es_aeat_mod347/) | 16.0.1.12.0 |  | AEAT modelo 347
+[l10n_es_aeat_mod303_vat_prorate](l10n_es_aeat_mod303_vat_prorate/) | 16.0.1.1.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Prorrata de IVA [303]
+[l10n_es_aeat_mod347](l10n_es_aeat_mod347/) | 16.0.1.13.0 |  | AEAT modelo 347
 [l10n_es_aeat_mod347_igic](l10n_es_aeat_mod347_igic/) | 16.0.1.0.2 | <a href='https://github.com/Christian-RB'><img src='https://github.com/Christian-RB.png' width='32' height='32' style='border-radius:50%;' alt='Christian-RB'/></a> | AEAT modelo 347 IGIC
 [l10n_es_aeat_mod349](l10n_es_aeat_mod349/) | 16.0.1.4.3 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | AEAT modelo 349
 [l10n_es_aeat_mod369](l10n_es_aeat_mod369/) | 16.0.1.1.2 |  | AEAT modelo 369
@@ -80,7 +80,7 @@ addon | version | maintainers | summary
 [l10n_es_sigaus_stock_picking_report_valued](l10n_es_sigaus_stock_picking_report_valued/) | 16.0.1.0.2 |  | Show SIGAUS amount in valued stock pickings.
 [l10n_es_subcontractor_certificate](l10n_es_subcontractor_certificate/) | 16.0.1.0.0 |  | Certificado de subcontratista
 [l10n_es_ticketbai](l10n_es_ticketbai/) | 16.0.1.2.0 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | Declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas
-[l10n_es_ticketbai_api](l10n_es_ticketbai_api/) | 16.0.1.1.2 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI - API
+[l10n_es_ticketbai_api](l10n_es_ticketbai_api/) | 16.0.1.1.3 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI - API
 [l10n_es_ticketbai_api_batuz](l10n_es_ticketbai_api_batuz/) | 16.0.1.0.5 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI (API) - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
 [l10n_es_ticketbai_batuz](l10n_es_ticketbai_batuz/) | 16.0.1.1.0 | <a href='https://github.com/enriquemartin'><img src='https://github.com/enriquemartin.png' width='32' height='32' style='border-radius:50%;' alt='enriquemartin'/></a> <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI - Batuz - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas en Bizkaia
 [l10n_es_ticketbai_oss](l10n_es_ticketbai_oss/) | 16.0.1.0.1 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI - OSS
@@ -92,6 +92,7 @@ addon | version | maintainers | summary
 [l10n_es_vat_book_oss](l10n_es_vat_book_oss/) | 16.0.1.0.1 |  | Libro de IVA OSS
 [l10n_es_vat_prorate](l10n_es_vat_prorate/) | 16.0.2.1.0 |  | Prorrata de IVA para la localización española
 [l10n_es_verifactu_oca](l10n_es_verifactu_oca/) | 16.0.1.2.1 |  | Comunicación VERI*FACTU
+[l10n_es_verifactu_oca_operation_date](l10n_es_verifactu_oca_operation_date/) | 16.0.1.0.0 |  | VERI*FACTU - Operation Date
 [l10n_es_verifactu_oca_oss](l10n_es_verifactu_oca_oss/) | 16.0.1.0.1 |  | Comunicación VERI*FACTU: OSS
 [payment_redsys](payment_redsys/) | 16.0.1.0.4 |  | Payment Acquirer: Redsys Implementation
 
