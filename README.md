@@ -1,4 +1,7 @@
 
+[![Support the OCA](https://odoo-community.org/readme-banner-image)](https://odoo-community.org/get-involved?utm_source=repo-readme)
+
+# l10n-spain
 [![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/l10n-spain&target_branch=16.0)
 [![Pre-commit Status](https://github.com/OCA/l10n-spain/actions/workflows/pre-commit.yml/badge.svg?branch=16.0)](https://github.com/OCA/l10n-spain/actions/workflows/pre-commit.yml?query=branch%3A16.0)
 [![Build Status](https://github.com/OCA/l10n-spain/actions/workflows/test.yml/badge.svg?branch=16.0)](https://github.com/OCA/l10n-spain/actions/workflows/test.yml?query=branch%3A16.0)
@@ -6,8 +9,6 @@
 [![Translation Status](https://translation.odoo-community.org/widgets/l10n-spain-16-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/l10n-spain-16-0/?utm_source=widget)
 
 <!-- /!\ do not modify above this line -->
-
-# l10n-spain
 
 TODO: add repo description.
 
@@ -86,7 +87,7 @@ addon | version | maintainers | summary
 [l10n_es_ticketbai_oss](l10n_es_ticketbai_oss/) | 16.0.1.0.1 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI - OSS
 [l10n_es_ticketbai_pos](l10n_es_ticketbai_pos/) | 16.0.1.1.2 | <a href='https://github.com/ao-landoo'><img src='https://github.com/ao-landoo.png' width='32' height='32' style='border-radius:50%;' alt='ao-landoo'/></a> | TicketBAI - Point of Sale - declaración de todas las operaciones de venta realizadas por las personas y entidades que desarrollan actividades económicas
 [l10n_es_toponyms](l10n_es_toponyms/) | 16.0.1.0.0 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Topónimos españoles
-[l10n_es_vat_book](l10n_es_vat_book/) | 16.0.2.1.0 |  | Libros registro del IVA y del IRPF
+[l10n_es_vat_book](l10n_es_vat_book/) | 16.0.2.1.1 |  | Libros registro del IVA y del IRPF
 [l10n_es_vat_book_igic](l10n_es_vat_book_igic/) | 16.0.1.0.2 | <a href='https://github.com/nicolasramos'><img src='https://github.com/nicolasramos.png' width='32' height='32' style='border-radius:50%;' alt='nicolasramos'/></a> | Libro de IGIC
 [l10n_es_vat_book_invoice_summary](l10n_es_vat_book_invoice_summary/) | 16.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Facturas resumen en libro de IVA
 [l10n_es_vat_book_oss](l10n_es_vat_book_oss/) | 16.0.1.0.1 |  | Libro de IVA OSS
