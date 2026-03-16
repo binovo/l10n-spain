@@ -13,6 +13,12 @@ class PosConfig(models.Model):
     def _compute_simplified_invoice_sequence(self):
         for pos in self:
             seq = pos.l10n_es_simplified_invoice_sequence_id
+            if seq.use_date_range:
+                dt = fields.Date.today()
+                seq_date = self.env['ir.sequence.date_range'].search(
+                    [('sequence_id', '=', seq.id), ('date_from', '<=', dt),
+                     ('date_to', '>=', dt)], limit=1)
+                seq = seq.with_context(ir_sequence_date_range=seq_date.date_from) if seq_date else seq
             pos.l10n_es_simplified_invoice_number = (
                 seq._get_current_sequence().number_next_actual)
             pos.l10n_es_simplified_invoice_prefix = (
