@@ -39,6 +39,12 @@ VERIFACTU_XML_ENVELOPE = """
     "utf-8"
 )
 
+PROD_AEAT_VERIFACTU_SERVICE_URL = (
+    "https://www1.agenciatributaria.gob.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP"
+)
+
+PROD_AEAT_VERIFACTU_QR_URL = "https://www2.agenciatributaria.gob.es/wlpl/TIKE-CONT/ValidarQR"
+
 TEST_AEAT_VERIFACTU_SERVICE_URL = (
     "https://prewww1.aeat.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP"
 )
@@ -225,15 +231,13 @@ class AccountEdiFormat(models.Model):
         if invoice.company_id.l10n_es_edi_test_env:
             return TEST_AEAT_VERIFACTU_SERVICE_URL
         else:
-            # TODO post to verifactu production systems, not available yet
-            raise NotImplementedError()
+            return PROD_AEAT_VERIFACTU_SERVICE_URL
 
     def _l10n_es_verifactu_aeat_qr_url(self, invoice):
         if invoice.company_id.l10n_es_edi_test_env:
             return TEST_AEAT_VERIFACTU_QR_URL
         else:
-            # TODO post to verifactu production systems, not available yet
-            raise NotImplementedError()
+            return PROD_AEAT_VERIFACTU_QR_URL
 
     def _l10n_es_verifactu_post_to_web_service(self, invoice, cancel=False):
         try:
