@@ -467,3 +467,34 @@ msgstr "Declaración de responsabilidad"
 #: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.res_config_settings_view_form
 msgid "Download Legal File Template"
 msgstr "Descargar la plantilla"
+
+#. module: l10n_es_edi_verifactu
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.view_account_move_form_verifactu
+msgid "External refund invoices"
+msgstr "Facturas origen a rectificar"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields,field_description:l10n_es_edi_verifactu.field_account_move_vf_refund_origin__expedition_date
+msgid "Expedition Date"
+msgstr "Fecha de emisión"
+
+#. module: l10n_es_edi_verifactu
+#: model_terms:ir.ui.view,arch_db:l10n_es_edi_verifactu.view_account_move_form_verifactu
+msgid "Invoice number"
+msgstr "Número"
+
+#. module: l10n_es_edi_verifactu
+#: model:ir.model.fields,help:l10n_es_edi_verifactu.field_account_move_vf_refund_origin__number
+msgid "Enter the full invoice identifier, including series and year if applicable."
+msgstr "Introduce el identificador completo de la factura, incluyendo serie y año si corresponde."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_move.py:0
+#, python-format
+msgid ""
+"Refunded Invoice Number %s longer than expected. Should be 60 characters "
+"max.!"
+msgstr ""
+"El número de la factura rectificada %s es más largo de lo esperado. Debe "
+"tener un máximo de 60 caracteres."

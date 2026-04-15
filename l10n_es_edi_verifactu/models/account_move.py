@@ -4,7 +4,8 @@
 
 from base64 import b64encode, b64decode
 from lxml import etree
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 from urllib.parse import urlencode
 from .account_edi_format import NAMESPACE_SF_INFO
 
@@ -27,6 +28,11 @@ class AccountMove(models.Model):
     )
     l10n_es_edi_verifactu_qr_url = fields.Char(
         string="Verifactu QR URL", compute="_compute_l10n_es_edi_verifactu_qr_url"
+    )
+    l10n_es_edi_verifactu_refund_origin_ids = fields.One2many(
+        comodel_name="account.move.vf.refund.origin",
+        inverse_name="invoice_id",
+        string="Refund origin references",
     )
 
     @api.depends("move_type", "company_id")
@@ -153,3 +159,29 @@ class AccountMove(models.Model):
         return super(
             AccountMove, self.with_context(l10n_es_verifactu_get_xml=True)
         )._post(soft=soft)
+
+
+class AccountMoveVFRefundOrigin(models.Model):
+    _name = "account.move.vf.refund.origin"
+    _description = "Refunded invoices origin data"
+
+    invoice_id = fields.Many2one(
+        comodel_name="account.move", domain=[("type", "=", "out_refund")], required=True
+    )
+    number = fields.Char(
+        required=True,
+        help="Enter the full invoice identifier, including series and year if applicable.",
+    )
+    expedition_date = fields.Date(required=True)
+
+    @api.constrains("number")
+    def _check_number(self):
+        for record in self:
+            if 60 < len(record.number):
+                raise ValidationError(
+                    _(
+                        "Refunded Invoice Number %s longer than expected. "
+                        "Should be 60 characters max.!"
+                    )
+                    % record.number
+                )

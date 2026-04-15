@@ -424,11 +424,22 @@ class AccountEdiFormat(models.Model):
 
     @staticmethod
     def _get_verifactu_credit_note(invoice):
+        invoice_ids = []
+        if invoice.reversed_entry_id:
+            invoice_ids.append(
+                AccountEdiFormat._get_verifactu_invoice_id(invoice.reversed_entry_id)
+            )
+        if invoice.l10n_es_edi_verifactu_refund_origin_ids:
+            for refund_origin_id in invoice.l10n_es_edi_verifactu_refund_origin_ids:
+                invoice_ids.append(
+                    {
+                        "number": refund_origin_id.number,
+                        "issuedTime": refund_origin_id.expedition_date.isoformat(),
+                    }
+                )
         return {
             "style": "I",
-            "ids": [
-                AccountEdiFormat._get_verifactu_invoice_id(invoice.reversed_entry_id)
-            ],
+            "ids": invoice_ids,
         }
 
     @staticmethod

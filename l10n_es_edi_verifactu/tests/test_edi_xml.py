@@ -20,6 +20,7 @@ from .test_xml_post_data import (
     CANCEL_SPANISH_INVOICE_XML_POST,
     MULTI_CURRENCY_INVOICE_XML_POST,
     PASSPORT_SPANISH_INVOICE_XML_POST,
+    REFUND_ORIGIN_INVOICE_XML_POST,
 )
 
 
@@ -284,6 +285,77 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 prefix="l10n_es_verifactu",
             )
             xml_expected = etree.fromstring(REFUND_INVOICE_XML_POST)
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
+    def test_create_refund_origin_invoice(self):
+        with freeze_time(self.operation_date):
+            refund_invoice = self.env["account.move"].create(
+                {
+                    "move_type": "out_refund",
+                    "invoice_date": self.operation_date,
+                    "date": self.operation_date,
+                    "journal_id": self.spanish_invoice.journal_id.id,
+                    "partner_id": self.env.ref(
+                        "l10n_es_edi_verifactu.l10n_es_verifactu_partner_sp_uztapide"
+                    ).id,
+                    "invoice_line_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "product_id": self.env.ref(
+                                    "product.product_product_7"
+                                ).id,
+                                "quantity": 4,
+                                "price_unit": 1000.0,
+                                "tax_ids": [
+                                    (
+                                        6,
+                                        0,
+                                        self.env.ref(
+                                            f"l10n_es.{self.env.company.id}_account_tax_template_s_iva21b"
+                                        ).ids,
+                                    )
+                                ],
+                            },
+                        )
+                    ],
+                    "l10n_es_edi_verifactu_refund_origin_ids": [
+                        (
+                            0,
+                            0,
+                            {
+                                "number": "INV/2023/00019",
+                                "expedition_date": "2023-09-19",
+                            },
+                        ),
+                        (
+                            0,
+                            0,
+                            {
+                                "number": "INV/2023/00082",
+                                "expedition_date": "2023-05-05",
+                            },
+                        ),
+                    ],
+                }
+            )
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                refund_invoice
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(REFUND_ORIGIN_INVOICE_XML_POST)
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
 
     def test_create_eu_recipient_intra_fp(self):

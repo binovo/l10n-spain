@@ -12,4 +12,31 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_account_move_form_verifactu" model="ir.ui.view">
+        <field name="name">view.account.move.form.verifactu</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='other_tab_group']/group[last()]" position='after'>
+                <field name="l10n_es_edi_verifactu_is_required" invisible="1"/>
+                <group id="verifactu_group" string="Verifactu"
+                       attrs="{'invisible': [('l10n_es_edi_verifactu_is_required', '=', False)]}">
+                    <separator string="External refund invoices"
+                               colspan="2"
+                               attrs="{'invisible': ['|', '|', ('l10n_es_edi_verifactu_is_required', '!=', True), ('reversed_entry_id', '!=', False), ('move_type', '!=', 'out_refund')]}"/>
+                    <field name="l10n_es_edi_verifactu_refund_origin_ids"
+                           nolabel="1"
+                           colspan="2"
+                           attrs="{'readonly': [('state', '!=', 'draft')], 'invisible': ['|', '|', ('l10n_es_edi_verifactu_is_required', '!=', True), ('reversed_entry_id', '!=', False), ('move_type', '!=', 'out_refund')]}">
+                        <tree editable="bottom">
+                            <field name="invoice_id" invisible="1"/>
+                            <field name="number" string="Invoice number"/>
+                            <field name="expedition_date"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
 </odoo>
