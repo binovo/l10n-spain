@@ -498,3 +498,10 @@ msgid ""
 msgstr ""
 "El número de la factura rectificada %s es más largo de lo esperado. Debe "
 "tener un máximo de 60 caracteres."
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Verifactu: original invoices that are going to be refunded are mandatory."
+msgstr "Verifactu: las facturas originales a rectificar son obligatorias."

@@ -497,3 +497,10 @@ msgid ""
 "max.!"
 msgstr ""
 "Zuzendutako %s faktura-zenbakia espero baino luzeagoa da. Gehienez 60 karaktere izan behar ditu!"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/account_edi_format.py:0
+#, python-format
+msgid "Verifactu: original invoices that are going to be refunded are mandatory."
+msgstr "Verifactu: itzuliko diren jatorrizko fakturak nahitaezkoak dira."

@@ -711,6 +711,14 @@ class AccountEdiFormat(models.Model):
                     invoice.partner_id.name,
                 )
             )
+        if invoice.move_type == "out_refund" and not (
+            invoice.reversed_entry_id or invoice.l10n_es_edi_verifactu_refund_origin_ids
+        ):
+            raise ValidationError(
+                _(
+                    "Verifactu: original invoices that are going to be refunded are mandatory."
+                )
+            )
         return errors
 
     @staticmethod
