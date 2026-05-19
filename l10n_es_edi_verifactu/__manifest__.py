@@ -5,7 +5,7 @@
 {
     "name": "Spain - Verifactu",
     "summary": "Spain - Verifactu",
-    "version": "16.0.1.6.0",
+    "version": "16.0.1.6.1",
     "depends": ["l10n_es_edi_sii"],
     "data": [
         "data/account_edi_data.xml",

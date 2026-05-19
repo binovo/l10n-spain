@@ -443,7 +443,7 @@ class AccountEdiFormat(models.Model):
         }
 
     @staticmethod
-    def _get_verifactu_vat_lines(vat_breakdown):
+    def _get_verifactu_vat_lines(vat_breakdown, is_oss):
         subject_lines = []
         no_subject_lines = []
         subject_breakdown = vat_breakdown.get("Sujeta", False)
@@ -504,8 +504,8 @@ class AccountEdiFormat(models.Model):
                     {
                         "base": not_subject_ot,
                         "rate": 0,
-                        "vatKey": "01",
-                        "vatOperation": "N1",
+                        "vatKey": "17" if is_oss else "01",
+                        "vatOperation": "N2" if is_oss else "N1",
                     }
                 )
         return tax_amount, subject_lines + no_subject_lines
@@ -569,18 +569,18 @@ class AccountEdiFormat(models.Model):
                 invoice
             )
             if tax_details_info_vals:
+                is_oss = self._has_oss_taxes(invoice)
                 sign = -1 if invoice.move_type == "out_refund" else 1
-                total_amount = round(
-                    sign
-                    * (
-                        tax_details_info_vals["tax_details"]["base_amount"]
-                        + tax_details_info_vals["tax_details"]["tax_amount"]
-                        - tax_details_info_vals["tax_amount_retention"]
-                    ),
-                    2,
+                total = (
+                    tax_details_info_vals["tax_details"]["base_amount"]
+                    if is_oss
+                    else tax_details_info_vals["tax_details"]["base_amount"]
+                    + tax_details_info_vals["tax_details"]["tax_amount"]
+                    - tax_details_info_vals["tax_amount_retention"]
                 )
+                total_amount = round(sign * (total), 2)
                 tax_amount, vat_lines = self._get_verifactu_vat_lines(
-                    tax_details_info_vals.get("tax_details_info")
+                    tax_details_info_vals.get("tax_details_info"), is_oss
                 )
                 json_input["invoice"]["vatLines"] = vat_lines
                 json_input["invoice"]["total"] = total_amount
