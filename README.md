@@ -35,7 +35,7 @@ addon | version | maintainers | summary
 [l10n_es_aeat_mod130](l10n_es_aeat_mod130/) | 16.0.1.0.2 |  | AEAT modelo 130
 [l10n_es_aeat_mod190](l10n_es_aeat_mod190/) | 16.0.2.4.1 |  | AEAT modelo 190
 [l10n_es_aeat_mod216](l10n_es_aeat_mod216/) | 16.0.2.0.0 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | AEAT modelo 216
-[l10n_es_aeat_mod296](l10n_es_aeat_mod296/) | 16.0.1.1.0 |  | AEAT modelo 296
+[l10n_es_aeat_mod296](l10n_es_aeat_mod296/) | 16.0.1.1.1 |  | AEAT modelo 296
 [l10n_es_aeat_mod303](l10n_es_aeat_mod303/) | 16.0.2.12.0 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | AEAT modelo 303
 [l10n_es_aeat_mod303_oss](l10n_es_aeat_mod303_oss/) | 16.0.1.1.0 |  | AEAT modelo 303 - OSS
 [l10n_es_aeat_mod303_vat_prorate](l10n_es_aeat_mod303_vat_prorate/) | 16.0.1.1.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Prorrata de IVA [303]
@@ -59,7 +59,7 @@ addon | version | maintainers | summary
 [l10n_es_dua](l10n_es_dua/) | 16.0.1.0.0 |  | Importaciones con DUA
 [l10n_es_dua_igic](l10n_es_dua_igic/) | 16.0.1.1.0 |  | Importaciones con DUA ATC
 [l10n_es_dua_sii](l10n_es_dua_sii/) | 16.0.2.0.0 |  | Suministro Inmediato de Información de importaciones con DUA
-[l10n_es_facturae](l10n_es_facturae/) | 16.0.1.13.0 | <a href='https://github.com/etobella'><img src='https://github.com/etobella.png' width='32' height='32' style='border-radius:50%;' alt='etobella'/></a> | Creación de Facturae
+[l10n_es_facturae](l10n_es_facturae/) | 16.0.1.13.1 | <a href='https://github.com/etobella'><img src='https://github.com/etobella.png' width='32' height='32' style='border-radius:50%;' alt='etobella'/></a> | Creación de Facturae
 [l10n_es_facturae_face](l10n_es_facturae_face/) | 16.0.1.3.3 | <a href='https://github.com/etobella'><img src='https://github.com/etobella.png' width='32' height='32' style='border-radius:50%;' alt='etobella'/></a> | Envío de Facturae a FACe
 [l10n_es_facturae_igic](l10n_es_facturae_igic/) | 16.0.1.0.0 | <a href='https://github.com/Christian-RB'><img src='https://github.com/Christian-RB.png' width='32' height='32' style='border-radius:50%;' alt='Christian-RB'/></a> | Creación de Facturae IGIC
 [l10n_es_igic](l10n_es_igic/) | 16.0.1.5.0 |  | IGIC (Impuesto General Indirecto Canario
