@@ -150,6 +150,19 @@ class AccountMove(models.Model):
             and verifactu_doc_ids
         )
 
+    def l10n_es_verifactu_allows_repercuted_recargo(self):
+        """Allow repercuted recargo only for general-regime sales with recargo taxes."""
+        self.ensure_one()
+        if not self.is_sale_document():
+            return False
+        if self.company_id.l10n_es_verifactu_is_equivalence_surcharge_regime():
+            return False
+        return bool(
+            self.invoice_line_ids.tax_ids.filtered(
+                lambda tax: tax.l10n_es_type == "recargo"
+            )
+        )
+
     # OVERRIDEN FUNCTIONS
     def _post(self, soft=True):
         """Add context variable to ensure that Verifactu-XML file is created when calling _check_move_configuration

@@ -12,6 +12,10 @@
                     <label for="l10n_es_verifactu_enabled" class="o_light_label"/>
                     <field name="l10n_es_verifactu_enabled"/>
                 </div>
+                <div class="o_row" attrs="{'invisible': [('l10n_es_verifactu_enabled', '=', False)]}">
+                    <label for="l10n_es_verifactu_vat_regime_key" class="o_light_label"/>
+                    <field name="l10n_es_verifactu_vat_regime_key"/>
+                </div>
                 <div attrs="{'invisible': [('l10n_es_verifactu_enabled', '=', False)]}">
                     <div class="content-group mt16">
                         <label for="config_verifactu_developer_name" class="o_light_label"/>

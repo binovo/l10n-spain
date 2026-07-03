@@ -12,6 +12,9 @@ class ResConfigSettings(models.TransientModel):
     l10n_es_verifactu_enabled = fields.Boolean(
         related="company_id.l10n_es_verifactu_enabled", readonly=False
     )
+    l10n_es_verifactu_vat_regime_key = fields.Selection(
+        related="company_id.l10n_es_verifactu_vat_regime_key", readonly=False
+    )
     config_verifactu_developer_name = fields.Char(
         string="Developer Name",
         config_parameter="l10n_es_edi_verifactu.verifactu_developer_name",

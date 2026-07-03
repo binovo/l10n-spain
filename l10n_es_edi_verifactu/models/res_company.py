@@ -2,13 +2,33 @@
 # Copyright 2024 Binovo IT Human Project SL
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, models, fields
+from odoo import api, fields, models
+
+from odoo.addons.l10n_es_edi_verifactu.utils.constants import (
+    VERIFACTU_VAT_REGIME_DEFAULT,
+    VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE,
+    VERIFACTU_VAT_REGIME_GENERAL,
+)
 
 
 class Company(models.Model):
     _inherit = "res.company"
 
+    @api.model
+    def _get_l10n_es_verifactu_vat_regime_key_selection(self):
+        return [
+            (VERIFACTU_VAT_REGIME_GENERAL, "01 - General regime"),
+            (VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE, "18 - Equivalence surcharge"),
+        ]
+
     l10n_es_verifactu_enabled = fields.Boolean(string="Enable Verifactu", default=False)
+    l10n_es_verifactu_vat_regime_key = fields.Selection(
+        selection=_get_l10n_es_verifactu_vat_regime_key_selection,
+        string="Verifactu VAT Regime Key",
+        default=VERIFACTU_VAT_REGIME_DEFAULT,
+        help="Use 18 when the company is under equivalence surcharge and does not "
+        "charge it on simplified tickets.",
+    )
     l10n_es_verifactu_chain_sequence_id = fields.Many2one(
         comodel_name="ir.sequence",
         string="Verifactu account.move chain sequence",
@@ -17,6 +37,19 @@ class Company(models.Model):
     )
     l10n_es_verifactu_legal_file = fields.Binary("Legal declaration")
     l10n_es_verifactu_legal_file_filename = fields.Char()
+
+    def l10n_es_verifactu_get_vat_regime_key(self):
+        """Return the configured Verifactu VAT regime key for this company."""
+        self.ensure_one()
+        return self.l10n_es_verifactu_vat_regime_key or VERIFACTU_VAT_REGIME_DEFAULT
+
+    def l10n_es_verifactu_is_equivalence_surcharge_regime(self):
+        """Return whether the company operates under equivalence surcharge regime."""
+        self.ensure_one()
+        return (
+            self.l10n_es_verifactu_vat_regime_key
+            == VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE
+        )
 
     def get_l10n_es_verifactu_license_dict(self):
         # sudo() why: ir.config_parameter is only accessible for base.group_system

@@ -20,7 +20,12 @@ Not supported invoices, in these cases, when invoice confirmation a validation e
 is not validated:
 
 * Simplified invoices
-* Taxes: Sujeto ISP, Retencion, Recargo de Equivalencia
+* Taxes: Sujeto ISP, Retencion
+* Repercuted equivalence surcharge (``recargo`` tax on sales lines). A company
+  in equivalence surcharge regime (``l10n_es_verifactu_vat_regime_key`` **18**)
+  must sell with VAT only; see POS module for simplified tickets. Repercuting
+  recargo to an RE customer (supplier in general regime **01** with
+  ``fp_recargo``) is supported on full invoices (``rate2``/``amount2``).
 * Cancellation of invoices
 
 Dependencies

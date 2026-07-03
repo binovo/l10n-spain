@@ -14,6 +14,15 @@ from markupsafe import Markup
 from lxml import etree
 from odoo import models, api, _
 from odoo.exceptions import ValidationError, UserError
+from odoo.addons.l10n_es_edi_verifactu.utils.constants import (
+    VERIFACTU_SUPPORTED_SALES_TAX_TYPES,
+    VERIFACTU_VAT_REGIME_DEFAULT,
+    VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE,
+    VERIFACTU_VAT_REGIME_EXPORT,
+    VERIFACTU_VAT_REGIME_GENERAL,
+    VERIFACTU_VAT_REGIME_IPSI_IGIC,
+    VERIFACTU_VAT_REGIME_OSS_IOSS,
+)
 from ..lib.verifactu_xmlgen import verifactu_xmlgen
 from ..lib.verifactu_xmlgen import OPERATION_CREATE, OPERATION_CANCEL
 
@@ -39,11 +48,11 @@ VERIFACTU_XML_ENVELOPE = """
     "utf-8"
 )
 
-PROD_AEAT_VERIFACTU_SERVICE_URL = (
-    "https://www1.agenciatributaria.gob.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP"
-)
+PROD_AEAT_VERIFACTU_SERVICE_URL = "https://www1.agenciatributaria.gob.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP"
 
-PROD_AEAT_VERIFACTU_QR_URL = "https://www2.agenciatributaria.gob.es/wlpl/TIKE-CONT/ValidarQR"
+PROD_AEAT_VERIFACTU_QR_URL = (
+    "https://www2.agenciatributaria.gob.es/wlpl/TIKE-CONT/ValidarQR"
+)
 
 TEST_AEAT_VERIFACTU_SERVICE_URL = (
     "https://prewww1.aeat.es/wlpl/TIKE-CONT/ws/SistemaFacturacion/VerifactuSOAP"
@@ -361,9 +370,11 @@ class AccountEdiFormat(models.Model):
     @staticmethod
     def _get_verifactu_issuer(invoice):
         return {
-            "irsId": invoice.company_id.vat[2:]
-            if invoice.company_id.vat.startswith("ES")
-            else invoice.company_id.vat,
+            "irsId": (
+                invoice.company_id.vat[2:]
+                if invoice.company_id.vat.startswith("ES")
+                else invoice.company_id.vat
+            ),
             "name": invoice.company_id.name,
         }
 
@@ -443,7 +454,9 @@ class AccountEdiFormat(models.Model):
         }
 
     @staticmethod
-    def _get_verifactu_vat_lines(vat_breakdown, is_oss):
+    def _get_verifactu_vat_lines(
+        vat_breakdown, is_oss, vat_regime_key=VERIFACTU_VAT_REGIME_DEFAULT
+    ):
         subject_lines = []
         no_subject_lines = []
         subject_breakdown = vat_breakdown.get("Sujeta", False)
@@ -457,18 +470,25 @@ class AccountEdiFormat(models.Model):
                     .get("DetalleIVA")
                 )
                 for tax_detail in tax_details:
-                    subject_lines.append(
-                        {
-                            "base": tax_detail.get("BaseImponible"),
-                            "rate": tax_detail.get("TipoImpositivo"),
-                            "amount": tax_detail.get("CuotaRepercutida"),
-                            "vatOperation": subject_breakdown.get("NoExenta").get(
-                                "TipoNoExenta"
-                            ),
-                            "vatKey": "01",
-                        }
-                    )
+                    vat_line = {
+                        "base": tax_detail.get("BaseImponible"),
+                        "rate": tax_detail.get("TipoImpositivo"),
+                        "amount": tax_detail.get("CuotaRepercutida"),
+                        "vatOperation": subject_breakdown.get("NoExenta").get(
+                            "TipoNoExenta"
+                        ),
+                        "vatKey": vat_regime_key,
+                    }
+                    if (
+                        vat_regime_key != VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE
+                        and tax_detail.get("TipoRecargoEquivalencia")
+                    ):
+                        vat_line["rate2"] = tax_detail.get("TipoRecargoEquivalencia")
+                        vat_line["amount2"] = tax_detail.get("CuotaRecargoEquivalencia")
+                    subject_lines.append(vat_line)
                     tax_amount += tax_detail.get("CuotaRepercutida")
+                    if tax_detail.get("CuotaRecargoEquivalencia"):
+                        tax_amount += tax_detail.get("CuotaRecargoEquivalencia")
             if subject_breakdown.get("Exenta", False):
                 tax_details = subject_breakdown.get("Exenta").get("DetalleExenta")
                 for tax_detail in tax_details:
@@ -478,7 +498,11 @@ class AccountEdiFormat(models.Model):
                             "base": tax_detail.get("BaseImponible"),
                             "rate": 0,
                             "vatOperation": exempt_reason,
-                            "vatKey": "01" if exempt_reason != "E2" else "02",
+                            "vatKey": (
+                                VERIFACTU_VAT_REGIME_EXPORT
+                                if exempt_reason == "E2"
+                                else VERIFACTU_VAT_REGIME_GENERAL
+                            ),
                         }
                     )
         if no_subject_breakdown:
@@ -495,7 +519,7 @@ class AccountEdiFormat(models.Model):
                         "rate": 0,
                         # Spanish customer and tax is not subjet because of reglas de localización,
                         # so it should be a sale to Canarias, Ceuta or Melilla 08 vat key
-                        "vatKey": "08",
+                        "vatKey": VERIFACTU_VAT_REGIME_IPSI_IGIC,
                         "vatOperation": "N2",
                     }
                 )
@@ -504,11 +528,37 @@ class AccountEdiFormat(models.Model):
                     {
                         "base": not_subject_ot,
                         "rate": 0,
-                        "vatKey": "17" if is_oss else "01",
+                        "vatKey": (
+                            VERIFACTU_VAT_REGIME_OSS_IOSS
+                            if is_oss
+                            else VERIFACTU_VAT_REGIME_GENERAL
+                        ),
                         "vatOperation": "N2" if is_oss else "N1",
                     }
                 )
         return tax_amount, subject_lines + no_subject_lines
+
+    @staticmethod
+    def _verifactu_filter_unsupported_sales_taxes(taxes):
+        """Return sales taxes that Verifactu does not support."""
+        return taxes.filtered(
+            lambda tax: tax.l10n_es_type not in VERIFACTU_SUPPORTED_SALES_TAX_TYPES
+        )
+
+    @staticmethod
+    def _verifactu_ensure_supported_sales_taxes(
+        taxes, error_class=ValidationError, invoice=None
+    ):
+        """Reject sales taxes that Verifactu does not support (e.g. recargo)."""
+        unsupported = AccountEdiFormat._verifactu_filter_unsupported_sales_taxes(taxes)
+        if unsupported and invoice:
+            recargo_taxes = unsupported.filtered(
+                lambda tax: tax.l10n_es_type == "recargo"
+            )
+            if recargo_taxes and invoice.l10n_es_verifactu_allows_repercuted_recargo():
+                unsupported -= recargo_taxes
+        if unsupported:
+            raise error_class(_("Verifactu: not supported invoice taxes."))
 
     @staticmethod
     def _get_verifactu_previous_id(previous_invoice):
@@ -580,7 +630,9 @@ class AccountEdiFormat(models.Model):
                 )
                 total_amount = round(sign * (total), 2)
                 tax_amount, vat_lines = self._get_verifactu_vat_lines(
-                    tax_details_info_vals.get("tax_details_info"), is_oss
+                    tax_details_info_vals.get("tax_details_info"),
+                    is_oss,
+                    invoice.company_id.l10n_es_verifactu_get_vat_regime_key(),
                 )
                 json_input["invoice"]["vatLines"] = vat_lines
                 json_input["invoice"]["total"] = total_amount
@@ -738,15 +790,10 @@ class AccountEdiFormat(models.Model):
             raise ValidationError(
                 _("Verifactu: simplified invoices are not supported.")
             )
-        # 4. Non supported tax
-        supported_taxes = ["exento", "sujeto", "no_sujeto", "no_sujeto_loc", "ignore"]
-        if any(
-            tax
-            for tax in invoice.invoice_line_ids.tax_ids.filtered(
-                lambda tax: tax.l10n_es_type not in supported_taxes
-            )
-        ):
-            raise ValidationError(_("Verifactu: not supported invoice taxes."))
+        # 4. Non supported tax (recargo, retención, etc.)
+        AccountEdiFormat._verifactu_ensure_supported_sales_taxes(
+            invoice.invoice_line_ids.tax_ids, invoice=invoice
+        )
         return True
 
     def _check_move_configuration(self, invoice):
