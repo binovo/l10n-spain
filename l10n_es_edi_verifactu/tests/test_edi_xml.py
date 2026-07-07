@@ -19,11 +19,13 @@ from ..models.account_edi_format import (
 from ..models.res_partner import VERIFACTU_ID_TYPE
 from odoo.addons.l10n_es_edi_verifactu.utils.constants import (
     VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE,
+    VERIFACTU_VAT_REGIME_SIMPLIFIED,
 )
 
 from .test_xml_post_data import (
     SPANISH_INVOICE_XML_POST,
     SPANISH_INVOICE_EQUIVALENCE_SURCHARGE_XML_POST,
+    SPANISH_INVOICE_SIMPLIFIED_VAT_REGIME_XML_POST,
     RECARGO_EQUIVALENCE_SURCHARGE_CUSTOMER_XML_POST,
     REFUND_INVOICE_XML_POST,
     EU_INVOICE_XML_POST,
@@ -348,6 +350,33 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
             )
             self.assertXmlTreeEqual(verifactu_xml, xml_expected)
 
+    def test_create_spanish_recipient_simplified_vat_regime(self):
+        """F1 with company in simplified VAT regime (20): VAT only, no repercuted recargo."""
+        self.company_data["company"].l10n_es_verifactu_vat_regime_key = (
+            VERIFACTU_VAT_REGIME_SIMPLIFIED
+        )
+        with freeze_time(self.operation_date):
+            self.spanish_invoice.action_post()
+            verifactu_xml = self.env["account.edi.format"]._l10n_es_verifactu_get_xml(
+                self.spanish_invoice
+            )
+            validate_xml_from_attachment(
+                self.env, verifactu_xml, "soap-envelope.xsd", prefix="l10n_es_verifactu"
+            )
+            invoice_records_node = verifactu_xml.xpath(
+                ".//sfLR:RegFactuSistemaFacturacion", namespaces=NAMESPACE_SFLR_INFO
+            )[0]
+            validate_xml_from_attachment(
+                self.env,
+                invoice_records_node,
+                "SuministroLR.xsd",
+                prefix="l10n_es_verifactu",
+            )
+            xml_expected = etree.fromstring(
+                SPANISH_INVOICE_SIMPLIFIED_VAT_REGIME_XML_POST
+            )
+            self.assertXmlTreeEqual(verifactu_xml, xml_expected)
+
     def test_create_re_customer_recargo_invoice(self):
         """F1 repercuting recargo to an RE customer with 10% and 21% VAT."""
         with freeze_time(self.operation_date):
@@ -382,6 +411,23 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
                 "l10n_es_verifactu_vat_regime_key": (
                     VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE
                 ),
+                "l10n_es_verifactu_enabled": True,
+            }
+        )
+        recargo_taxes = self.recargo_invoice.invoice_line_ids.tax_ids.filtered(
+            lambda tax: tax.l10n_es_type == "recargo"
+        )
+        self.assertTrue(recargo_taxes)
+        with freeze_time(self.operation_date):
+            with self.assertRaisesRegex(ValidationError, "not supported invoice taxes"):
+                self.recargo_invoice.action_post()
+        self.assertFalse(self.recargo_invoice.l10n_es_edi_verifactu_xml)
+
+    def test_regime_20_rejects_repercuted_recargo(self):
+        """Repercuted recargo is rejected when the company is in simplified VAT regime (20)."""
+        self.company_data["company"].write(
+            {
+                "l10n_es_verifactu_vat_regime_key": VERIFACTU_VAT_REGIME_SIMPLIFIED,
                 "l10n_es_verifactu_enabled": True,
             }
         )

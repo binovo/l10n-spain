@@ -136,6 +136,75 @@ SPANISH_INVOICE_EQUIVALENCE_SURCHARGE_XML_POST = """
     "utf-8"
 )
 
+SPANISH_INVOICE_SIMPLIFIED_VAT_REGIME_XML_POST = """
+<soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:sfLR="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroLR.xsd"
+    xmlns:sf="https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/tike/cont/ws/SuministroInformacion.xsd">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <sfLR:RegFactuSistemaFacturacion>
+            <sfLR:Cabecera>
+                <sf:ObligadoEmision>
+                    <sf:NombreRazon>Binovo IT Human Project</sf:NombreRazon>
+                    <sf:NIF>93074269P</sf:NIF>
+                </sf:ObligadoEmision>
+            </sfLR:Cabecera>
+            <sfLR:RegistroFactura>
+                <sfLR:RegistroAlta>
+                    <sf:IDVersion>1.0</sf:IDVersion>
+                    <sf:IDFactura>
+                        <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
+                        <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
+                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                    </sf:IDFactura>
+                    <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
+                    <sf:TipoFactura>F1</sf:TipoFactura>
+                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
+                    <sf:Destinatarios>
+                        <sf:IDDestinatario>
+                            <sf:NombreRazon>Uztapide</sf:NombreRazon>
+                            <sf:NIF>46764649Z</sf:NIF>
+                        </sf:IDDestinatario>
+                    </sf:Destinatarios>
+                    <sf:Desglose>
+                        <sf:DetalleDesglose>
+                            <sf:ClaveRegimen>20</sf:ClaveRegimen>
+                            <sf:CalificacionOperacion>S1</sf:CalificacionOperacion>
+                            <sf:TipoImpositivo>21.00</sf:TipoImpositivo>
+                            <sf:BaseImponibleOimporteNoSujeto>4000.00</sf:BaseImponibleOimporteNoSujeto>
+                            <sf:CuotaRepercutida>840.00</sf:CuotaRepercutida>
+                        </sf:DetalleDesglose>
+                    </sf:Desglose>
+                    <sf:CuotaTotal>840.00</sf:CuotaTotal>
+                    <sf:ImporteTotal>4840.00</sf:ImporteTotal>
+                    <sf:Encadenamiento>
+                        <sf:PrimerRegistro>S</sf:PrimerRegistro>
+                    </sf:Encadenamiento>
+                    <sf:SistemaInformatico>
+                        <sf:NombreRazon>ODOO BINOVO</sf:NombreRazon>
+                        <sf:NIF>19960488F</sf:NIF>
+                        <sf:NombreSistemaInformatico>BINOVOFACTU</sf:NombreSistemaInformatico>
+                        <sf:IdSistemaInformatico>22</sf:IdSistemaInformatico>
+                        <sf:Version>16.0</sf:Version>
+                        <sf:NumeroInstalacion>123</sf:NumeroInstalacion>
+                        <sf:TipoUsoPosibleSoloVerifactu>S</sf:TipoUsoPosibleSoloVerifactu>
+                        <sf:TipoUsoPosibleMultiOT>S</sf:TipoUsoPosibleMultiOT>
+                        <sf:IndicadorMultiplesOT>N</sf:IndicadorMultiplesOT>
+                    </sf:SistemaInformatico>
+                    <sf:FechaHoraHusoGenRegistro>___ignore___</sf:FechaHoraHusoGenRegistro>
+                    <sf:TipoHuella>01</sf:TipoHuella>
+                    <sf:Huella>___ignore___</sf:Huella>
+                </sfLR:RegistroAlta>
+            </sfLR:RegistroFactura>
+        </sfLR:RegFactuSistemaFacturacion>
+    </soapenv:Body>
+</soapenv:Envelope>
+""".encode(
+    "utf-8"
+)
+
 RECARGO_EQUIVALENCE_SURCHARGE_CUSTOMER_XML_POST = """
 <soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"

@@ -17,7 +17,6 @@ from odoo.exceptions import ValidationError, UserError
 from odoo.addons.l10n_es_edi_verifactu.utils.constants import (
     VERIFACTU_SUPPORTED_SALES_TAX_TYPES,
     VERIFACTU_VAT_REGIME_DEFAULT,
-    VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE,
     VERIFACTU_VAT_REGIME_EXPORT,
     VERIFACTU_VAT_REGIME_GENERAL,
     VERIFACTU_VAT_REGIME_IPSI_IGIC,
@@ -480,7 +479,7 @@ class AccountEdiFormat(models.Model):
                         "vatKey": vat_regime_key,
                     }
                     if (
-                        vat_regime_key != VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE
+                        vat_regime_key == VERIFACTU_VAT_REGIME_GENERAL
                         and tax_detail.get("TipoRecargoEquivalencia")
                     ):
                         vat_line["rate2"] = tax_detail.get("TipoRecargoEquivalencia")

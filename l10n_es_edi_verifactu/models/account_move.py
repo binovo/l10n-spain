@@ -155,7 +155,7 @@ class AccountMove(models.Model):
         self.ensure_one()
         if not self.is_sale_document():
             return False
-        if self.company_id.l10n_es_verifactu_is_equivalence_surcharge_regime():
+        if not self.company_id.l10n_es_verifactu_is_general_regime():
             return False
         return bool(
             self.invoice_line_ids.tax_ids.filtered(

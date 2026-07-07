@@ -528,7 +528,20 @@ msgstr "18 - Recargo de equivalencia"
 
 #. module: l10n_es_edi_verifactu
 #. odoo-python
-#: code:addons/l10n_es_edi_verifactu/models/res_company.py:32
+#: code:addons/l10n_es_edi_verifactu/models/res_company.py:29
+#: model:ir.model.fields.selection,name:l10n_es_edi_verifactu.selection__res_company__l10n_es_verifactu_vat_regime_key__20
+msgid "20 - Simplified VAT regime"
+msgstr "20 - Régimen simplificado"
+
+#. module: l10n_es_edi_verifactu
+#. odoo-python
+#: code:addons/l10n_es_edi_verifactu/models/res_company.py:40
 #: model:ir.model.fields,help:l10n_es_edi_verifactu.field_res_company__l10n_es_verifactu_vat_regime_key
-msgid "Use 18 when the company is under equivalence surcharge and does not charge it on simplified tickets."
-msgstr "Use 18 cuando la empresa está en recargo de equivalencia y no repercute recargo de equivalencia en las ventas."
+msgid ""
+"Use 18 when the company is under equivalence surcharge and does not charge "
+"it on simplified tickets. Use 20 when the company is under simplified VAT "
+"regime."
+msgstr ""
+"Use 18 cuando la empresa está en recargo de equivalencia y no repercute "
+"recargo en tickets simplificados. Use 20 cuando la empresa está en régimen "
+"simplificado de IVA."

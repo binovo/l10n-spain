@@ -21,9 +21,10 @@ is not validated:
 
 * Simplified invoices
 * Taxes: Sujeto ISP, Retencion
-* Repercuted equivalence surcharge (``recargo`` tax on sales lines). A company
-  in equivalence surcharge regime (``l10n_es_verifactu_vat_regime_key`` **18**)
-  must sell with VAT only; see POS module for simplified tickets. Repercuting
+* Repercuted equivalence surcharge (``recargo`` tax on sales lines) is only
+  supported when the company is in general regime (**01**); a company in
+  equivalence surcharge regime (**18**) or simplified VAT regime (**20**) must
+  sell with VAT only. See POS module for simplified tickets. Repercuting
   recargo to an RE customer (supplier in general regime **01** with
   ``fp_recargo``) is supported on full invoices (``rate2``/``amount2``).
 * Cancellation of invoices
