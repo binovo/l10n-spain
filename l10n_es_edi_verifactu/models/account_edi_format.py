@@ -594,7 +594,27 @@ class AccountEdiFormat(models.Model):
         )
 
     @api.model
-    def verifactu_xmlgen_prepare_json(self, invoice, cancel=False, attach=False):
+    def _verifactu_previous_id_from_record(self, record):
+        """Serialize a chained Verifactu record to previousId JSON."""
+        record.ensure_one()
+        if record._name != "account.move":
+            raise NotImplementedError(
+                _("Verifactu chaining is not implemented for %s records.")
+                % record._name
+            )
+        return self._get_verifactu_previous_id(record)
+
+    @api.model
+    def _verifactu_apply_chain_to_json(self, json_input, company):
+        """Attach previousId to signer JSON when a predecessor exists."""
+        previous_id = company.get_verifactu_chain_previous_id()
+        if previous_id:
+            json_input["previousId"] = previous_id
+        return json_input
+
+    @api.model
+    def _verifactu_xmlgen_prepare_invoice_body(self, invoice, cancel=False):
+        """Build verifactu-xmlgen JSON without fiscal chaining."""
         if invoice and not cancel:
             json_input = {
                 "invoice": {
@@ -636,35 +656,23 @@ class AccountEdiFormat(models.Model):
                 json_input["invoice"]["vatLines"] = vat_lines
                 json_input["invoice"]["total"] = total_amount
                 json_input["invoice"]["amount"] = tax_amount
-            previous_invoice = (
-                invoice.company_id.get_l10n_es_verifactu_last_posted_invoice()
-            )
-            if previous_invoice:
-                json_input["previousId"] = self._get_verifactu_previous_id(
-                    previous_invoice
-                )
-            if attach:
-                self._attach_verifactu_xmlgen_json_input(json_input, invoice)
             return json_input
-        elif invoice and cancel:
-            json_input = {
+        if invoice and cancel:
+            return {
                 "invoice": {
                     "issuer": self._get_verifactu_issuer(invoice),
                     "id": self._get_verifactu_invoice_id(invoice, cancel),
                 }
             }
-            previous_invoice = (
-                invoice.company_id.get_l10n_es_verifactu_last_posted_invoice()
-            )
-            if previous_invoice:
-                json_input["previousId"] = self._get_verifactu_previous_id(
-                    previous_invoice
-                )
-            if attach:
-                self._attach_verifactu_xmlgen_json_input(json_input, invoice)
-            return json_input
-        else:
-            raise ValidationError(_("Verifactu: invoice needed."))
+        raise ValidationError(_("Verifactu: invoice needed."))
+
+    @api.model
+    def verifactu_xmlgen_prepare_json(self, invoice, cancel=False, attach=False):
+        json_input = self._verifactu_xmlgen_prepare_invoice_body(invoice, cancel=cancel)
+        json_input = self._verifactu_apply_chain_to_json(json_input, invoice.company_id)
+        if attach:
+            self._attach_verifactu_xmlgen_json_input(json_input, invoice, cancel=cancel)
+        return json_input
 
     def _verifactu_xmlgen(self, operation, json_input, company_id):
         return verifactu_xmlgen(

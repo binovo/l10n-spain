@@ -169,6 +169,9 @@ class AccountMove(models.Model):
         only from this post method, we want to avoid the Verifactu-XML file creation in other
         _check_move_configuration method calls.
         """
+        verifactu_moves = self.filtered("l10n_es_edi_verifactu_is_required")
+        for company in verifactu_moves.mapped("company_id"):
+            company._lock_verifactu_chain()
         return super(
             AccountMove, self.with_context(l10n_es_verifactu_get_xml=True)
         )._post(soft=soft)
