@@ -615,15 +615,22 @@ class AccountEdiFormat(models.Model):
         else:
             raise ValidationError(_("Verifactu: invoice needed."))
 
+    def _verifactu_xmlgen(self, operation, json_input, company_id):
+        return verifactu_xmlgen(
+            operation,
+            json.dumps(json_input),
+            self.env,
+            company_id,
+        )
+
     @api.model
     def cmd_get_verifactu_xml(self, invoice, cancel=False):
         json_input = self.verifactu_xmlgen_prepare_json(
             invoice, cancel=cancel, attach=True
         )
-        process = verifactu_xmlgen(
+        process = self._verifactu_xmlgen(
             OPERATION_CANCEL if cancel else OPERATION_CREATE,
-            json.dumps(json_input),
-            self.env,
+            json_input,
             invoice.company_id,
         )
         if process.returncode != 0:
