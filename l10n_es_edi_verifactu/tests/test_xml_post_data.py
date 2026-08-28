@@ -18,11 +18,11 @@ SPANISH_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
@@ -87,7 +87,7 @@ REFUND_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>RINV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>R1</sf:TipoFactura>
@@ -96,10 +96,10 @@ REFUND_INVOICE_XML_POST = """
                         <sf:IDFacturaRectificada>
                             <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                             <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
-                            <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                            <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                         </sf:IDFacturaRectificada>
                     </sf:FacturasRectificadas>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
@@ -164,11 +164,11 @@ EU_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00002</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
 					<sf:Destinatarios>
 						<sf:IDDestinatario>
@@ -234,11 +234,11 @@ NON_EU_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00002</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
 					<sf:Destinatarios>
 						<sf:IDDestinatario>
@@ -358,11 +358,11 @@ MULTI_CURRENCY_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00002</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
@@ -427,11 +427,11 @@ PASSPORT_SPANISH_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
@@ -500,7 +500,7 @@ REFUND_ORIGIN_INVOICE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>RINV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>R1</sf:TipoFactura>
@@ -517,7 +517,7 @@ REFUND_ORIGIN_INVOICE_XML_POST = """
                             <sf:FechaExpedicionFactura>05-05-2023</sf:FechaExpedicionFactura>
                         </sf:IDFacturaRectificada>
                     </sf:FacturasRectificadas>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
