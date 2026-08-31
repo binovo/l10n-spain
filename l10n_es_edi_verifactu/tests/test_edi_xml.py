@@ -42,8 +42,8 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
         SudoParam.set_param("l10n_es_edi_verifactu.verifactu_software_version", "16.0")
         self.operation_date = datetime(
             year=2024,
-            month=1,
-            day=1,
+            month=10,
+            day=28,
             hour=0,
             minute=0,
             second=0,
@@ -488,6 +488,6 @@ class TestEdiVerifactuXML(TestEdiVerifactuCommon):
             )
             expected_qr_url = (
                 TEST_AEAT_VERIFACTU_QR_URL
-                + "?nif=93074269P&numserie=INV%2F2024%2F00001&fecha=01-01-2024&importe=4840.00"
+                + "?nif=93074269P&numserie=INV%2F2024%2F00001&fecha=28-10-2024&importe=4840.00"
             )
             self.assertEqual(invoice.l10n_es_edi_verifactu_qr_url, expected_qr_url)
