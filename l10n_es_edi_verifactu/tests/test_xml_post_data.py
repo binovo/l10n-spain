@@ -87,11 +87,11 @@ SPANISH_INVOICE_EQUIVALENCE_SURCHARGE_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
@@ -156,11 +156,11 @@ SPANISH_INVOICE_SIMPLIFIED_VAT_REGIME_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
@@ -225,11 +225,11 @@ RECARGO_EQUIVALENCE_SURCHARGE_CUSTOMER_XML_POST = """
                     <sf:IDFactura>
                         <sf:IDEmisorFactura>93074269P</sf:IDEmisorFactura>
                         <sf:NumSerieFactura>INV/2024/00001</sf:NumSerieFactura>
-                        <sf:FechaExpedicionFactura>01-01-2024</sf:FechaExpedicionFactura>
+                        <sf:FechaExpedicionFactura>28-10-2024</sf:FechaExpedicionFactura>
                     </sf:IDFactura>
                     <sf:NombreRazonEmisor>Binovo IT Human Project</sf:NombreRazonEmisor>
                     <sf:TipoFactura>F1</sf:TipoFactura>
-                    <sf:FechaOperacion>01-01-2024</sf:FechaOperacion>
+                    <sf:FechaOperacion>28-10-2024</sf:FechaOperacion>
                     <sf:DescripcionOperacion>/</sf:DescripcionOperacion>
                     <sf:Destinatarios>
                         <sf:IDDestinatario>
