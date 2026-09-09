@@ -2,7 +2,7 @@
 # Copyright 2024 Binovo IT Human Project SL
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 from odoo.addons.l10n_es_edi_verifactu.utils.constants import (
     VERIFACTU_VAT_REGIME_DEFAULT,
@@ -18,9 +18,12 @@ class Company(models.Model):
     @api.model
     def _get_l10n_es_verifactu_vat_regime_key_selection(self):
         return [
-            (VERIFACTU_VAT_REGIME_GENERAL, "01 - General regime"),
-            (VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE, "18 - Equivalence surcharge"),
-            (VERIFACTU_VAT_REGIME_SIMPLIFIED, "20 - Simplified VAT regime"),
+            (VERIFACTU_VAT_REGIME_GENERAL, _("01 - General regime")),
+            (
+                VERIFACTU_VAT_REGIME_EQUIVALENCE_SURCHARGE,
+                _("18 - Equivalence surcharge"),
+            ),
+            (VERIFACTU_VAT_REGIME_SIMPLIFIED, _("20 - Simplified VAT regime")),
         ]
 
     l10n_es_verifactu_enabled = fields.Boolean(string="Enable Verifactu", default=False)
