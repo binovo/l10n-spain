@@ -461,6 +461,20 @@ class TestL10nEsAeatVerifactuQR(TestVerifactuCommon):
         self.invoice.invoice_line_ids.price_unit = 130000000
         self.assertTrue(self.invoice.verifactu_macrodata)
 
+    def test_verifactu_macrodata_reported(self):
+        """Macrodato must be reported as "S" in the RegistroAlta when the total
+        is over the limit; otherwise AEAT rejects the record (error 1139).
+
+        The omission case (normal amount -> no Macrodato) is already covered by
+        the reference-JSON tests, whose fixtures contain no Macrodato key."""
+        self._activate_certificate(self.certificate_password)
+        self.invoice.invoice_line_ids.price_unit = 130000000
+        self.invoice.action_post()
+        self.assertEqual(
+            self.invoice._get_verifactu_invoice_dict()["RegistroAlta"].get("Macrodato"),
+            "S",
+        )
+
 
 class TestVerifactuSendResponse(TestVerifactuCommon):
     def test_create_activity_on_exception(self):
@@ -571,3 +585,17 @@ class TestVerifactuSendResponse(TestVerifactuCommon):
             activity,
             "A warning activity should be created for 'AceptadoConErrores' response",
         )
+
+    def test_check_verifactu_configuration_tax_agency(self):
+        # The default company uses the Spanish tax agency, which is accepted,
+        # so a fully configured invoice passes the configuration check.
+        self.invoice._check_verifactu_configuration()
+        # A tax agency that is not in the accepted list must be rejected.
+        # Regression: this branch used to reference the unbound method
+        # ``get_external_id`` and use ``in`` instead of ``not in``, so it never
+        # triggered regardless of the configured agency.
+        self.company.tax_agency_id = self.env.ref(
+            "l10n_es_aeat.aeat_tax_agency_bizkaia"
+        )
+        with self.assertRaises(UserError):
+            self.invoice._check_verifactu_configuration()
