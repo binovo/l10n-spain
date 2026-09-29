@@ -20,6 +20,16 @@ odoo.define("l10n_es_pos.models", function (require) {
                 // Unique UUID
                 this.own_simplified_invoice_prefix = "";
             }
+            async after_load_server_data() {
+                const orders = this.db.get_orders();
+                const resIndex = orders.findIndex(
+                    (order) => order.data.name === this.config.l10n_es_last_pos_order
+                );
+                orders
+                    .slice(0, resIndex + 1)
+                    .forEach((order) => this.db.remove_order(order.id));
+                return super.after_load_server_data(...arguments);
+            }
             get_simple_inv_next_number() {
                 // If we had pending orders to sync we want to avoid getting the next number
                 // from the DB as we'd be ovelaping the sequence.
